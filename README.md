@@ -1,5 +1,4 @@
-# 🚀 Lite Yet Sharp: Gated Skips and Depthwise Decoders for Fast TransUNet Segmentation
-## Results Overview
+# 🚀 GateFormer-UNet: Lightweight Transformer Segmentation with Gated Skips and Depthwise Decoders
 > **Status:** 🚧 *This repository is under construction.* Interfaces, plots, and docs may change as we add more results.
 
 ### What we evaluated
