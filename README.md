@@ -310,6 +310,9 @@ All CPU experiments:
 *Interpretation:*  
 On CPU, **TransUNet-Baseline** still leads in raw Dice, but **Lite-Base** is very close and **slightly surpasses it in IoU on ISIC 2016**, with much lower resource usage. Lite-Tiny remains a strong efficient alternative.
 
+![Figure 7: CPU-only Dice & IoU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(1).png)  
+*Figure 7. CPU-only Dice and IoU on BUSI and ISIC 2016. TransUNet-Lite-Base and Lite-Tiny preserve strong segmentation quality while running entirely on CPU.*
+
 ---
 
 ### 9.2 Latency Distribution on CPU (Lower is Better)
