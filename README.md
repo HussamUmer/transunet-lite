@@ -384,6 +384,9 @@ Both Lite variants **significantly reduce host memory usage**, with Lite-Tiny us
 *Interpretation:*  
 Over the same 50-image CPU benchmark, **TransUNet-Lite-Tiny** is **8–9× faster** than the baseline, and **Lite-Base** also clearly outperforms the baseline in end-to-end wall time.
 
+![Figure 11: CPU Wall Time](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(5).png)  
+*Figure 11. Total wall-clock time for the CPU evaluation run. Lite-Tiny completes evaluation in the shortest time, with Lite-Base also noticeably faster than larger baselines.*
+
 ---
 
 ### 9.6 CPU Utilization
