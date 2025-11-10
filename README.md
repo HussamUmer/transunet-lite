@@ -564,6 +564,153 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
+## 11. Future Work 🔭
+
+This repository is **Phase 1** of the TransUNet-Lite story: we built a clean, reproducible benchmark and showed that lightweight hybrid designs can approach or rival heavy baselines under consistent conditions. The next steps will deepen the analysis, broaden the evidence, and harden the models for real-world deployment.
+
+### 11.1. Component-wise Ablation & Design Justification
+
+We introduced several coordinated changes at once (gated skips, depthwise decoder, boundary head, lightweight backbones). The next stage will **quantify exactly what each part buys us**:
+
+- **SE / gated skip connections**
+  - Measure their impact on:
+    - boundary sharpness (boundary Dice),
+    - noise suppression in low-contrast regions,
+    - stability across folds and seeds,
+    - probability calibration near lesion borders.
+  - Compare: plain skips vs SE-gated skips vs alternative attention gates.
+
+- **Depthwise-separable decoder**
+  - Isolate the effect on:
+    - parameters,
+    - FLOPs,
+    - latency on GPU and CPU,
+    - segmentation quality.
+  - Validate that depthwise decoders are not just smaller, but **Pareto-efficient** (quality vs cost) relative to standard convolutions.
+
+- **Boundary-aware head**
+  - Study how the auxiliary boundary prediction:
+    - improves lesion edge adherence,
+    - affects calibration near contours,
+    - behaves under different weights / loss formulations.
+  - Visual + quantitative evaluation: do sharper masks correlate with clinically meaningful gains?
+
+This ablation suite will turn the current design from “intuitively good” to **experimentally justified**.
+
+---
+
+### 11.2. Broader Dataset & Modality Coverage
+
+So far, we evaluated on:
+
+- **ISIC 2016** (dermoscopy, relatively clean).
+- **BUSI** (ultrasound, noisy and challenging).
+
+Next, we will extend TransUNet-Lite to **diverse MedSegBench datasets** to test robustness and universality:
+
+- **Other modalities:**
+  - CT, MRI (organ and tumor segmentation),
+  - X-ray (lung and lesion masks),
+  - OCT, microscopy, endoscopy.
+
+- **Other task types:**
+  - Multi-class segmentation (up to many structures),
+  - Highly imbalanced targets (tiny lesions / structures),
+  - Domain shift (train on one center/device, test on another).
+
+Goal: show whether the same architectural recipe (light backbone + gated skips + depthwise decoder + boundary supervision) **generalizes across modalities**, or needs dataset-specific tuning.
+
+---
+
+### 11.3. Efficiency & Deployment-Focused Extensions
+
+We will push beyond single-GPU evaluation and explore **deployment-ready configurations**:
+
+- **Model compression:**
+  - Structured pruning on decoder and skip paths.
+  - Low-rank / bottleneck variants of attention and projections.
+
+- **Quantization & hardware-aware tuning:**
+  - 8-bit and 4-bit quantization trials for edge/CPU deployment.
+  - Benchmark on realistic devices (laptops, embedded GPUs, hospital workstations).
+
+- **Distillation:**
+  - Use TransUNet-Baseline as a **teacher**:
+    - Transfer structural priors to Lite-Base and Lite-Tiny.
+    - Target improved calibration + robustness at same lightweight budget.
+
+The aim is to provide **ready-to-use configurations** for real-time or resource-limited settings, not just academic GPUs.
+
+---
+
+### 11.4. Uncertainty, Calibration & Reliability
+
+We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
+
+- Reliability diagrams and class-wise calibration on more datasets.
+- Test-time augmentation and Monte Carlo dropout to generate:
+  - **uncertainty maps** over lesions,
+  - flags for low-confidence predictions for clinician review.
+- Study whether:
+  - gated skips,
+  - boundary supervision,
+  - and lighter transformers
+  improve or harm **trustworthiness** under distribution shifts.
+
+---
+
+### 11.5. Stronger Baselines & Fairer Comparisons
+
+We will integrate more **state-of-the-art baselines** into the same pipeline:
+
+- UNet variants, UNet++,
+- UNETR, Swin-UNet, ConvNeXt-UNet,
+- improved transformer decoders and hybrid designs.
+
+All trained with:
+
+- identical data splits,
+- identical augmentation policies,
+- identical loss/metrics,
+- shared logging and evaluation scripts.
+
+This will position TransUNet-Lite variants as part of a **rigorous, unified benchmark**, not a one-off tweak.
+
+---
+
+### 11.6. Public Release & Reproducibility Enhancements
+
+Planned improvements to make this ecosystem maximally useful:
+
+- Release **Lite-Base** and **Lite-Tiny** training & eval notebooks publicly once the manuscript is submitted.
+- Hugging Face / MONAI-compatible model hubs:
+  - `TransUNet-Lite-Base`
+  - `TransUNet-Lite-Tiny`
+- “One-command” runners:
+  - `train.py` + `eval.py` + YAML configs that reproduce all tables and plots.
+- Extended docs:
+  - architecture cards,
+  - usage recipes for clinical / research workflows,
+  - guidance on choosing between baseline and Lite variants.
+
+---
+
+### 11.7. Follow-up Paper: Dedicated Ablation & Robustness Study
+
+Finally, the current work naturally leads to a **second, focused paper**:
+
+- Title theme: *“Do Gated Skips and Depthwise Decoders Really Help?”*
+- Content:
+  - exhaustive ablations,
+  - cross-dataset robustness,
+  - calibration & uncertainty,
+  - deployment metrics (CPU/GPU/edge).
+
+This staged approach keeps the current study **clean, credible, and publishable**, while leaving room for a deeper theoretical and empirical exploration in a dedicated follow-up.
+
+
+---
+
 ## 11. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
