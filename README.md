@@ -523,7 +523,8 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h3 align="center">BUSI — TransUNet-Lite-Tiny</h3>
 
-![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03-05-02-40_test_grid_4panels_12.png)  
+![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_test_grid_4panels_12.png
+)  
 *Figure 22. BUSI: TransUNet-Lite-Tiny remains usable under tight compute budgets; some undersegmentation and softer contours appear, which is expected given the dataset’s difficulty and the model’s aggressive compression.*
 
 ---
