@@ -435,6 +435,64 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
 
 ---
 
+## 🎨 Qualitative Predictions
+
+To complement the quantitative tables, we visualize model behavior on held-out test cases from both datasets.  
+Each 4-panel grid shows (left → right):
+
+1. Input image  
+2. Ground-truth mask overlay  
+3. Predicted mask overlay  
+4. Predicted boundary (extracted from the predicted mask)
+
+These views highlight lesion shape, contour sharpness, and failure modes under the **same preprocessing, threshold, and color mapping** across models.
+
+---
+
+### ISIC 2016 — Qualitative Grids
+
+<!-- Replace the filenames below with your actual ISIC grid images -->
+
+![ISIC 2016 — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_test_grid_4panels_12.png)
+*Figure 13. ISIC 2016: UNETR predictions preserve coarse lesion extent but show less precise boundaries on challenging cases.*
+
+![ISIC 2016 — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/isic_setr_grid.png)
+*Figure 14. ISIC 2016: SETR improves global consistency but occasionally smooths fine lesion structure.*
+
+![ISIC 2016 — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/isic_transunet_baseline_grid.png)
+*Figure 15. ISIC 2016: TransUNet baseline delivers strong, sharp contours and serves as our heavy reference model.*
+
+![ISIC 2016 — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/isic_transunet_lite_base_grid.png)
+*Figure 16. ISIC 2016: TransUNet-Lite-Base closely matches the baseline visually while using far fewer parameters and memory.*
+
+![ISIC 2016 — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/isic_transunet_lite_tiny_grid.png)
+*Figure 17. ISIC 2016: TransUNet-Lite-Tiny maintains reasonable masks with slightly softer boundaries, reflecting its aggressive efficiency focus.*
+
+---
+
+### BUSI — Qualitative Grids
+
+<!-- Replace the filenames below with your actual BUSI grid images -->
+
+![BUSI — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_unetr_grid.png)
+*Figure 18. BUSI: UNETR captures most tumor regions but may miss faint or irregular margins.*
+
+![BUSI — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_setr_grid.png)
+*Figure 19. BUSI: SETR offers smoother predictions but can undersegment low-contrast lesions.*
+
+![BUSI — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_transunet_baseline_grid.png)
+*Figure 20. BUSI: TransUNet baseline provides strong delineation and serves as a high-capacity reference.*
+
+![BUSI — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_transunet_lite_base_grid.png)
+*Figure 21. BUSI: TransUNet-Lite-Base preserves boundary quality close to baseline while being substantially lighter.*
+
+![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_transunet_lite_tiny_grid.png)
+*Figure 22. BUSI: TransUNet-Lite-Tiny remains usable under tight compute constraints, with visible but controlled degradation.*
+
+
+
+---
+
 ## 11. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
