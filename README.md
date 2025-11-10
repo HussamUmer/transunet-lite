@@ -402,6 +402,9 @@ Over the same 50-image CPU benchmark, **TransUNet-Lite-Tiny** is **8–9× faste
 *Interpretation:*  
 Lite models **utilize CPU resources much more effectively**, especially Lite-Tiny, which runs close to full utilization — crucial for practical deployments.
 
+![Figure 12: CPU Utilization](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(6).png)  
+*Figure 12. Average CPU utilization during inference. Lite models achieve high utilization while remaining efficient, indicating good scalability on CPU-only systems.*
+
 ---
 
 ## 10. What Do These Results Tell Us?
