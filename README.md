@@ -366,6 +366,9 @@ On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves laten
 *Interpretation:*  
 Both Lite variants **significantly reduce host memory usage**, with Lite-Tiny using **less than half** the RAM of heavy transformer baselines.
 
+![Figure 10: Peak RAM on CPU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(4).png)  
+*Figure 10. Peak host RAM during CPU inference. Lite variants substantially reduce memory requirements relative to UNETR, SETR, and baseline TransUNet.*
+
 ---
 
 ### 9.5 Wall Time (Lower is Better)
