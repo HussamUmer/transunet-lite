@@ -245,6 +245,9 @@ On **both datasets**, the **TransUNet family** dominates UNETR/SETR in Dice/IoU.
 *Interpretation:*  
 All models are strong; **TransUNet-Baseline** and both **Lite** variants show **excellent lesion detection quality**, with Lite-Tiny even edging the others in AUROC on ISIC 2016. This confirms that aggressive compression does **not break discriminative power**.
 
+![Figure 3: PR & ROC (AUPRC / AUROC)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(3).png)  
+*Figure 3. Precision–Recall and ROC performance across models on both datasets. TransUNet variants maintain strong discrimination, with Lite-Base and Lite-Tiny staying competitive with heavier transformer baselines.*
+
 ---
 
 ### 8.3 Inference Latency on GPU (Lower is Better)
