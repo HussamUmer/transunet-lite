@@ -428,7 +428,12 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
    - Behavior is consistent across **two very different medical datasets** (dermoscopy vs ultrasound),
    - supporting the claim that **the design generalizes**, not just overfits ISIC.
 
-4. **Research angle (publishable story):**
+4. **BUSI: stress-testing on a difficult dataset:**
+   - All models show **lower scores on BUSI** compared to ISIC 2016.
+   - This drop is expected: BUSI ultrasound images are **noisy, low-contrast, and anatomically complex**, making tumor boundaries       intrinsically hard.
+   - The experiment is intentional: it demonstrates how each architecture behaves under **realistic, challenging conditions**, rather than only on a “clean” benchmark.
+
+5. **Research angle (publishable story):**
    - A **clean, controlled benchmark** of heavy vs. light Transformer-based segmenters.
    - A practical design that **outclasses prior transformer baselines (UNETR/SETR)** in both quality and efficiency.
    - Lite models that **offer strong Pareto-optimal points** in the accuracy–efficiency trade-off space.
