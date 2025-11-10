@@ -474,19 +474,19 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <!-- Replace the filenames below with your actual BUSI grid images -->
 
-![BUSI — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_unetr_grid.png)
+![BUSI — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_test_grid_4panels_12.png)
 *Figure 18. BUSI: UNETR captures most tumor regions but may miss faint or irregular margins.*
 
-![BUSI — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_setr_grid.png)
+![BUSI — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_test_grid_4panels_12.png)
 *Figure 19. BUSI: SETR offers smoother predictions but can undersegment low-contrast lesions.*
 
-![BUSI — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_transunet_baseline_grid.png)
+![BUSI — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_test_grid_4panels_12.png)
 *Figure 20. BUSI: TransUNet baseline provides strong delineation and serves as a high-capacity reference.*
 
-![BUSI — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_transunet_lite_base_grid.png)
+![BUSI — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_test_grid_4panels_12.png)
 *Figure 21. BUSI: TransUNet-Lite-Base preserves boundary quality close to baseline while being substantially lighter.*
 
-![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/busi_transunet_lite_tiny_grid.png)
+![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_test_grid_4panels_12.png)
 *Figure 22. BUSI: TransUNet-Lite-Tiny remains usable under tight compute constraints, with visible but controlled degradation.*
 
 
