@@ -348,6 +348,9 @@ On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves laten
 *Interpretation:*  
 **Lite-Tiny** achieves the **highest throughput** across both datasets, far exceeding the baseline TransUNet, while maintaining strong segmentation quality.
 
+![Figure 9: CPU Throughput (FPS)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(3).png)  
+*Figure 9. Inference throughput on CPU (frames per second). Lite-Tiny delivers the highest FPS, followed by Lite-Base, demonstrating practical real-time potential on modest hardware.*
+
 ---
 
 ### 9.4 Peak RAM on CPU (Lower is Better)
