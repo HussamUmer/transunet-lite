@@ -330,6 +330,105 @@ This repo (under construction) will include:
 
 ---
 
+## 🧪 Environment & Reproducibility
+
+All experiments in this repository are designed to be strictly reproducible.  
+Below is the **reference environment** used for the reported results:
+
+**System**
+
+- Python: `3.12.12`
+- OS: `Linux-6.6.105+` (x86_64, glibc 2.35)
+- Device: `cuda`
+- GPU: `NVIDIA Tesla T4`  
+  - Total VRAM: **15,095 MB** (~14.74 GB)
+- CUDA: `12.6`
+- cuDNN: `9.1.2`
+
+**Core Libraries**
+
+- `torch` `2.8.0+cu126`
+- `torchvision` `0.23.0+cu126`
+- `timm` `1.0.21`
+- `monai` `1.5.1`
+- `torchmetrics` `1.8.2`
+- `numpy` `2.0.2`
+- `pandas` `2.2.2`
+- `albumentations` `2.0.8`
+- `opencv-python` (`cv2`) `4.12.0`
+- `Pillow` `11.3.0`
+- `matplotlib` `3.10.0`
+- `PyYAML` `6.0.3`
+- `scikit-learn` `1.6.1`
+- `psutil` `5.9.5`
+- `thop` `0.1.1`
+- `fvcore` `0.1.5.post20221221`
+
+> 🔁 The same environment template is used across all compared models to ensure a fair, apples-to-apples evaluation.
+
+
+## ⚙️ Default Training Configuration (Example: UNETR on BUSI 256×256)
+
+Each model in this repo is trained with a **YAML-driven configuration**.  
+Below is the exact config snapshot (simplified) for the `UNETR` run on **BUSI (binary)** at **256×256** as an example:
+
+```yaml
+run:
+  run_name: unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50
+  seed: 42
+  amp_on: true          # Mixed precision enabled
+
+data:
+  dataset: busi
+  resolution: 256
+  medsegbench_dir: /content/data/MedSegBenchCache
+  predefined_splits: true
+
+train:
+  image_size: 256
+  batch_size: 8
+  epochs: 10
+  num_workers: 4
+  optimizer:
+    name: adamw
+    lr: 0.0003
+    weight_decay: 0.0001
+  scheduler:
+    name: cosine
+    warmup_epochs: 5
+  early_stopping:
+    monitor: val_dice
+    patience: 20
+  mixed_precision: true
+
+augment:
+  geometric:
+    flip: true
+    rotate: true
+    scale: true
+    elastic: false
+  appearance:
+    brightness_contrast: true
+    blur_noise: true
+  probabilities:
+    flip: 0.5
+    rotate: 0.3
+    scale: 0.3
+    brightness_contrast: 0.3
+    blur_noise: 0.2
+
+loss:
+  primary: dice_bce
+  weights:
+    dice: 0.7
+    bce: 0.3
+
+metrics:
+  threshold: 0.5
+
+
+---
+
 ## 11. Closing Note
 
 This project is built to be:
