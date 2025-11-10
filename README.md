@@ -263,6 +263,9 @@ All models are strong; **TransUNet-Baseline** and both **Lite** variants show **
 *Interpretation:*  
 On GPU, **TransUNet-Lite-Tiny** consistently reduces latency vs. the baseline. **Lite-Base** closes most of the gap between a very heavy baseline and leaner designs, while preserving near-identical accuracy.
 
+![Figure 4: Inference Latency (GPU)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(4).png)  
+*Figure 4. Per-image inference latency on GPU. Lite-Tiny and Lite-Base offer substantially faster or comparable inference versus larger baselines, highlighting their deployability.*
+
 ---
 
 ### 8.4 Peak VRAM on GPU (Lower is Better)
