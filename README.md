@@ -769,6 +769,6 @@ Once the code and docs are polished, these results form a **credible, defensible
 
 ✨ Crafted by Hussam Umer — Vision4Healthcare Lab
 > If anyone wants to collaborate, extend the benchmarks, or plug in new architectures, contributions and discussions are very welcome. 💡
-For issues, questions, or collaboration ideas, open a GitHub issue or email me at [your_email_here] and I will help as much as possible.
+For issues, questions, or collaboration ideas, open a GitHub issue or email me at hussamumer.scholar@gmail.com and I will help as much as possible.
 
 📘 Medical Imaging | AI for Edge Devices | Transformer Efficiency Research
