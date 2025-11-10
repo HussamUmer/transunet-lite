@@ -284,7 +284,7 @@ This is where **TransUNet-Lite truly shines**. Lite-Base cuts VRAM by **~3–4×
 ![Figure 5: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(5).png)  
 *Figure 5. Peak VRAM consumption during inference. Lite-Base and especially Lite-Tiny significantly reduce memory footprint while preserving practical segmentation quality.*
 
-![Figure 5: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(5).png)  
+![Figure 5: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(6).png)  
 *Figure 6. Peak VRAM consumption during inference. *
 
 ---
