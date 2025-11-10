@@ -50,7 +50,73 @@ Key design ideas (paper-style, implementation ready):
 
 ---
 
-## 3. 🧪 Environment & Reproducibility
+## 3. Datasets 📚
+
+All experiments are built on top of **MedSegBench** standardized releases to ensure
+fair, reproducible comparison across architectures. We use the official NPZ files,
+predefined train/validation/test splits, and a unified 256×256 input resolution.
+
+### 3.1 ISIC 2016 — Skin Lesion Segmentation (Dermoscopy)
+
+- **Modality:** Dermoscopy  
+- **Task:** Binary segmentation — lesion vs. background  
+- **Notes:**
+  - Classic, relatively clean dataset.
+  - Well-suited for evaluating boundary quality and small architectural differences.
+  - Resized and standardized by MedSegBench for consistent benchmarking.
+
+**Split statistics (MedSegBench version used in this repo):**
+
+| Dataset     | Modality    | Task                    | Train | Val | Test | Resolution | Source            |
+|------------|-------------|-------------------------|------:|----:|-----:|-----------:|-------------------|
+| ISIC 2016  | Dermoscopy  | Lesion vs. background   | 810   | 90  | 379  | 256×256    | MedSegBench (NPZ) |
+
+We directly consume the MedSegBench NPZ file (`isic2016_256.npz`) and **do not**
+alter the official splits. All splits are logged and exported in `summary/` for
+full reproducibility.
+
+---
+
+### 3.2 BUSI — Breast Ultrasound Lesion Segmentation
+
+- **Modality:** Ultrasound  
+- **Task:** Binary segmentation — lesion vs. background  
+- **Why BUSI:**  
+  - Noisy, low-contrast, irregular shapes → **much harder** than ISIC 2016.  
+  - Serves as a stress test: how well do models generalize under challenging,
+    clinically realistic conditions?
+
+**Split statistics (MedSegBench configuration used in this repo):**
+
+| Dataset  | Modality    | Task                    | Train* | Val* | Test* | Resolution | Source            |
+|---------|-------------|-------------------------|-------:|-----:|------:|-----------:|-------------------|
+| BUSI    | Ultrasound  | Lesion vs. background   |  **as per MedSegBench NPZ**  |  **predefined** | **predefined** | 256×256    | MedSegBench (NPZ) |
+
+\*Exact BUSI split counts are taken **directly from the MedSegBench NPZ** used in
+our runs and recorded in the corresponding `*_ids.txt` files under `summary/`.
+We keep those splits fixed across all models to guarantee strict fairness.
+
+---
+
+### 3.3 Why These Two?
+
+Together, **ISIC 2016** and **BUSI** give us:
+
+- A **clean dermoscopy benchmark** where differences in architecture,
+  calibration, and boundary handling are clearly visible.
+- A **difficult ultrasound benchmark** where all models drop in accuracy,
+  allowing us to:
+  - test robustness,
+  - probe generalization beyond “nice” images,
+  - and see how our lightweight TransUNet-Lite variants behave under
+    realistic noise and artifacts.
+
+This pairing makes the reported results **more meaningful** than
+single-dataset evaluations and sets up a solid foundation for future
+extensions to more MedSegBench modalities.
+
+---
+## 4. 🧪 Environment & Reproducibility
 
 All experiments in this repository are designed to be strictly reproducible.  
 Below is the **reference environment** used for the reported results:
@@ -87,7 +153,7 @@ Below is the **reference environment** used for the reported results:
 > 🔁 The same environment template is used across all compared models to ensure a fair, apples-to-apples evaluation.
 
 
-## 4. ⚙️ Default Training Configuration (Example: UNETR on BUSI 256×256)
+## 5. ⚙️ Default Training Configuration (Example: UNETR on BUSI 256×256)
 
 Each model in this repo is trained with a **YAML-driven configuration**.  
 Below is the exact config snapshot (simplified) for the `UNETR` run on **BUSI (binary)** at **256×256** as an example:
@@ -149,7 +215,7 @@ metrics:
 ```
 ---
 
-## 5. Experimental Setup (Shared for All Models)
+## 6. Experimental Setup (Shared for All Models)
 
 **Pipeline (fully standardized):**
 
@@ -174,7 +240,7 @@ metrics:
 
 ---
 
-## 6. Architectures Compared
+## 7. Architectures Compared
 
 **UNETR**  
 ViT-style encoder with patch tokens + convolutional decoder.
@@ -195,7 +261,7 @@ All implemented in a way that **matches the spirit of the original papers** whil
 
 ---
 
-## 7. 🧱 Model Size (Trainable Parameters)
+## 8. 🧱 Model Size (Trainable Parameters)
 
 | Model                | Parameters (Millions) |
 |----------------------|----------------------:|
@@ -212,9 +278,9 @@ All implemented in a way that **matches the spirit of the original papers** whil
 
 ---
 
-## 8. Full GPU Test Results
+## 9. Full GPU Test Results
 
-### 8.1 Dice & IoU (Higher is Better)
+### 9.1 Dice & IoU (Higher is Better)
 
 | Model                | BUSI Dice | BUSI IoU | ISIC 2016 Dice | ISIC 2016 IoU |
 |----------------------|:---------:|:--------:|:--------------:|:-------------:|
@@ -232,7 +298,7 @@ On **both datasets**, the **TransUNet family** dominates UNETR/SETR in Dice/IoU.
 
 ---
 
-### 8.2 AUPRC & AUROC (Higher is Better)
+### 9.2 AUPRC & AUROC (Higher is Better)
 
 | Model                | BUSI AUPRC | BUSI AUROC | ISIC 2016 AUPRC | ISIC 2016 AUROC |
 |----------------------|:----------:|:----------:|:----------------:|:----------------:|
@@ -250,7 +316,7 @@ All models are strong; **TransUNet-Baseline** and both **Lite** variants show **
 
 ---
 
-### 8.3 Inference Latency on GPU (Lower is Better)
+### 9.3 Inference Latency on GPU (Lower is Better)
 
 | Model                | BUSI Latency (ms/img) | ISIC 2016 Latency (ms/img) |
 |----------------------|:---------------------:|:---------------------------:|
@@ -268,7 +334,7 @@ On GPU, **TransUNet-Lite-Tiny** consistently reduces latency vs. the baseline. *
 
 ---
 
-### 8.4 Peak VRAM on GPU (Lower is Better)
+### 9.4 Peak VRAM on GPU (Lower is Better)
 
 | Model                | BUSI Peak VRAM (MB) | ISIC 2016 Peak VRAM (MB) |
 |----------------------|:-------------------:|:-------------------------:|
@@ -289,7 +355,7 @@ This is where **TransUNet-Lite truly shines**. Lite-Base cuts VRAM by **~3–4×
 
 ---
 
-## 9. CPU-Only Evaluation (Realistic Edge Scenario)
+## 10. CPU-Only Evaluation (Realistic Edge Scenario)
 
 All CPU experiments:
 
@@ -297,7 +363,7 @@ All CPU experiments:
 - On the **same CPU environment**
 - Use **50 fixed test images** per model/dataset for fair median/p90/p95 latency and throughput.
 
-### 9.1 Dice & IoU on CPU
+### 10.1 Dice & IoU on CPU
 
 | Model                | BUSI Dice | BUSI IoU | ISIC 2016 Dice | ISIC 2016 IoU |
 |----------------------|:---------:|:--------:|:--------------:|:-------------:|
@@ -315,7 +381,7 @@ On CPU, **TransUNet-Baseline** still leads in raw Dice, but **Lite-Base** is ver
 
 ---
 
-### 9.2 Latency Distribution on CPU (Lower is Better)
+### 10.2 Latency Distribution on CPU (Lower is Better)
 
 **Median / p90 / p95 per image (ms)**
 
@@ -335,7 +401,7 @@ On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves laten
 
 ---
 
-### 9.3 Throughput (Frames per Second, Higher is Better)
+### 10.3 Throughput (Frames per Second, Higher is Better)
 
 | Model                | BUSI FPS | ISIC 2016 FPS |
 |----------------------|:--------:|:-------------:|
@@ -353,7 +419,7 @@ On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves laten
 
 ---
 
-### 9.4 Peak RAM on CPU (Lower is Better)
+### 10.4 Peak RAM on CPU (Lower is Better)
 
 | Model                | BUSI RAM (MB) | ISIC 2016 RAM (MB) |
 |----------------------|:-------------:|:-------------------:|
@@ -371,7 +437,7 @@ Both Lite variants **significantly reduce host memory usage**, with Lite-Tiny us
 
 ---
 
-### 9.5 Wall Time (Lower is Better)
+### 10.5 Wall Time (Lower is Better)
 
 | Model                | BUSI (s) | ISIC 2016 (s) |
 |----------------------|:--------:|:-------------:|
@@ -389,7 +455,7 @@ Over the same 50-image CPU benchmark, **TransUNet-Lite-Tiny** is **8–9× faste
 
 ---
 
-### 9.6 CPU Utilization
+### 10.6 CPU Utilization
 
 | Model                | BUSI CPU (%) | ISIC 2016 CPU (%) |
 |----------------------|:------------:|:------------------:|
@@ -407,7 +473,7 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
 
 ---
 
-## 10. What Do These Results Tell Us?
+## 11. What Do These Results Tell Us?
 
 1. **Against strong baselines (UNETR, SETR):**
    - All **TransUNet-based** models (Baseline + Lite variants) **consistently outperform** them on Dice/IoU across both datasets.
@@ -440,7 +506,7 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
 
 ---
 
-## 11. 🎨 Qualitative Predictions
+## 12. 🎨 Qualitative Predictions
 
 To complement the quantitative tables, we visualize model behavior on held-out test cases from both datasets.  
 Each 4-panel grid shows (left → right):
@@ -454,7 +520,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### 11.1 ISIC 2016 — Qualitative Grids
+### 12.1 ISIC 2016 — Qualitative Grids
 
 <!-- Replace the filenames below with your actual ISIC grid images -->
 
@@ -494,7 +560,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### 11.2 BUSI — Qualitative Grids
+### 12.2 BUSI — Qualitative Grids
 
 <!-- Replace the filenames below with your actual BUSI grid images -->
 
@@ -534,7 +600,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-## 12 🔗 Full Training & Testing Notebooks (Open in Colab)
+## 13 🔗 Full Training & Testing Notebooks (Open in Colab)
 
 | Dataset     | Model                             | Open in Colab |
 |------------|-----------------------------------|---------------|
@@ -549,7 +615,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-## 13 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
+## 14 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
 
 | Dataset     | Model                               | Open in Colab |
 |------------|-------------------------------------|---------------|
@@ -564,11 +630,11 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-## 14. Future Work 🔭
+## 15. Future Work 🔭
 
 This repository is **Phase 1** of the TransUNet-Lite story: we built a clean, reproducible benchmark and showed that lightweight hybrid designs can approach or rival heavy baselines under consistent conditions. The next steps will deepen the analysis, broaden the evidence, and harden the models for real-world deployment.
 
-### 14.1. Component-wise Ablation & Design Justification
+### 15.1. Component-wise Ablation & Design Justification
 
 We introduced several coordinated changes at once (gated skips, depthwise decoder, boundary head, lightweight backbones). The next stage will **quantify exactly what each part buys us**:
 
@@ -599,7 +665,7 @@ This ablation suite will turn the current design from “intuitively good” to 
 
 ---
 
-### 14.2. Broader Dataset & Modality Coverage
+### 15.2. Broader Dataset & Modality Coverage
 
 So far, we evaluated on:
 
@@ -622,7 +688,7 @@ Goal: show whether the same architectural recipe (light backbone + gated skips +
 
 ---
 
-### 14.3. Efficiency & Deployment-Focused Extensions
+### 15.3. Efficiency & Deployment-Focused Extensions
 
 We will push beyond single-GPU evaluation and explore **deployment-ready configurations**:
 
@@ -643,7 +709,7 @@ The aim is to provide **ready-to-use configurations** for real-time or resource-
 
 ---
 
-### 14.4. Uncertainty, Calibration & Reliability
+### 15.4. Uncertainty, Calibration & Reliability
 
 We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
@@ -659,7 +725,7 @@ We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
 ---
 
-### 14.5. Stronger Baselines & Fairer Comparisons
+### 15.5. Stronger Baselines & Fairer Comparisons
 
 We will integrate more **state-of-the-art baselines** into the same pipeline:
 
@@ -678,7 +744,7 @@ This will position TransUNet-Lite variants as part of a **rigorous, unified benc
 
 ---
 
-### 14.6. Public Release & Reproducibility Enhancements
+### 15.6. Public Release & Reproducibility Enhancements
 
 Planned improvements to make this ecosystem maximally useful:
 
@@ -695,7 +761,7 @@ Planned improvements to make this ecosystem maximally useful:
 
 ---
 
-### 14.7. Follow-up Paper: Dedicated Ablation & Robustness Study
+### 15.7. Follow-up Paper: Dedicated Ablation & Robustness Study
 
 Finally, the current work naturally leads to a **second, focused paper**:
 
@@ -711,7 +777,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 15. Objectives of This Repository
+## 16. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
   - TransUNet baseline
@@ -726,7 +792,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 16. Reproducibility & Assets
+## 17. Reproducibility & Assets
 
 This repo (under construction) will include:
 
@@ -742,7 +808,7 @@ This repo (under construction) will include:
 
 ---
 
-## 17. How to Use (High-Level)
+## 18. How to Use (High-Level)
 
 1. **Pick dataset**: BUSI or ISIC 2016 NPZ (MedSegBench format).
 2. **Pick model**: `TransUNet`, `TransUNet-Lite-Base`, `TransUNet-Lite-Tiny`, `UNETR`, `SETR`.
@@ -755,7 +821,7 @@ This repo (under construction) will include:
 
 ---
 
-## 18. Closing Note
+## 19. Closing Note
 
 This project is built to be:
 
