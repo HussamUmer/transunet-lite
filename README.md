@@ -549,6 +549,21 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
+### 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
+
+| Dataset     | Model                               | Open in Colab |
+|------------|-------------------------------------|---------------|
+| ISIC 2016  | UNETR                               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/UNETR_CPU_Eval_50_ISIC.ipynb) |
+| ISIC 2016  | SETR                                | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/SETR_CPU_Eval_50_ISIC%20(1).ipynb) |
+| ISIC 2016  | TransUNet Baseline (R50 + ViT-B/16) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Baseline_CPU_Eval_50_ISIC.ipynb) |
+| BUSI       | UNETR                               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/UNETR_CPU_Eval_50_Busi.ipynb) |
+| BUSI       | SETR                                | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/SETR_CPU_Eval_50_Busi.ipynb) |
+| BUSI       | TransUNet Baseline (R50 + ViT-B/16) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Baseline_CPU_Eval_50_Busi.ipynb) |
+
+> ⚠️ **Note:** CPU-only evaluation notebooks for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** will be made public after the associated manuscript is submitted.
+
+---
+
 ## 11. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
