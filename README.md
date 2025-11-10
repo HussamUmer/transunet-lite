@@ -330,6 +330,9 @@ On CPU, **TransUNet-Baseline** still leads in raw Dice, but **Lite-Base** is ver
 *Interpretation:*  
 On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves latency vs. the baseline; **Lite-Tiny** is **~4–7× faster**, making Transformer-style segmentation realistic for CPU-bound clinical setups.
 
+![Figure 8: Latency Distribution on CPU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(2).png)  
+*Figure 8. CPU latency per image (median / p90 / p95). Lite-Tiny is consistently the fastest, with Lite-Base offering a strong speed–accuracy trade-off compared to heavier transformer baselines.*
+
 ---
 
 ### 9.3 Throughput (Frames per Second, Higher is Better)
