@@ -453,20 +453,39 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <!-- Replace the filenames below with your actual ISIC grid images -->
 
-![ISIC 2016 — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_test_grid_4panels_12.png)
-*Figure 13. ISIC 2016: UNETR predictions preserve coarse lesion extent but show less precise boundaries on challenging cases.*
+<h3 align="center">ISIC 2016 — UNETR</h3>
 
-![ISIC 2016 — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_test_grid_4panels_12.png)
-*Figure 14. ISIC 2016: SETR improves global consistency but occasionally smooths fine lesion structure.*
+![ISIC 2016 — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_test_grid_4panels_12.png)  
+*Figure 13. ISIC 2016: UNETR (UNet with Transformer encoder) preserves coarse lesion extent but shows less precise boundaries on the hardest cases.*
 
-![ISIC 2016 — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_test_grid_4panels_12.png)
-*Figure 15. ISIC 2016: TransUNet baseline delivers strong, sharp contours and serves as our heavy reference model.*
+---
 
-![ISIC 2016 — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_base_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_test_grid_4panels_12.png)
-*Figure 16. ISIC 2016: TransUNet-Lite-Base closely matches the baseline visually while using far fewer parameters and memory.*
+<h3 align="center">ISIC 2016 — SETR</h3>
 
-![ISIC 2016 — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_tiny_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_test_grid_4panels_12.png)
-*Figure 17. ISIC 2016: TransUNet-Lite-Tiny maintains reasonable masks with slightly softer boundaries, reflecting its aggressive efficiency focus.*
+![ISIC 2016 — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_test_grid_4panels_12.png)  
+*Figure 14. ISIC 2016: SETR (SEgmentation TRansformer) provides smooth, globally consistent masks, sometimes over-smoothing fine lesion details.*
+
+---
+
+<h3 align="center">ISIC 2016 — TransUNet (Baseline)</h3>
+
+![ISIC 2016 — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_test_grid_4panels_12.png)  
+*Figure 15. ISIC 2016: TransUNet baseline delivers sharp lesion boundaries and strong coverage; used as our heavy reference model.*
+
+---
+
+<h3 align="center">ISIC 2016 — TransUNet-Lite-Base</h3>
+
+![ISIC 2016 — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_base_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_test_grid_4panels_12.png)  
+*Figure 16. ISIC 2016: TransUNet-Lite-Base visually matches baseline TransUNet on most cases while using far fewer parameters and memory.*
+
+---
+
+<h3 align="center">ISIC 2016 — TransUNet-Lite-Tiny</h3>
+
+![ISIC 2016 — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_tiny_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_test_grid_4panels_12.png)  
+*Figure 17. ISIC 2016: TransUNet-Lite-Tiny maintains reasonable segmentation quality with slightly softer contours, reflecting its aggressive efficiency focus.*
+
 
 ---
 
