@@ -281,6 +281,9 @@ On GPU, **TransUNet-Lite-Tiny** consistently reduces latency vs. the baseline. *
 *Interpretation:*  
 This is where **TransUNet-Lite truly shines**. Lite-Base cuts VRAM by **~3–4×**, and Lite-Tiny by **~9×** compared to the baseline, while remaining competitive or better than UNETR/SETR in segmentation quality.
 
+![Figure 5: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(5).png)  
+*Figure 5. Peak VRAM consumption during inference. Lite-Base and especially Lite-Tiny significantly reduce memory footprint while preserving practical segmentation quality.*
+
 ---
 
 ## 9. CPU-Only Evaluation (Realistic Edge Scenario)
