@@ -426,7 +426,7 @@ loss:
 metrics:
   threshold: 0.5
 
-
+```
 ---
 
 ## 11. Closing Note
@@ -437,4 +437,4 @@ This project is built to be:
 - **Rigorous** enough for reviewers,
 - **Modular** enough to plug in new architectures.
 
-Once the code and docs are polished, these results form a **credible, defensible basis for a conference or journal submission** on efficient TransUNet-style medical segmentation — especially when combined with your full training logs, visualizations, and released checkpoints. 🩺⚡
+Once the code and docs are polished, these results form a **credible, defensible basis for a conference or journal submission** on efficient TransUNet-style medical segmentation — especially when combined with my full training logs, visualizations, and released checkpoints. 🩺⚡
