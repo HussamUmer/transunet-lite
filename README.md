@@ -227,6 +227,9 @@ All implemented in a way that **matches the spirit of the original papers** whil
 *Interpretation:*  
 On **both datasets**, the **TransUNet family** dominates UNETR/SETR in Dice/IoU. **Lite-Base** stays within ≈0.001–0.005 of the baseline TransUNet on ISIC 2016 while being much lighter, and clearly outperforms UNETR/SETR. **Lite-Tiny** maintains competitive quality with a stronger efficiency bias.
 
+![Figure 2: Test Dice & IoU (ISIC + BUSI)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(2).png)  
+*Figure 2. Test Dice and IoU on ISIC 2016 and BUSI. TransUNet-Lite-Base closely tracks the TransUNet-Baseline, while TransUNet-Lite-Tiny provides a strong efficiency–accuracy trade-off.*
+
 ---
 
 ### 8.2 AUPRC & AUROC (Higher is Better)
