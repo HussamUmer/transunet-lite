@@ -149,8 +149,6 @@ metrics:
 ```
 ---
 
----
-
 ## 5. Experimental Setup (Shared for All Models)
 
 **Pipeline (fully standardized):**
@@ -454,3 +452,8 @@ This project is built to be:
 - **Modular** enough to plug in new architectures.
 
 Once the code and docs are polished, these results form a **credible, defensible basis for a conference or journal submission** on efficient TransUNet-style medical segmentation — especially when combined with my full training logs, visualizations, and released checkpoints. 🩺⚡
+
+---
+
+✨ Crafted by Hussam Umer — Vision4Healthcare Lab
+📘 Medical Imaging | AI for Edge Devices | Transformer Efficiency Research
