@@ -207,6 +207,9 @@ All implemented in a way that **matches the spirit of the original papers** whil
 
 *Interpretation:* Both TransUNet-Lite variants are significantly more compact than the transformer-heavy baselines, with Lite-Tiny reducing parameter count by **~16×** vs. TransUNet-Baseline while remaining competitive in segmentation quality.
 
+![Figure 1: Model Size Comparison](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(1).png)  
+*Figure 1. Trainable parameters for all architectures. TransUNet-Lite-Base and TransUNet-Lite-Tiny are dramatically more compact than UNETR, SETR, and TransUNet-Baseline.*
+
 ---
 
 ## 8. Full GPU Test Results
