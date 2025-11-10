@@ -440,7 +440,7 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
 
 ---
 
-## 🎨 Qualitative Predictions
+## 11. 🎨 Qualitative Predictions
 
 To complement the quantitative tables, we visualize model behavior on held-out test cases from both datasets.  
 Each 4-panel grid shows (left → right):
@@ -454,7 +454,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### ISIC 2016 — Qualitative Grids
+### 11.1 ISIC 2016 — Qualitative Grids
 
 <!-- Replace the filenames below with your actual ISIC grid images -->
 
@@ -494,7 +494,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### BUSI — Qualitative Grids
+### 11.2 BUSI — Qualitative Grids
 
 <!-- Replace the filenames below with your actual BUSI grid images -->
 
@@ -534,7 +534,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### 🔗 Full Training & Testing Notebooks (Open in Colab)
+## 12 🔗 Full Training & Testing Notebooks (Open in Colab)
 
 | Dataset     | Model                             | Open in Colab |
 |------------|-----------------------------------|---------------|
@@ -549,7 +549,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
+## 13 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
 
 | Dataset     | Model                               | Open in Colab |
 |------------|-------------------------------------|---------------|
@@ -564,11 +564,11 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-## 11. Future Work 🔭
+## 14. Future Work 🔭
 
 This repository is **Phase 1** of the TransUNet-Lite story: we built a clean, reproducible benchmark and showed that lightweight hybrid designs can approach or rival heavy baselines under consistent conditions. The next steps will deepen the analysis, broaden the evidence, and harden the models for real-world deployment.
 
-### 11.1. Component-wise Ablation & Design Justification
+### 14.1. Component-wise Ablation & Design Justification
 
 We introduced several coordinated changes at once (gated skips, depthwise decoder, boundary head, lightweight backbones). The next stage will **quantify exactly what each part buys us**:
 
@@ -599,7 +599,7 @@ This ablation suite will turn the current design from “intuitively good” to 
 
 ---
 
-### 11.2. Broader Dataset & Modality Coverage
+### 14.2. Broader Dataset & Modality Coverage
 
 So far, we evaluated on:
 
@@ -622,7 +622,7 @@ Goal: show whether the same architectural recipe (light backbone + gated skips +
 
 ---
 
-### 11.3. Efficiency & Deployment-Focused Extensions
+### 14.3. Efficiency & Deployment-Focused Extensions
 
 We will push beyond single-GPU evaluation and explore **deployment-ready configurations**:
 
@@ -643,7 +643,7 @@ The aim is to provide **ready-to-use configurations** for real-time or resource-
 
 ---
 
-### 11.4. Uncertainty, Calibration & Reliability
+### 14.4. Uncertainty, Calibration & Reliability
 
 We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
@@ -659,7 +659,7 @@ We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
 ---
 
-### 11.5. Stronger Baselines & Fairer Comparisons
+### 14.5. Stronger Baselines & Fairer Comparisons
 
 We will integrate more **state-of-the-art baselines** into the same pipeline:
 
@@ -678,7 +678,7 @@ This will position TransUNet-Lite variants as part of a **rigorous, unified benc
 
 ---
 
-### 11.6. Public Release & Reproducibility Enhancements
+### 14.6. Public Release & Reproducibility Enhancements
 
 Planned improvements to make this ecosystem maximally useful:
 
@@ -695,7 +695,7 @@ Planned improvements to make this ecosystem maximally useful:
 
 ---
 
-### 11.7. Follow-up Paper: Dedicated Ablation & Robustness Study
+### 14.7. Follow-up Paper: Dedicated Ablation & Robustness Study
 
 Finally, the current work naturally leads to a **second, focused paper**:
 
@@ -711,7 +711,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 11. Objectives of This Repository
+## 15. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
   - TransUNet baseline
@@ -726,7 +726,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 12. Reproducibility & Assets
+## 16. Reproducibility & Assets
 
 This repo (under construction) will include:
 
@@ -742,7 +742,7 @@ This repo (under construction) will include:
 
 ---
 
-## 13. How to Use (High-Level)
+## 17. How to Use (High-Level)
 
 1. **Pick dataset**: BUSI or ISIC 2016 NPZ (MedSegBench format).
 2. **Pick model**: `TransUNet`, `TransUNet-Lite-Base`, `TransUNet-Lite-Tiny`, `UNETR`, `SETR`.
@@ -755,7 +755,7 @@ This repo (under construction) will include:
 
 ---
 
-## 14. Closing Note
+## 18. Closing Note
 
 This project is built to be:
 
