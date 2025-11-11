@@ -1,7 +1,8 @@
 # 🚀 TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use
 
-> **Status:** 🚧 *Repository under active construction.*  
-> All code, configs, logs, and figures are being cleaned for full reproducibility.
+> **Status:** 📝 *Manuscript in preparation.*  
+> Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally withheld until paper submission.  
+> This repo currently exposes the **baseline setups, evaluation pipeline, and comparison models**; Lite variants (code + detailed diagrams) will be released after submission for full reproducibility.
 
 ---
 
