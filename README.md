@@ -631,11 +631,53 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-## 15. Future Work 🔭
+## 15. Run Artifacts & Reproducibility 📂
+
+All core experiments (GPU-based training + test-time evaluation) are logged and stored in **per-model, per-dataset** artifact folders.
+
+Each folder typically includes:
+
+- Training & validation logs (`.csv`, `.json`)
+- Environment and configuration snapshots (`config.yaml`, env dumps)
+- Best and/or last checkpoints (when shared)
+- Evaluation summaries (test metrics, calibration)
+- Generated figures (curves, qualitative grids)
+
+These artifacts provide a clear evidence trail for all reported numbers.
+
+---
+
+### 15.1 BUSI (Breast Ultrasound, Binary Segmentation)
+
+| Model                    | Artifacts Folder |
+|--------------------------|------------------|
+| UNETR (BUSI)             | [Open artifacts](https://drive.google.com/drive/folders/1zVgPPjfq-ZhXH7XrskTKiywBXqEW7bZz?usp=sharing) |
+| SETR (BUSI)              | [Open artifacts](https://drive.google.com/drive/folders/1Ak5-k7w0XMeng5U-065GrRAYAeKd3QwT?usp=sharing) |
+| TransUNet-Baseline (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/1DsnrcaqdPIiooCk98q1SL_f5Ds9Dr_wQ?usp=sharing) |
+| TransUNet-Lite-Base (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/17m-Dq0OpYTOBGFnnVjEM2Cgvow8xQf78?usp=sharing) |
+| TransUNet-Lite-Tiny (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/15zNYx33tJPbXE2d_07vDHxFin18TKKGq?usp=sharing) |
+
+---
+
+### 15.2 ISIC 2016 (Dermoscopic Lesions, Binary Segmentation)
+
+| Model                         | Artifacts Folder |
+|-------------------------------|------------------|
+| UNETR (ISIC 2016)             | [Open artifacts](https://drive.google.com/drive/folders/15GOu9aJwTi63jwROLI1rk5gG4ZivAFwQ?usp=sharing) |
+| SETR (ISIC 2016)              | [Open artifacts](https://drive.google.com/drive/folders/1d52HEldPUTqAHTV7bcm-bsE_ELg3LRra?usp=sharing) |
+| TransUNet-Baseline (ISIC 2016) | [Open artifacts](https://drive.google.com/drive/folders/1t40QUhLEmaqYYyyg8uuGAoXVgLP0b_n8?usp=sharing) |
+| TransUNet-Lite-Base (ISIC 2016) | [Open artifacts](https://drive.google.com/drive/folders/1pQtKO20PlK00iRrxdMKPAIfTZHLWVpiW?usp=sharing) |
+| TransUNet-Lite-Tiny (ISIC 2016) | [Open artifacts](https://drive.google.com/drive/folders/1d2I6q7hnKjoMvjdijvQlgc6e42aqI7dq?usp=sharing) |
+
+> *These shared directories expose only the experiment artifacts (logs, configs, metrics, qualitative grids) required for verification, without exposing unrelated private Drive content.*
+
+---
+
+## 16. Future Work 🔭
 
 This repository is **Phase 1** of the TransUNet-Lite story: we built a clean, reproducible benchmark and showed that lightweight hybrid designs can approach or rival heavy baselines under consistent conditions. The next steps will deepen the analysis, broaden the evidence, and harden the models for real-world deployment.
 
-### 15.1. Component-wise Ablation & Design Justification
+### 16.1. Component-wise Ablation & Design Justification
 
 We introduced several coordinated changes at once (gated skips, depthwise decoder, boundary head, lightweight backbones). The next stage will **quantify exactly what each part buys us**:
 
@@ -666,7 +708,7 @@ This ablation suite will turn the current design from “intuitively good” to 
 
 ---
 
-### 15.2. Broader Dataset & Modality Coverage
+### 16.2. Broader Dataset & Modality Coverage
 
 So far, we evaluated on:
 
@@ -689,7 +731,7 @@ Goal: show whether the same architectural recipe (light backbone + gated skips +
 
 ---
 
-### 15.3. Efficiency & Deployment-Focused Extensions
+### 16.3. Efficiency & Deployment-Focused Extensions
 
 We will push beyond single-GPU evaluation and explore **deployment-ready configurations**:
 
@@ -710,7 +752,7 @@ The aim is to provide **ready-to-use configurations** for real-time or resource-
 
 ---
 
-### 15.4. Uncertainty, Calibration & Reliability
+### 16.4. Uncertainty, Calibration & Reliability
 
 We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
@@ -726,7 +768,7 @@ We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
 ---
 
-### 15.5. Stronger Baselines & Fairer Comparisons
+### 16.5. Stronger Baselines & Fairer Comparisons
 
 We will integrate more **state-of-the-art baselines** into the same pipeline:
 
@@ -745,7 +787,7 @@ This will position TransUNet-Lite variants as part of a **rigorous, unified benc
 
 ---
 
-### 15.6. Public Release & Reproducibility Enhancements
+### 16.6. Public Release & Reproducibility Enhancements
 
 Planned improvements to make this ecosystem maximally useful:
 
@@ -762,7 +804,7 @@ Planned improvements to make this ecosystem maximally useful:
 
 ---
 
-### 15.7. Follow-up Paper: Dedicated Ablation & Robustness Study
+### 16.7. Follow-up Paper: Dedicated Ablation & Robustness Study
 
 Finally, the current work naturally leads to a **second, focused paper**:
 
@@ -778,7 +820,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 16. Objectives of This Repository
+## 17. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
   - TransUNet baseline
@@ -793,7 +835,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 17. Reproducibility & Assets
+## 18. Reproducibility & Assets
 
 This repo (under construction) will include:
 
@@ -809,7 +851,7 @@ This repo (under construction) will include:
 
 ---
 
-## 18. How to Use (High-Level)
+## 19. How to Use (High-Level)
 
 1. **Pick dataset**: BUSI or ISIC 2016 NPZ (MedSegBench format).
 2. **Pick model**: `TransUNet`, `TransUNet-Lite-Base`, `TransUNet-Lite-Tiny`, `UNETR`, `SETR`.
@@ -822,7 +864,7 @@ This repo (under construction) will include:
 
 ---
 
-## 19. Closing Note
+## 20. Closing Note
 
 This project is built to be:
 
