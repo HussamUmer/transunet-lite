@@ -979,6 +979,8 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 > The proposed **TransUNet-Lite** models not only preserve segmentation accuracy but also deliver **clinically interpretable uncertainty** under Test-Time Augmentation.  
 > Their predictions remain consistent across augmentations, proving reliability for **real-world, uncertainty-aware medical AI deployment**.
 
+---
+
 ## 14 🔗 Full Training & Testing Notebooks (Open in Colab)
 
 | Dataset     | Model                             | Open in Colab |
