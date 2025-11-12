@@ -688,7 +688,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🧠 Model: SETR — Dataset: ISIC 2016
+<h3 align="center">🧠 Model: SETR — Dataset: ISIC 2016</h3>
 
 ---
 
@@ -709,6 +709,32 @@ We estimate how confident each model is by running the same test image multiple 
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/setr/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/setr/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_TTA_uncertainty_id1.png) |
 
 *Figure 27: SETR on ISIC (ID 1). Mean-prob overlay closely follows the lesion shape; a thin uncertainty ring appears around the boundary—most visible on the lower arc—while the interior remains confidently segmented.*
+
+---
+
+<h3 align="center">🧠 Model: TransUNet-Baseline — Dataset: ISIC 2016</h3>
+
+---
+
+### 🩺 Example 1 (ID = 0)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_uncertainty_id0.png) |
+
+*Figure 28: TransUNet-Baseline on ISIC (ID 0). The TTA-averaged prediction effectively delineates the lesion region with strong consistency. The uncertainty map reveals a clear outline of higher variance along lesion borders, especially at the right edge, reflecting expected ambiguity from dermoscopic shadowing and soft boundary transitions.*
+
+---
+
+### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_uncertainty_id1.png) |
+
+*Figure 29: TransUNet-Baseline on ISIC (ID 1). The lesion is compact and sharply defined in the mean-probability overlay, with minimal noise around the periphery. The uncertainty map shows small bands of moderate variance near the bottom edge, indicating localized sensitivity but overall confident segmentation performance.*
+
+---
 
 ---
 ---
