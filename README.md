@@ -785,8 +785,63 @@ We estimate how confident each model is by running the same test image multiple 
 ---
 
 ### 🩺 Uncertainty on BUSI (Ultrasound)
-_Add two fixed examples per model: GT overlay, uncertainty map._
+---
 
+<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+### 🩺 Example 1 (ID = 0)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_uncertainty_id0.png) |
+
+*Figure 34: UNETR on BUSI (ID 0). The model produces a wide and well-defined lesion mask, capturing irregular tumor morphology effectively. Uncertainty is concentrated around the lesion periphery, especially in low-contrast zones, reflecting the model’s sensitivity to boundary noise and ultrasound artifacts.*
+
+---
+
+### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_uncertainty_id1.png) |
+
+*Figure 35: UNETR on BUSI (ID 1). The mean-probability overlay demonstrates strong lesion localization with limited false positives. The uncertainty map shows elevated variance in posterior regions (bottom-right zone), suggesting difficulty in discriminating lesion borders due to speckle noise and shadow effects typical of BUSI scans.*
+
+---
+
+<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+
+
+---
+
+<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+
+
+---
+
+<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+
+
+---
+
+<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+
+
+---
 ---
 
 ## 13 🔗 Full Training & Testing Notebooks (Open in Colab)
