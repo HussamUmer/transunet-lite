@@ -609,7 +609,26 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.1 🔍 Why Include Uncertainty?
+### 13.1 🧠 Objective
+We applied **Test-Time Augmentation (TTA)** to quantify the **model uncertainty** across multiple segmentation models on **ISIC-2016** and **BUSI** datasets.  
+TTA helps visualize how consistent a model’s predictions are under small perturbations (flips, rotations, etc.) — producing:
+- **Mean Probability Maps** → averaged predictions across augmentations (model consensus)  
+- **Uncertainty Maps (Variance)** → per-pixel variance indicating prediction disagreement
+
+---
+
+### 13.2 ⚙️ Method Summary
+
+| Step | Description |
+|:--|:--|
+| **1. TTA Inference** | Applied 4 augmentation variants: identity, horizontal flip, vertical flip, and both. |
+| **2. Aggregation** | Computed per-pixel mean and variance over the TTA predictions. |
+| **3. Visualization** | - Mean probability → final predicted lesion overlay (green mask)<br>- Variance → uncertainty heatmap (yellow = high disagreement) |
+| **4. Interpretation** | Variance highlights areas where the model is least confident — usually along lesion boundaries or noisy textures. |
+
+---
+
+### 13.3 🔍 Why Include Uncertainty?
 
 - Goes beyond a single accuracy number to expose **model confidence**.  
 - Highlights **risky regions** (e.g., fuzzy BUSI lesion edges) that deserve human review.  
@@ -617,7 +636,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.2 ⚙️ How We Do It in This Repo
+### 13.4 ⚙️ How We Did It in This Research
 
 **TTA set:**  
 `identity`, `horizontal flip`, `vertical flip`, and `both (HV flip)`
@@ -628,14 +647,14 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.3 🎨 Visuals
+### 13.5 🎨 Visuals
 
 - **Prediction overlay:** Thresholded mean probability mask on the input image  
 - **Uncertainty overlay:** Variance heatmap on the input image  
 
 ---
 
-### 13.4 🧠 How to Read Our Figures
+### 13.6 🧠 How to Read Our Figures
 
 | Color | Meaning |
 |--------|----------|
@@ -645,7 +664,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.5 📊 Typical Patterns We Observe
+### 13.7 📊 Typical Patterns We Observe
 
 - **Edges & fine structures:** Higher uncertainty (boundary sensitivity)  
 - **Clear interiors:** Lower uncertainty  
@@ -653,7 +672,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.6 🩻 Takeaways
+### 13.9 🩻 Takeaways
 
 - ✅ **Low uncertainty + good overlap** → reliable predictions  
 - ⚠️ **High uncertainty near boundaries** → flag for review or apply post-processing (e.g., CRF/smoothing) or calibration (e.g., temperature scaling)  
@@ -661,7 +680,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.7 🧪 Uncertainty on ISIC 2016
+### 13.10 🧪 Uncertainty on ISIC 2016
 ---
 
 <h4 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h3>
@@ -784,7 +803,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.8🩺 Uncertainty on BUSI (Ultrasound)
+### 13.11 🩺 Uncertainty on BUSI (Ultrasound)
 ---
 
 <h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
@@ -887,7 +906,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -897,7 +916,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -907,7 +926,60 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-## 13 🔗 Full Training & Testing Notebooks (Open in Colab)
+### 13.12 🩺 ISIC-2016 (Dermoscopic Lesions)
+
+| Model | Observed Pattern | Confidence Behavior |
+|:--|:--|:--|
+| **UNETR / SETR** | High lesion Dice, but wide uncertainty bands along irregular borders. | Over-confident on texture noise. |
+| **TransUNet-Baseline** | Balanced mask but moderate variance at lesion edges. | Partial calibration. |
+| **TransUNet-Lite-Base** | Smooth, localized uncertainty; strong consensus across TTA runs. | ✅ Well-calibrated & stable. |
+| **TransUNet-Lite-Tiny** | Slight under-segmentation, low false positives; small but consistent variance. | ⚡ Compact & conservative. |
+
+> **Interpretation:**  
+> Lite-Base achieves near-teacher performance with *stable uncertainty structure*.  
+> Lite-Tiny shows reliable confidence under TTA, suitable for edge deployment where consistency matters.
+
+---
+
+### 13.13 🩻 BUSI (Breast Ultrasound)
+
+| Model | Observed Pattern | Confidence Behavior |
+|:--|:--|:--|
+| **UNETR / SETR** | Fragmented predictions, high background variance under speckle noise. | Poor calibration. |
+| **TransUNet-Baseline** | Coherent masks but diffuse uncertainty around noisy tissue. | Uneven focus. |
+| **TransUNet-Lite-Base** | Uncertainty localized along posterior shadow regions — matches clinical ambiguity. | ✅ Most realistic confidence distribution. |
+| **TransUNet-Lite-Tiny** | Conservative predictions with tight uncertainty; low false positives. | ⚡ Robust under noise. |
+
+> **Interpretation:**  
+> Lite-Base generalizes best across noisy ultrasound textures, while Lite-Tiny maintains compact uncertainty, ideal for reliable deployment in diagnostic tools.
+
+---
+
+### 13.14 📊 Cross-Domain Insights
+
+| Aspect | ISIC-2016 | BUSI |
+|:--|:--|:--|
+| Confidence Map Quality | Smooth gradient near lesion boundaries | Localized along acoustic shadows |
+| Model Consensus (TTA) | Highest for Lite-Base | Highest for Lite-Base |
+| Uncertainty Spread | Moderate (texture-driven) | Sharp (noise-driven) |
+| Stability Ranking | Lite-Base > Lite-Tiny > Baseline > SETR/UNETR | Lite-Base > Lite-Tiny > Baseline > SETR/UNETR |
+
+---
+
+### 13.15 🧭 Key Takeaways
+
+- **TransUNet-Lite-Base** shows the **most stable TTA consistency** and **anatomically meaningful uncertainty localization**.  
+- **TransUNet-Lite-Tiny** achieves compact, conservative uncertainty — balancing reliability with efficiency.  
+- Uncertainty maps reveal **true epistemic confidence**, distinguishing model uncertainty from data noise.  
+- Across both datasets, TTA confirmed the **robustness and interpretability** of the Lite family compared to heavier transformer baselines.
+
+---
+
+### 13.16 ✅ In Summary
+> The proposed **TransUNet-Lite** models not only preserve segmentation accuracy but also deliver **clinically interpretable uncertainty** under Test-Time Augmentation.  
+> Their predictions remain consistent across augmentations, proving reliability for **real-world, uncertainty-aware medical AI deployment**.
+
+## 14 🔗 Full Training & Testing Notebooks (Open in Colab)
 
 | Dataset     | Model                             | Open in Colab |
 |------------|-----------------------------------|---------------|
@@ -922,7 +994,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-## 14 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
+## 15 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
 
 | Dataset     | Model                               | Open in Colab |
 |------------|-------------------------------------|---------------|
@@ -937,7 +1009,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-## 15. Run Artifacts & Reproducibility 📂
+## 16. Run Artifacts & Reproducibility 📂
 
 All core experiments (GPU-based training + test-time evaluation) are logged and stored in **per-model, per-dataset** artifact folders.
 
@@ -953,7 +1025,7 @@ These artifacts provide a clear evidence trail for all reported numbers.
 
 ---
 
-### 15.1 BUSI (Breast Ultrasound, Binary Segmentation)
+### 16.1 BUSI (Breast Ultrasound, Binary Segmentation)
 
 | Model                    | Artifacts Folder |
 |--------------------------|------------------|
@@ -965,7 +1037,7 @@ These artifacts provide a clear evidence trail for all reported numbers.
 
 ---
 
-### 15.2 ISIC 2016 (Dermoscopic Lesions, Binary Segmentation)
+### 16.2 ISIC 2016 (Dermoscopic Lesions, Binary Segmentation)
 
 | Model                         | Artifacts Folder |
 |-------------------------------|------------------|
@@ -979,7 +1051,7 @@ These artifacts provide a clear evidence trail for all reported numbers.
 
 ---
 
-## 16. Future Work 🔭
+## 17. Future Work 🔭
 
 This repository is **Phase 1** of the TransUNet-Lite story: we built a clean, reproducible benchmark and showed that lightweight hybrid designs can approach or rival heavy baselines under consistent conditions. The next steps will deepen the analysis, broaden the evidence, and harden the models for real-world deployment.
 
@@ -1014,7 +1086,7 @@ This ablation suite will turn the current design from “intuitively good” to 
 
 ---
 
-### 16.2. Broader Dataset & Modality Coverage
+### 17.2. Broader Dataset & Modality Coverage
 
 So far, we evaluated on:
 
@@ -1037,7 +1109,7 @@ Goal: show whether the same architectural recipe (light backbone + gated skips +
 
 ---
 
-### 16.3. Efficiency & Deployment-Focused Extensions
+### 17.3. Efficiency & Deployment-Focused Extensions
 
 We will push beyond single-GPU evaluation and explore **deployment-ready configurations**:
 
@@ -1058,7 +1130,7 @@ The aim is to provide **ready-to-use configurations** for real-time or resource-
 
 ---
 
-### 16.4. Uncertainty, Calibration & Reliability
+### 17.4. Uncertainty, Calibration & Reliability
 
 We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
@@ -1074,7 +1146,7 @@ We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
 ---
 
-### 16.5. Stronger Baselines & Fairer Comparisons
+### 17.5. Stronger Baselines & Fairer Comparisons
 
 We will integrate more **state-of-the-art baselines** into the same pipeline:
 
@@ -1093,7 +1165,7 @@ This will position TransUNet-Lite variants as part of a **rigorous, unified benc
 
 ---
 
-### 16.6. Public Release & Reproducibility Enhancements
+### 17.6. Public Release & Reproducibility Enhancements
 
 Planned improvements to make this ecosystem maximally useful:
 
@@ -1110,7 +1182,7 @@ Planned improvements to make this ecosystem maximally useful:
 
 ---
 
-### 16.7. Follow-up Paper: Dedicated Ablation & Robustness Study
+### 17.7. Follow-up Paper: Dedicated Ablation & Robustness Study
 
 Finally, the current work naturally leads to a **second, focused paper**:
 
@@ -1126,7 +1198,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 17. Objectives of This Repository
+## 18. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
   - TransUNet baseline
@@ -1141,9 +1213,9 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 18. Reproducibility & Assets
+## 19. Reproducibility & Assets
 
-This repo (under construction) will include:
+This repo includes:
 
 - 📂 **Configs:** YAML/JSON with all hyperparameters and seeds.
 - 📝 **Logs:** Per-epoch CSV logs for every run.
@@ -1157,7 +1229,7 @@ This repo (under construction) will include:
 
 ---
 
-## 19. How to Use (High-Level)
+## 20. How to Use (High-Level)
 
 1. **Pick dataset**: BUSI or ISIC 2016 NPZ (MedSegBench format).
 2. **Pick model**: `TransUNet`, `TransUNet-Lite-Base`, `TransUNet-Lite-Tiny`, `UNETR`, `SETR`.
@@ -1170,7 +1242,7 @@ This repo (under construction) will include:
 
 ---
 
-## 20. Closing Note
+## 21. Closing Note
 
 This project is built to be:
 
