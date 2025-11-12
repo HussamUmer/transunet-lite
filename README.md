@@ -681,9 +681,9 @@ We estimate how confident each model is by running the same test image multiple 
 
 ### 🩺 Example 2 (ID = 1)
 
-| Input Image | Ground Truth (GT) Overlay | Mean-Probability Overlay | Uncertainty Map |
-|:-----------:|:-------------------------:|:------------------------:|:---------------:|
-| <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/download%20(17).png" width="260"> | <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/download%20(18).png" width="260"> | <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_pred_id1.png" width="260"> | <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_uncertainty_id1.png" width="260"> |
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_uncertainty_id1.png) |
 
 *Figure 24: Visualization of sample ID 1 from ISIC 2016 using UNETR. The prediction closely aligns with the ground truth, showing strong central confidence. The uncertainty map highlights thin high-variance bands near the lesion edges, indicating sensitivity to fine boundary details but overall stable segmentation.*
 
