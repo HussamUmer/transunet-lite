@@ -601,6 +601,69 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
+12. Uncertainty via Test-Time Augmentation (TTA)
+
+We estimate how confident each model is by running the same test image multiple times with tiny, safe changes (here: flips) and measuring how much the prediction varies.
+If predictions stay similar → low uncertainty. If they vary a lot → high uncertainty.
+
+Why include uncertainty?
+
+Goes beyond a single accuracy number to expose model confidence.
+
+Highlights risky regions (e.g., fuzzy BUSI lesion edges) that deserve human review.
+
+Supports deployment choices and post-processing (e.g., calibration or contour smoothing).
+
+How we do it in this repo
+
+TTA set: identity, horizontal flip, vertical flip, and both (HV flip).
+
+Aggregation per pixel:
+
+Mean probability across TTA runs → “consensus” prediction.
+
+Variance across TTA runs → uncertainty map.
+
+Visuals:
+
+Prediction overlay: thresholded mean probability mask on the input image.
+
+Uncertainty overlay: variance heatmap on the input image.
+
+How to read our figures
+
+Green/teal mask = final predicted lesion (averaged + thresholded).
+
+Warm colors (yellow → red) = higher disagreement across TTA runs → more uncertain.
+
+Cool/transparent = agreement → more certain.
+
+Typical patterns we observe
+
+Edges & fine structures tend to have higher uncertainty (boundary sensitivity).
+
+Clear interiors have lower uncertainty.
+
+BUSI (ultrasound) often shows higher boundary uncertainty than ISIC (dermoscopy) due to speckle noise and lower contrast.
+
+Takeaways
+
+Low uncertainty + good overlap with ground truth ⇒ reliable predictions.
+
+High uncertainty near boundaries ⇒ flag for review or consider post-processing (CRF/smoothing) or calibration (e.g., temperature scaling).
+
+Uncertainty complements calibration metrics (e.g., ECE) by localizing where confidence is fragile.
+
+🧪 Uncertainty on ISIC 2016
+
+(Add two fixed examples per model: input, GT overlay, mean-prob overlay, uncertainty map.)
+
+🩺 Uncertainty on BUSI (Ultrasound)
+
+(Add two fixed examples per model: input, GT overlay, mean-prob overlay, uncertainty map.)
+
+---
+
 ## 13 🔗 Full Training & Testing Notebooks (Open in Colab)
 
 | Dataset     | Model                             | Open in Colab |
