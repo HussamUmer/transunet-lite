@@ -601,6 +601,71 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
+## 🧩 12. Uncertainty via Test-Time Augmentation (TTA)
+
+We estimate how confident each model is by running the same test image multiple times with tiny, safe changes (e.g., flips) and measuring how much the prediction varies.  
+- **Low uncertainty** → predictions stay similar across runs.  
+- **High uncertainty** → predictions vary significantly.
+
+---
+
+### 🔍 Why Include Uncertainty?
+
+- Goes beyond a single accuracy number to expose **model confidence**.  
+- Highlights **risky regions** (e.g., fuzzy BUSI lesion edges) that deserve human review.  
+- Supports **deployment decisions** and **post-processing** (e.g., calibration or contour smoothing).
+
+---
+
+### ⚙️ How We Do It in This Repo
+
+**TTA set:**  
+`identity`, `horizontal flip`, `vertical flip`, and `both (HV flip)`
+
+**Aggregation per pixel:**  
+- **Mean probability** across TTA runs → “consensus” prediction  
+- **Variance** across TTA runs → uncertainty map  
+
+---
+
+### 🎨 Visuals
+
+- **Prediction overlay:** Thresholded mean probability mask on the input image  
+- **Uncertainty overlay:** Variance heatmap on the input image  
+
+---
+
+### 🧠 How to Read Our Figures
+
+| Color | Meaning |
+|--------|----------|
+| 🟩 **Green/Teal mask** | Final predicted lesion (averaged + thresholded) |
+| 🔥 **Warm colors (yellow → red)** | Higher disagreement across TTA runs → more uncertain |
+| 🧊 **Cool/transparent** | High agreement → more certain |
+
+---
+
+### 📊 Typical Patterns We Observe
+
+- **Edges & fine structures:** Higher uncertainty (boundary sensitivity)  
+- **Clear interiors:** Lower uncertainty  
+- **BUSI (ultrasound):** Higher boundary uncertainty than ISIC (dermoscopy) due to speckle noise and lower contrast  
+
+---
+
+### 🩻 Takeaways
+
+- ✅ **Low uncertainty + good overlap** → reliable predictions  
+- ⚠️ **High uncertainty near boundaries** → flag for review or apply post-processing (e.g., CRF/smoothing) or calibration (e.g., temperature scaling)  
+- 🔬 Uncertainty complements **calibration metrics (ECE)** by localizing where confidence is fragile  
+
+---
+
+### 🧪 Uncertainty on ISIC 2016
+_Add two fixed examples per model: GT overlay, uncertainty map._
+
+### 🩺 Uncertainty on BUSI (Ultrasound)
+_Add two fixed examples per model: GT overlay, uncertainty map._
 
 ---
 
