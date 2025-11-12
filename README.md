@@ -736,7 +736,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016
+<h3 align="center">🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016</h3>
 
 ---
 
@@ -760,7 +760,28 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
+<h3 align="center">🧠 Model: TransUNet-Lite-Tiny — Dataset: ISIC 2016</h3>
+
 ---
+
+### 🩺 Example 1 (ID = 0)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_uncertainty_id0.png) |
+
+*Figure 32: TransUNet-Lite-Tiny on ISIC (ID 0). The predicted lesion area appears slightly overextended yet maintains overall lesion coverage. The uncertainty map reveals strong edge variance around the lesion contour—particularly on the top-right and bottom edges—indicating localized confidence drop typical of smaller-capacity models facing texture complexity.*
+
+---
+
+### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_uncertainty_id1.png) |
+
+*Figure 33: TransUNet-Lite-Tiny on ISIC (ID 1). The TTA-averaged overlay aligns closely with the lesion center, showing compact segmentation. The uncertainty map displays a distinct thin halo of moderate uncertainty—most prominent on the left boundary—signifying subtle disagreement across TTA samples but overall confident performance.*
+
 ---
 
 ### 🩺 Uncertainty on BUSI (Ultrasound)
