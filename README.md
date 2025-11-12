@@ -665,13 +665,15 @@ We estimate how confident each model is by running the same test image multiple 
 ---
 
 <h3 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h3>
+
 ---
 
 ### 🩺 Example 1 (ID = 0)
 
-| Input Image | Ground Truth (GT) Overlay | Mean-Probability Overlay | Uncertainty Map |
-|:-----------:|:-------------------------:|:------------------------:|:---------------:|
-| <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/download%20(15).png" width="260"> | <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/download%20(16).png" width="260"> | <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/Photos_EYe2k550kP.png" width="280"> | <img src="https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_uncertainty_id0.png" width="280"> |
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_uncertainty_id0.png) |
 
 *Figure 23: Visualization of sample ID 0 from ISIC 2016 using UNETR. The predicted lesion mask (green) shows accurate coverage of the lesion region with mild over-smoothing at the edges. The uncertainty heatmap reveals elevated variance along lesion borders, typical of dermoscopic patterns with texture blending.*
 
