@@ -736,6 +736,30 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
+### 🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016
+
+---
+
+### 🩺 Example 1 (ID = 0)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_uncertainty_id0.png) |
+
+*Figure 30: TransUNet-Lite-Base on ISIC (ID 0). The averaged TTA mask captures the lesion comprehensively, preserving inner texture while slightly overextending at smooth edges. The uncertainty map displays higher variance at boundary regions, particularly near top-right and lower contours, suggesting mild edge sensitivity due to fine contrast transitions.*
+
+---
+
+### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_uncertainty_id1.png) |
+
+*Figure 31: TransUNet-Lite-Base on ISIC (ID 1). The mean-probability overlay demonstrates precise lesion capture with high spatial consistency. The uncertainty heatmap highlights narrow bands of elevated variance around the lesion edge—most notable on the left rim—indicating localized ambiguity, while the interior remains confidently segmented.*
+
+---
+
 ---
 ---
 
