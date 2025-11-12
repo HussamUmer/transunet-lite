@@ -784,7 +784,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-#### 🩺 Uncertainty on BUSI (Ultrasound)
+### 13.8🩺 Uncertainty on BUSI (Ultrasound)
 ---
 
 <h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
@@ -883,12 +883,27 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite (Tiny) — Dataset: BUSI (Ultrasound)</h3>
 
 ---
 
+### 🩺 Example 1 (ID = 0)
 
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_uncertainty_id0.png) |
 
+*Figure 42: TransUNet-Lite (Tiny) on BUSI (ID 0). The prediction captures small isolated lesion-like regions, though the structure remains fragmented. The uncertainty map reveals high localized variance within the bright lesion area, suggesting instability in boundary recognition due to speckle noise and reduced model capacity.*
+
+---
+
+### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_uncertainty_id1.png) |
+
+*Figure 43: TransUNet-Lite (Tiny) on BUSI (ID 1). The lesion segmentation is compact and structurally consistent, showing strong detection of the cystic mass. The uncertainty map highlights a thin uncertainty band around the cyst edge, indicating the model’s cautious estimation near strong intensity gradients while remaining confident within the lesion core.*
 
 ---
 
