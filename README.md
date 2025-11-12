@@ -601,7 +601,7 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-## 🧩 12. Uncertainty via Test-Time Augmentation (TTA)
+## 13. 🧩 Uncertainty via Test-Time Augmentation (TTA)
 
 We estimate how confident each model is by running the same test image multiple times with tiny, safe changes (e.g., flips) and measuring how much the prediction varies.  
 - **Low uncertainty** → predictions stay similar across runs.  
@@ -609,7 +609,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🔍 Why Include Uncertainty?
+### 13.1 🔍 Why Include Uncertainty?
 
 - Goes beyond a single accuracy number to expose **model confidence**.  
 - Highlights **risky regions** (e.g., fuzzy BUSI lesion edges) that deserve human review.  
@@ -617,7 +617,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### ⚙️ How We Do It in This Repo
+### 13.2 ⚙️ How We Do It in This Repo
 
 **TTA set:**  
 `identity`, `horizontal flip`, `vertical flip`, and `both (HV flip)`
@@ -628,14 +628,14 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🎨 Visuals
+### 13.3 🎨 Visuals
 
 - **Prediction overlay:** Thresholded mean probability mask on the input image  
 - **Uncertainty overlay:** Variance heatmap on the input image  
 
 ---
 
-### 🧠 How to Read Our Figures
+### 13.4 🧠 How to Read Our Figures
 
 | Color | Meaning |
 |--------|----------|
@@ -645,7 +645,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 📊 Typical Patterns We Observe
+### 13.5 📊 Typical Patterns We Observe
 
 - **Edges & fine structures:** Higher uncertainty (boundary sensitivity)  
 - **Clear interiors:** Lower uncertainty  
@@ -653,7 +653,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩻 Takeaways
+### 13.6 🩻 Takeaways
 
 - ✅ **Low uncertainty + good overlap** → reliable predictions  
 - ⚠️ **High uncertainty near boundaries** → flag for review or apply post-processing (e.g., CRF/smoothing) or calibration (e.g., temperature scaling)  
@@ -661,14 +661,14 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🧪 Uncertainty on ISIC 2016
+### 13.7 🧪 Uncertainty on ISIC 2016
 ---
 
-<h3 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -678,7 +678,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -688,11 +688,11 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: SETR — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: SETR — Dataset: ISIC 2016</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -702,7 +702,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -712,11 +712,11 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: TransUNet-Baseline — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: TransUNet-Baseline — Dataset: ISIC 2016</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -726,7 +726,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -736,11 +736,11 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -750,7 +750,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -760,11 +760,11 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: TransUNet-Lite-Tiny — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite-Tiny — Dataset: ISIC 2016</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -774,7 +774,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -784,14 +784,14 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Uncertainty on BUSI (Ultrasound)
+#### 🩺 Uncertainty on BUSI (Ultrasound)
 ---
 
-<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -801,7 +801,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -811,11 +811,11 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: SETR — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: SETR — Dataset: BUSI (Ultrasound)</h3>
 
 ---
 
-### 🩺 Example 1 (ID = 0)
+#### 🩺 Example 1 (ID = 0)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -825,7 +825,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 🩺 Example 2 (ID = 1)
+#### 🩺 Example 2 (ID = 1)
 
 | Mean-Probability Overlay | Uncertainty Map |
 |:-------------------------:|:---------------:|
@@ -835,29 +835,61 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: TransUNet Baseline — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+#### 🩺 Example 1 (ID = 0)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_uncertainty_id0.png) |
+
+*Figure 38: TransUNet Baseline on BUSI (ID 0). The model fails to clearly delineate lesion boundaries, indicating an uncertain prediction in low-contrast regions. The uncertainty heatmap exhibits faint localized variance near the lower middle zone, revealing difficulty in differentiating small or indistinct structures in homogeneous tissue.*
+
+---
+
+#### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_uncertainty_id1.png) |
+
+*Figure 39: TransUNet Baseline on BUSI (ID 1). The lesion prediction is compact and well-centered, with strong boundary consistency. However, the uncertainty map reveals high variance near the cystic border—likely due to reflection artifacts and the distinct fluid-tissue intensity gap—suggesting some sensitivity to boundary contrast variations.*
+
+---
+
+<h4 align="center">🧠 Model: TransUNet-Lite (Base) — Dataset: BUSI (Ultrasound)</h3>
+
+---
+
+#### 🩺 Example 1 (ID = 0)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_uncertainty_id0.png) |
+
+*Figure 40: TransUNet-Lite (Base) on BUSI (ID 0). The model detects small scattered regions, indicating partial recognition of lesion-like textures but with limited spatial coherence. The uncertainty map shows low but distributed variance, implying the model is unsure about weak lesion boundaries under low-contrast ultrasound patterns.*
+
+---
+
+#### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_uncertainty_id1.png) |
+
+*Figure 41: TransUNet-Lite (Base) on BUSI (ID 1). The segmentation covers the main lesion with clear shape boundaries, demonstrating robust center confidence. The uncertainty heatmap displays focused high-variance regions near the posterior edge, which aligns with acoustic shadowing and attenuation artifacts typical in ultrasound imaging.*
+
+---
+
+<h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
 
 ---
 
 
 
----
 
-<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
-
----
-
-
-
----
-
-<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
-
----
-
-
-
----
 ---
 
 ## 13 🔗 Full Training & Testing Notebooks (Open in Colab)
