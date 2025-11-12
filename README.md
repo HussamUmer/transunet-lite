@@ -811,11 +811,27 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-<h3 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+<h3 align="center">🧠 Model: SETR — Dataset: BUSI (Ultrasound)</h3>
 
 ---
 
+### 🩺 Example 1 (ID = 0)
 
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_uncertainty_id0.png) |
+
+*Figure 36: SETR on BUSI (ID 0). The predicted segmentation captures the main lesion mass but slightly merges with nearby structures. The uncertainty heatmap shows diffuse variance around the lesion and background, indicating moderate confidence due to tissue texture variability and speckle interference.*
+
+---
+
+### 🩺 Example 2 (ID = 1)
+
+| Mean-Probability Overlay | Uncertainty Map |
+|:-------------------------:|:---------------:|
+| ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_uncertainty_id1.png) |
+
+*Figure 37: SETR on BUSI (ID 1). The overlay shows clean lesion localization with consistent mask confidence across the tumor core. The uncertainty map highlights elevated variance below the lesion region—likely due to shadowing artifacts—while the lesion boundary remains relatively stable, reflecting the transformer’s contextual robustness.*
 
 ---
 
