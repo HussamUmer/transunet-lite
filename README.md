@@ -6,7 +6,7 @@
 
 ---
 
-## Abstract
+## 1. 📝 Abstract
 
 This research presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound. 
 
@@ -15,7 +15,7 @@ Lite-Base achieves near-baseline TransUNet performance while reducing parameters
 Overall, these results demonstrate that TransUNet-Lite offers a strong accuracy–efficiency–uncertainty trade-off, providing transformer-level segmentation performance while remaining lightweight enough for real-time, edge-based, or resource-constrained clinical deployments.
 
 ---
-## 1. Overview
+## 2. 🗺️ Overview
 
 This project introduces **TransUNet-Lite** variants that keep the global context of TransUNet-style hybrids while **aggressively reducing parameters, FLOPs, VRAM, and CPU/GPU latency**.
 
@@ -29,14 +29,14 @@ We systematically compare:
 
 under a **single, controlled pipeline** on:
 
-- 🟤 **BUSI** — Breast ultrasound tumor segmentation (binary).
 - 🟤 **ISIC 2016** — Skin lesion segmentation (binary variant), resized to 256×256.
+- 🟤 **BUSI** — Breast ultrasound tumor segmentation (binary).
 
 All models are trained & evaluated with **identical data splits, losses, thresholds, augmentations, logging, and evaluation scripts**, so differences come from the **architectures**, not from training shortcuts.
 
 ---
 
-## 2. Why TransUNet-Lite?
+## 3. 🎯 Why TransUNet-Lite?
 
 Traditional TransUNet-style models are powerful but heavy:
 
@@ -60,13 +60,13 @@ Key design ideas (paper-style, implementation ready):
 
 ---
 
-## 3. Datasets 📚
+## 4. 📚 Datasets 
 
 All experiments are built on top of **MedSegBench** standardized releases to ensure
 fair, reproducible comparison across architectures. We use the official NPZ files,
 predefined train/validation/test splits, and a unified 256×256 input resolution.
 
-### 3.1 ISIC 2016 — Skin Lesion Segmentation (Dermoscopy)
+### 4.1 🧱 ISIC 2016 — Skin Lesion Segmentation (Dermoscopy)
 
 - **Modality:** Dermoscopy  
 - **Task:** Binary segmentation — lesion vs. background  
@@ -87,7 +87,7 @@ full reproducibility.
 
 ---
 
-### 3.2 BUSI — Breast Ultrasound Lesion Segmentation
+### 4.2 🧱 BUSI — Breast Ultrasound Lesion Segmentation
 
 - **Modality:** Ultrasound  
 - **Task:** Binary segmentation — lesion vs. background  
@@ -127,7 +127,7 @@ extensions to more MedSegBench modalities.
 
 ---
 
-## 4. 🧩 Training Pipeline Overview
+## 5. 🧩 Training Pipeline Overview
 
 This section illustrates the complete flow of our segmentation pipeline —  
 from input images → preprocessing → augmentations → model training → evaluation → visualization → calibration.  
@@ -157,7 +157,7 @@ The same unified MedSegBench-style pipeline is used for all compared models, ens
 
 ---
 
-## 4. 🧪 Environment & Reproducibility
+## 6. 🧪 Environment & Reproducibility
 
 All experiments in this repository are designed to be strictly reproducible.  
 Below is the **reference environment** used for the reported results:
@@ -194,7 +194,7 @@ Below is the **reference environment** used for the reported results:
 > 🔁 The same environment template is used across all compared models to ensure a fair, apples-to-apples evaluation.
 
 
-## 5. ⚙️ Default Training Configuration (Example: UNETR on BUSI 256×256)
+## 7. ⚙️ Default Training Configuration (Example: UNETR on BUSI 256×256)
 
 Each model in this repo is trained with a **YAML-driven configuration**.  
 Below is the exact config snapshot (simplified) for the `UNETR` run on **BUSI (binary)** at **256×256** as an example:
@@ -215,7 +215,7 @@ train:
   image_size: 256
   batch_size: 8
   epochs: 10
-  num_workers: 4
+  num_workers: 2
   optimizer:
     name: adamw
     lr: 0.0003
@@ -225,7 +225,6 @@ train:
     warmup_epochs: 5
   early_stopping:
     monitor: val_dice
-    patience: 20
   mixed_precision: true
 
 augment:
@@ -256,7 +255,7 @@ metrics:
 ```
 ---
 
-## 6. Experimental Setup (Shared for All Models)
+## 8. 🔧 Experimental Setup (Shared for All Models)
 
 **Pipeline (fully standardized):**
 
@@ -281,13 +280,13 @@ metrics:
 
 ---
 
-## 7. Architectures Compared  
+## 9. 🆚 Architectures Compared  
 
 Below we describe each backbone that we compared, how each model was implemented in our unified framework, and the original papers/authors that introduced the architecture.
 
 ---
 
-### UNETR — “U-Net with Transformer Encoder”
+### 9.1 📐 UNETR — “U-Net with Transformer Encoder”
 
 **Authors & Reference**  
 > - **Ali Hatamizadeh**, Dong Yang, Holger R. Roth, Daguang Xu  
@@ -310,7 +309,7 @@ Below we describe each backbone that we compared, how each model was implemented
 
 ---
 
-### SETR — “Segmentation Transformer”
+### 9.2 📐 SETR — “Segmentation Transformer”
 
 **Authors & Reference**  
 > - **Sixiao Zheng**, Jiachen Lu, Hengshuang Zhao, Xiatian Zhu, *et al.*  
@@ -333,7 +332,7 @@ Below we describe each backbone that we compared, how each model was implemented
 
 ---
 
-### TransUNet (Baseline) — “Hybrid CNN + Transformer U-Net”
+### 9.3 📐 TransUNet (Baseline) — “Hybrid CNN + Transformer U-Net”
 
 **Authors & Reference**  
 > - **Jieneng Chen**, Yongyi Lu, Qihang Yu, Xiangde Luo, *et al.*  
@@ -367,10 +366,10 @@ Below we describe each backbone that we compared, how each model was implemented
 >   - **UpBlock 3:** (256 ⊕ s1) → 128 channels @ H/4  
 >   - Final **bilinear upsample ×4** + Conv head → full-resolution logits.
 
-**TransUNet-Lite-Base**  
+### 9.4 📐 TransUNet-Lite-Base  
 > ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
 
-**TransUNet-Lite-Tiny**  
+### 9.5 📐 TransUNet-Lite-Tiny 
 > DeiT-Tiny/16 backbone + same lite decoder design as Lite-Base, further reduced channels.
 
 All implemented in a way that **matches the spirit of the original papers** while fitting a **single plug-and-play evaluation pipeline**.
@@ -378,7 +377,7 @@ Full architectural details for *TransUNet-Lite-Base* and *TransUNet-Lite-Tiny* w
 
 ---
 
-## 8. 🧱 Model Size (Trainable Parameters)
+## 10. 🧱 Model Size (Trainable Parameters)
 
 | Model                | Parameters (Millions) |
 |----------------------|----------------------:|
@@ -390,14 +389,14 @@ Full architectural details for *TransUNet-Lite-Base* and *TransUNet-Lite-Tiny* w
 
 *Interpretation:* Both TransUNet-Lite variants are significantly more compact than the transformer-heavy baselines, with Lite-Tiny reducing parameter count by **~16×** vs. TransUNet-Baseline while remaining competitive in segmentation quality.
 
-![Figure 1: Model Size Comparison](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(1).png)  
-*Figure 1. Trainable parameters for all architectures. TransUNet-Lite-Base and TransUNet-Lite-Tiny are dramatically more compact than UNETR, SETR, and TransUNet-Baseline.*
+![Figure 3: Model Size Comparison](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(1).png)  
+*Figure 3. Trainable parameters for all architectures. TransUNet-Lite-Base and TransUNet-Lite-Tiny are dramatically more compact than UNETR, SETR, and TransUNet-Baseline.*
 
 ---
 
-## 9. Full GPU Test Results
+## 11. 🖥️ Full GPU Test Results
 
-### 9.1 Dice & IoU (Higher is Better)
+### 11.1 📉 Dice & IoU (Higher is Better)
 
 | Model                | BUSI Dice | BUSI IoU | ISIC 2016 Dice | ISIC 2016 IoU |
 |----------------------|:---------:|:--------:|:--------------:|:-------------:|
@@ -410,12 +409,12 @@ Full architectural details for *TransUNet-Lite-Base* and *TransUNet-Lite-Tiny* w
 *Interpretation:*  
 On **both datasets**, the **TransUNet family** dominates UNETR/SETR in Dice/IoU. **Lite-Base** stays within ≈0.001–0.005 of the baseline TransUNet on ISIC 2016 while being much lighter, and clearly outperforms UNETR/SETR. **Lite-Tiny** maintains competitive quality with a stronger efficiency bias.
 
-![Figure 2: Test Dice & IoU (ISIC + BUSI)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(2).png)  
-*Figure 2. Test Dice and IoU on ISIC 2016 and BUSI. TransUNet-Lite-Base closely tracks the TransUNet-Baseline, while TransUNet-Lite-Tiny provides a strong efficiency–accuracy trade-off.*
+![Figure 4: Test Dice & IoU (ISIC + BUSI)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(2).png)  
+*Figure 4. Test Dice and IoU on ISIC 2016 and BUSI. TransUNet-Lite-Base closely tracks the TransUNet-Baseline, while TransUNet-Lite-Tiny provides a strong efficiency–accuracy trade-off.*
 
 ---
 
-### 9.2 AUPRC & AUROC (Higher is Better)
+### 11.2 📈 AUPRC & AUROC (Higher is Better)
 
 | Model                | BUSI AUPRC | BUSI AUROC | ISIC 2016 AUPRC | ISIC 2016 AUROC |
 |----------------------|:----------:|:----------:|:----------------:|:----------------:|
@@ -428,18 +427,22 @@ On **both datasets**, the **TransUNet family** dominates UNETR/SETR in Dice/IoU.
 *Interpretation:*  
 All models are strong; **TransUNet-Baseline** and both **Lite** variants show **excellent lesion detection quality**, with Lite-Tiny even edging the others in AUROC on ISIC 2016. This confirms that aggressive compression does **not break discriminative power**.
 
-![Figure 3: PR & ROC (AUPRC / AUROC)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(3).png)  
-*Figure 3. Precision–Recall and ROC performance across models on both datasets. TransUNet variants maintain strong discrimination, with Lite-Base and Lite-Tiny staying competitive with heavier transformer baselines.*
+![Figure 5: PR & ROC (AUPRC / AUROC)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(3).png)  
+*Figure 5. Precision–Recall and ROC performance across models on both datasets. TransUNet variants maintain strong discrimination, with Lite-Base and Lite-Tiny staying competitive with heavier transformer baselines.*
 
-## 📈 ROC & PR Curves (TransUNet-Lite-Tiny Examples)
+#### 📈 ROC & PR Curves (TransUNet-Lite-Tiny Examples)
 
-### BUSI (Ultrasound)
+<h4 align="center">📌 BUSI (Ultrasound)</h4>
+
+---
 
 | ROC Curve | PR Curve |
 |:---------:|:--------:|
 | ![BUSI ROC](https://github.com/HussamUmer/transunet-lite/blob/main/plots/ROC_PR_Curves/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_ROC_curve.png) | ![BUSI PR](https://github.com/HussamUmer/transunet-lite/blob/main/plots/ROC_PR_Curves/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_PR_curve.png) |
 
-### ISIC 2016 (Dermoscopy)
+<h4 align="center">📌 ISIC 2016 (Dermoscopy)</h4>
+
+---
 
 | ROC Curve | PR Curve |
 |:---------:|:--------:|
@@ -447,10 +450,9 @@ All models are strong; **TransUNet-Baseline** and both **Lite** variants show **
 
 > Full per-model ROC & PR curves are available in **Section 16 — Run Artifacts & Reproducibility**, inside each model’s `figures/` folder.
 
-
 ---
 
-### 9.3 Inference Latency on GPU (Lower is Better)
+### 11.3 📊 Inference Latency on GPU (Lower is Better)
 
 | Model                | BUSI Latency (ms/img) | ISIC 2016 Latency (ms/img) |
 |----------------------|:---------------------:|:---------------------------:|
@@ -463,12 +465,12 @@ All models are strong; **TransUNet-Baseline** and both **Lite** variants show **
 *Interpretation:*  
 On GPU, **TransUNet-Lite-Tiny** consistently reduces latency vs. the baseline. **Lite-Base** closes most of the gap between a very heavy baseline and leaner designs, while preserving near-identical accuracy.
 
-![Figure 4: Inference Latency (GPU)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(4).png)  
-*Figure 4. Per-image inference latency on GPU. Lite-Tiny and Lite-Base offer substantially faster or comparable inference versus larger baselines, highlighting their deployability.*
+![Figure 6: Inference Latency (GPU)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(4).png)  
+*Figure 6. Per-image inference latency on GPU. Lite-Tiny and Lite-Base offer substantially faster or comparable inference versus larger baselines, highlighting their deployability.*
 
 ---
 
-### 9.4 Peak VRAM on GPU (Lower is Better)
+### 11.4 🚀 Peak VRAM on GPU (Lower is Better)
 
 | Model                | BUSI Peak VRAM (MB) | ISIC 2016 Peak VRAM (MB) |
 |----------------------|:-------------------:|:-------------------------:|
@@ -481,15 +483,15 @@ On GPU, **TransUNet-Lite-Tiny** consistently reduces latency vs. the baseline. *
 *Interpretation:*  
 This is where **TransUNet-Lite truly shines**. Lite-Base cuts VRAM by **~3–4×**, and Lite-Tiny by **~9×** compared to the baseline, while remaining competitive or better than UNETR/SETR in segmentation quality.
 
-![Figure 5: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(5).png)  
-*Figure 5. Peak VRAM consumption during inference. Lite-Base and especially Lite-Tiny significantly reduce memory footprint while preserving practical segmentation quality.*
+![Figure 7: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(5).png)  
+*Figure 7. Peak VRAM consumption during inference. Lite-Base and especially Lite-Tiny significantly reduce memory footprint while preserving practical segmentation quality.*
 
-![Figure 5: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(6).png)  
-*Figure 6. Peak VRAM consumption during inference.*
+![Figure 8: Peak VRAM Usage](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(6).png)  
+*Figure 8. Peak VRAM consumption during inference.*
 
 ---
 
-## 10. CPU-Only Evaluation (Realistic Edge Scenario)
+## 12. 💻 CPU-Only Evaluation (Realistic Edge Scenario)
 
 All CPU experiments:
 
@@ -497,7 +499,7 @@ All CPU experiments:
 - On the **same CPU environment**
 - Use **50 fixed test images** per model/dataset for fair median/p90/p95 latency and throughput.
 
-### 10.1 Dice & IoU on CPU
+### 12.1 📈 Dice & IoU on CPU
 
 | Model                | BUSI Dice | BUSI IoU | ISIC 2016 Dice | ISIC 2016 IoU |
 |----------------------|:---------:|:--------:|:--------------:|:-------------:|
@@ -510,12 +512,12 @@ All CPU experiments:
 *Interpretation:*  
 On CPU, **TransUNet-Baseline** still leads in raw Dice, but **Lite-Base** is very close and **slightly surpasses it in IoU on ISIC 2016**, with much lower resource usage. Lite-Tiny remains a strong efficient alternative.
 
-![Figure 7: CPU-only Dice & IoU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(1).png)  
-*Figure 7. CPU-only Dice and IoU on BUSI and ISIC 2016. TransUNet-Lite-Base and Lite-Tiny preserve strong segmentation quality while running entirely on CPU.*
+![Figure 9: CPU-only Dice & IoU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(1).png)  
+*Figure 9. CPU-only Dice and IoU on BUSI and ISIC 2016. TransUNet-Lite-Base and Lite-Tiny preserve strong segmentation quality while running entirely on CPU.*
 
 ---
 
-### 10.2 Latency Distribution on CPU (Lower is Better)
+### 12.2 📉 Latency Distribution on CPU (Lower is Better)
 
 **Median / p90 / p95 per image (ms)**
 
@@ -530,12 +532,12 @@ On CPU, **TransUNet-Baseline** still leads in raw Dice, but **Lite-Base** is ver
 *Interpretation:*  
 On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves latency vs. the baseline; **Lite-Tiny** is **~4–7× faster**, making Transformer-style segmentation realistic for CPU-bound clinical setups.
 
-![Figure 8: Latency Distribution on CPU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(2).png)  
-*Figure 8. CPU latency per image (median / p90 / p95). Lite-Tiny is consistently the fastest, with Lite-Base offering a strong speed–accuracy trade-off compared to heavier transformer baselines.*
+![Figure 10: Latency Distribution on CPU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(2).png)  
+*Figure 10. CPU latency per image (median / p90 / p95). Lite-Tiny is consistently the fastest, with Lite-Base offering a strong speed–accuracy trade-off compared to heavier transformer baselines.*
 
 ---
 
-### 10.3 Throughput (Frames per Second, Higher is Better)
+### 12.3 🚀 Throughput (Frames per Second, Higher is Better)
 
 | Model                | BUSI FPS | ISIC 2016 FPS |
 |----------------------|:--------:|:-------------:|
@@ -548,12 +550,12 @@ On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves laten
 *Interpretation:*  
 **Lite-Tiny** achieves the **highest throughput** across both datasets, far exceeding the baseline TransUNet, while maintaining strong segmentation quality.
 
-![Figure 9: CPU Throughput (FPS)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(3).png)  
-*Figure 9. Inference throughput on CPU (frames per second). Lite-Tiny delivers the highest FPS, followed by Lite-Base, demonstrating practical real-time potential on modest hardware.*
+![Figure 11: CPU Throughput (FPS)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(3).png)  
+*Figure 11. Inference throughput on CPU (frames per second). Lite-Tiny delivers the highest FPS, followed by Lite-Base, demonstrating practical real-time potential on modest hardware.*
 
 ---
 
-### 10.4 Peak RAM on CPU (Lower is Better)
+### 12.4 ⚡ Peak RAM on CPU (Lower is Better)
 
 | Model                | BUSI RAM (MB) | ISIC 2016 RAM (MB) |
 |----------------------|:-------------:|:-------------------:|
@@ -566,12 +568,12 @@ On CPU, **TransUNet-Baseline is prohibitively slow**. **Lite-Base** halves laten
 *Interpretation:*  
 Both Lite variants **significantly reduce host memory usage**, with Lite-Tiny using **less than half** the RAM of heavy transformer baselines.
 
-![Figure 10: Peak RAM on CPU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(4).png)  
-*Figure 10. Peak host RAM during CPU inference. Lite variants substantially reduce memory requirements relative to UNETR, SETR, and baseline TransUNet.*
+![Figure 12: Peak RAM on CPU](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(4).png)  
+*Figure 12. Peak host RAM during CPU inference. Lite variants substantially reduce memory requirements relative to UNETR, SETR, and baseline TransUNet.*
 
 ---
 
-### 10.5 Wall Time (Lower is Better)
+### 12.5 ⏱️ Wall Time (Lower is Better)
 
 | Model                | BUSI (s) | ISIC 2016 (s) |
 |----------------------|:--------:|:-------------:|
@@ -584,12 +586,12 @@ Both Lite variants **significantly reduce host memory usage**, with Lite-Tiny us
 *Interpretation:*  
 Over the same 50-image CPU benchmark, **TransUNet-Lite-Tiny** is **8–9× faster** than the baseline, and **Lite-Base** also clearly outperforms the baseline in end-to-end wall time.
 
-![Figure 11: CPU Wall Time](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(5).png)  
-*Figure 11. Total wall-clock time for the CPU evaluation run. Lite-Tiny completes evaluation in the shortest time, with Lite-Base also noticeably faster than larger baselines.*
+![Figure 13: CPU Wall Time](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(5).png)  
+*Figure 13. Total wall-clock time for the CPU evaluation run. Lite-Tiny completes evaluation in the shortest time, with Lite-Base also noticeably faster than larger baselines.*
 
 ---
 
-### 10.6 CPU Utilization
+### 12.6 📊 CPU Utilization
 
 | Model                | BUSI CPU (%) | ISIC 2016 CPU (%) |
 |----------------------|:------------:|:------------------:|
@@ -602,12 +604,12 @@ Over the same 50-image CPU benchmark, **TransUNet-Lite-Tiny** is **8–9× faste
 *Interpretation:*  
 Lite models **utilize CPU resources much more effectively**, especially Lite-Tiny, which runs close to full utilization — crucial for practical deployments.
 
-![Figure 12: CPU Utilization](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(6).png)  
-*Figure 12. Average CPU utilization during inference. Lite models achieve high utilization while remaining efficient, indicating good scalability on CPU-only systems.*
+![Figure 14: CPU Utilization](https://github.com/HussamUmer/transunet-lite/raw/main/plots/CPU_Only/newplot%20(6).png)  
+*Figure 14. Average CPU utilization during inference. Lite models achieve high utilization while remaining efficient, indicating good scalability on CPU-only systems.*
 
 ---
 
-## 11. What Do These Results Tell Us?
+## 13. 💡 What Do These Results Tell Us?
 
 1. **Against strong baselines (UNETR, SETR):**
    - All **TransUNet-based** models (Baseline + Lite variants) **consistently outperform** them on Dice/IoU across both datasets.
@@ -640,7 +642,7 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
 
 ---
 
-## 12. 🎨 Qualitative Predictions
+## 14. 🎨 Qualitative Predictions
 
 To complement the quantitative tables, we visualize model behavior on held-out test cases from both datasets.  
 Each 4-panel grid shows (left → right):
@@ -654,87 +656,85 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 ---
 
-### 12.1 ISIC 2016 — Qualitative Grids
+### 14.1 ISIC 2016 — Qualitative Grids
 
 <!-- Replace the filenames below with your actual ISIC grid images -->
 
-<h3 align="center">ISIC 2016 — UNETR</h3>
+<h4 align="center">ISIC 2016 — UNETR</h4>
 
 ![ISIC 2016 — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_test_grid_4panels_12.png)  
-*Figure 13. ISIC 2016: UNETR (UNet with Transformer encoder) preserves coarse lesion extent but shows less precise boundaries on the hardest cases.*
+*Figure 15. ISIC 2016: UNETR (UNet with Transformer encoder) preserves coarse lesion extent but shows less precise boundaries on the hardest cases.*
 
 ---
 
-<h3 align="center">ISIC 2016 — SETR</h3>
+<h4 align="center">ISIC 2016 — SETR</h4>
 
 ![ISIC 2016 — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_test_grid_4panels_12.png)  
-*Figure 14. ISIC 2016: SETR (SEgmentation TRansformer) provides smooth, globally consistent masks, sometimes over-smoothing fine lesion details.*
+*Figure 16. ISIC 2016: SETR (SEgmentation TRansformer) provides smooth, globally consistent masks, sometimes over-smoothing fine lesion details.*
 
 ---
 
-<h3 align="center">ISIC 2016 — TransUNet (Baseline)</h3>
+<h4 align="center">ISIC 2016 — TransUNet (Baseline)</h4>
 
 ![ISIC 2016 — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_test_grid_4panels_12.png)  
-*Figure 15. ISIC 2016: TransUNet baseline delivers sharp lesion boundaries and strong coverage; used as our heavy reference model.*
+*Figure 17. ISIC 2016: TransUNet baseline delivers sharp lesion boundaries and strong coverage; used as our heavy reference model.*
 
 ---
 
-<h3 align="center">ISIC 2016 — TransUNet-Lite-Base</h3>
+<h4 align="center">ISIC 2016 — TransUNet-Lite-Base</h4>
 
 ![ISIC 2016 — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_base_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_test_grid_4panels_12.png)  
-*Figure 16. ISIC 2016: TransUNet-Lite-Base visually matches baseline TransUNet on most cases while using far fewer parameters and memory.*
+*Figure 18. ISIC 2016: TransUNet-Lite-Base visually matches baseline TransUNet on most cases while using far fewer parameters and memory.*
 
 ---
 
-<h3 align="center">ISIC 2016 — TransUNet-Lite-Tiny</h3>
+<h4 align="center">ISIC 2016 — TransUNet-Lite-Tiny</h4>
 
 ![ISIC 2016 — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_tiny_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_test_grid_4panels_12.png)  
-*Figure 17. ISIC 2016: TransUNet-Lite-Tiny maintains reasonable segmentation quality with slightly softer contours, reflecting its aggressive efficiency focus.*
+*Figure 19. ISIC 2016: TransUNet-Lite-Tiny maintains reasonable segmentation quality with slightly softer contours, reflecting its aggressive efficiency focus.*
 
 
 ---
 
-### 12.2 BUSI — Qualitative Grids
+### 14.2 BUSI — Qualitative Grids
 
-<!-- Replace the filenames below with your actual BUSI grid images -->
-
-<h3 align="center">BUSI — UNETR</h3>
+<h4 align="center">BUSI — UNETR</h4>
 
 ![BUSI — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_test_grid_4panels_12.png)  
-*Figure 18. BUSI: UNETR captures major lesions but often underestimates fuzzy, low-contrast margins, illustrating the difficulty of this ultrasound dataset.*
+*Figure 20. BUSI: UNETR captures major lesions but often underestimates fuzzy, low-contrast margins, illustrating the difficulty of this ultrasound dataset.*
 
 ---
 
-<h3 align="center">BUSI — SETR</h3>
+<h4 align="center">BUSI — SETR</h4>
 
 ![BUSI — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_test_grid_4panels_12.png)  
-*Figure 19. BUSI: SETR yields smooth and stable masks but can over-simplify irregular tumor shapes in highly textured tissue.*
+*Figure 21. BUSI: SETR yields smooth and stable masks but can over-simplify irregular tumor shapes in highly textured tissue.*
 
 ---
 
-<h3 align="center">BUSI — TransUNet-Baseline</h3>
+<h4 align="center">BUSI — TransUNet-Baseline</h4>
 
 ![BUSI — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_test_grid_4panels_12.png)  
-*Figure 20. BUSI: TransUNet baseline provides the sharpest and most reliable boundaries on complex lesions, at the cost of much higher computation.*
+*Figure 22. BUSI: TransUNet baseline provides the sharpest and most reliable boundaries on complex lesions, at the cost of much higher computation.*
 
 ---
 
-<h3 align="center">BUSI — TransUNet-Lite-Base</h3>
+<h4 align="center">BUSI — TransUNet-Lite-Base</h4>
 
 ![BUSI — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_test_grid_4panels_12.png)  
-*Figure 21. BUSI: TransUNet-Lite-Base maintains strong lesion coverage and boundary quality close to the baseline while being substantially lighter—robust despite BUSI’s challenging variability.*
+*Figure 23. BUSI: TransUNet-Lite-Base maintains strong lesion coverage and boundary quality close to the baseline while being substantially lighter—robust despite BUSI’s challenging variability.*
 
 ---
 
-<h3 align="center">BUSI — TransUNet-Lite-Tiny</h3>
+<h4 align="center">BUSI — TransUNet-Lite-Tiny</h4>
 
 ![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_test_grid_4panels_12.png
 )  
-*Figure 22. BUSI: TransUNet-Lite-Tiny remains usable under tight compute budgets; some undersegmentation and softer contours appear, which is expected given the dataset’s difficulty and the model’s aggressive compression.*
+*Figure 24. BUSI: TransUNet-Lite-Tiny remains usable under tight compute budgets; some undersegmentation and softer contours appear, which is expected given the dataset’s difficulty and the model’s aggressive compression.*
 
 ---
 
-## 13. 🧩 Uncertainty via Test-Time Augmentation (TTA)
+## 15. 🧩 Uncertainty via Test-Time Augmentation (TTA)
 
 We estimate how confident each model is by running the same test image multiple times with tiny, safe changes (e.g., flips) and measuring how much the prediction varies.  
 - **Low uncertainty** → predictions stay similar across runs.  
@@ -742,7 +742,7 @@ We estimate how confident each model is by running the same test image multiple 
 
 ---
 
-### 13.1 🧠 Objective
+### 15.1 🧠 Objective
 We applied **Test-Time Augmentation (TTA)** to quantify the **model uncertainty** across multiple segmentation models on **ISIC-2016** and **BUSI** datasets.  
 TTA helps visualize how consistent a model’s predictions are under small perturbations (flips, rotations, etc.) — producing:
 - **Mean Probability Maps** → averaged predictions across augmentations (model consensus)  
@@ -750,7 +750,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.2 ⚙️ Method Summary
+### 15.2 ⚙️ Method Summary
 
 | Step | Description |
 |:--|:--|
@@ -761,7 +761,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.3 🔍 Why Include Uncertainty?
+### 15.3 🔍 Why Include Uncertainty?
 
 - Goes beyond a single accuracy number to expose **model confidence**.  
 - Highlights **risky regions** (e.g., fuzzy BUSI lesion edges) that deserve human review.  
@@ -769,7 +769,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.4 ⚙️ How We Did It in This Research
+### 15.4 ⚙️ How We Did It in This Research
 
 **TTA set:**  
 `identity`, `horizontal flip`, `vertical flip`, and `both (HV flip)`
@@ -780,14 +780,14 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.5 🎨 Visuals
+### 15.5 🎨 Visuals
 
 - **Prediction overlay:** Thresholded mean probability mask on the input image  
 - **Uncertainty overlay:** Variance heatmap on the input image  
 
 ---
 
-### 13.6 🧠 How to Read Our Figures
+### 15.6 🧠 How to Read Our Figures
 
 | Color | Meaning |
 |--------|----------|
@@ -797,7 +797,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.7 📊 Typical Patterns We Observe
+### 15.7 📊 Typical Patterns We Observe
 
 - **Edges & fine structures:** Higher uncertainty (boundary sensitivity)  
 - **Clear interiors:** Lower uncertainty  
@@ -805,7 +805,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.9 🩻 Takeaways
+### 15.8 🩻 Takeaways
 
 - ✅ **Low uncertainty + good overlap** → reliable predictions  
 - ⚠️ **High uncertainty near boundaries** → flag for review or apply post-processing (e.g., CRF/smoothing) or calibration (e.g., temperature scaling)  
@@ -813,7 +813,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.10 🧪 Uncertainty on ISIC 2016
+### 15.9 🧪 Uncertainty on ISIC 2016
 ---
 
 <h4 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h4>
@@ -826,7 +826,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_uncertainty_id0.png) |
 
-*Figure 23: Visualization of sample ID 0 from ISIC 2016 using UNETR. The predicted lesion mask (green) shows accurate coverage of the lesion region with mild over-smoothing at the edges. The uncertainty heatmap reveals elevated variance along lesion borders, typical of dermoscopic patterns with texture blending.*
+*Figure 25: Visualization of sample ID 0 from ISIC 2016 using UNETR. The predicted lesion mask (green) shows accurate coverage of the lesion region with mild over-smoothing at the edges. The uncertainty heatmap reveals elevated variance along lesion borders, typical of dermoscopic patterns with texture blending.*
 
 ---
 
@@ -836,7 +836,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/unetr/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_TTA_uncertainty_id1.png) |
 
-*Figure 24: Visualization of sample ID 1 from ISIC 2016 using UNETR. The prediction closely aligns with the ground truth, showing strong central confidence. The uncertainty map highlights thin high-variance bands near the lesion edges, indicating sensitivity to fine boundary details but overall stable segmentation.*
+*Figure 26: Visualization of sample ID 1 from ISIC 2016 using UNETR. The prediction closely aligns with the ground truth, showing strong central confidence. The uncertainty map highlights thin high-variance bands near the lesion edges, indicating sensitivity to fine boundary details but overall stable segmentation.*
 
 ---
 
@@ -850,7 +850,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/setr/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/setr/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_TTA_uncertainty_id0.png) |
 
-*Figure 26: SETR on ISIC (ID 0). The TTA-averaged mask captures the lesion core with smooth contours; uncertainty concentrates along the outer rim—stronger on the right/lower boundary—indicating edge ambiguity where texture blends into skin.*
+*Figure 27: SETR on ISIC (ID 0). The TTA-averaged mask captures the lesion core with smooth contours; uncertainty concentrates along the outer rim—stronger on the right/lower boundary—indicating edge ambiguity where texture blends into skin.*
 
 ---
 
@@ -860,7 +860,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/setr/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/setr/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_TTA_uncertainty_id1.png) |
 
-*Figure 27: SETR on ISIC (ID 1). Mean-prob overlay closely follows the lesion shape; a thin uncertainty ring appears around the boundary—most visible on the lower arc—while the interior remains confidently segmented.*
+*Figure 28: SETR on ISIC (ID 1). Mean-prob overlay closely follows the lesion shape; a thin uncertainty ring appears around the boundary—most visible on the lower arc—while the interior remains confidently segmented.*
 
 ---
 
@@ -874,7 +874,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_uncertainty_id0.png) |
 
-*Figure 28: TransUNet-Baseline on ISIC (ID 0). The TTA-averaged prediction effectively delineates the lesion region with strong consistency. The uncertainty map reveals a clear outline of higher variance along lesion borders, especially at the right edge, reflecting expected ambiguity from dermoscopic shadowing and soft boundary transitions.*
+*Figure 29: TransUNet-Baseline on ISIC (ID 0). The TTA-averaged prediction effectively delineates the lesion region with strong consistency. The uncertainty map reveals a clear outline of higher variance along lesion borders, especially at the right edge, reflecting expected ambiguity from dermoscopic shadowing and soft boundary transitions.*
 
 ---
 
@@ -884,7 +884,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/baseline/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_TTA_uncertainty_id1.png) |
 
-*Figure 29: TransUNet-Baseline on ISIC (ID 1). The lesion is compact and sharply defined in the mean-probability overlay, with minimal noise around the periphery. The uncertainty map shows small bands of moderate variance near the bottom edge, indicating localized sensitivity but overall confident segmentation performance.*
+*Figure 30: TransUNet-Baseline on ISIC (ID 1). The lesion is compact and sharply defined in the mean-probability overlay, with minimal noise around the periphery. The uncertainty map shows small bands of moderate variance near the bottom edge, indicating localized sensitivity but overall confident segmentation performance.*
 
 ---
 
@@ -898,7 +898,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_uncertainty_id0.png) |
 
-*Figure 30: TransUNet-Lite-Base on ISIC (ID 0). The averaged TTA mask captures the lesion comprehensively, preserving inner texture while slightly overextending at smooth edges. The uncertainty map displays higher variance at boundary regions, particularly near top-right and lower contours, suggesting mild edge sensitivity due to fine contrast transitions.*
+*Figure 31: TransUNet-Lite-Base on ISIC (ID 0). The averaged TTA mask captures the lesion comprehensively, preserving inner texture while slightly overextending at smooth edges. The uncertainty map displays higher variance at boundary regions, particularly near top-right and lower contours, suggesting mild edge sensitivity due to fine contrast transitions.*
 
 ---
 
@@ -908,7 +908,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-base/TransUNet_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_TTA_uncertainty_id1.png) |
 
-*Figure 31: TransUNet-Lite-Base on ISIC (ID 1). The mean-probability overlay demonstrates precise lesion capture with high spatial consistency. The uncertainty heatmap highlights narrow bands of elevated variance around the lesion edge—most notable on the left rim—indicating localized ambiguity, while the interior remains confidently segmented.*
+*Figure 32: TransUNet-Lite-Base on ISIC (ID 1). The mean-probability overlay demonstrates precise lesion capture with high spatial consistency. The uncertainty heatmap highlights narrow bands of elevated variance around the lesion edge—most notable on the left rim—indicating localized ambiguity, while the interior remains confidently segmented.*
 
 ---
 
@@ -922,7 +922,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_uncertainty_id0.png) |
 
-*Figure 32: TransUNet-Lite-Tiny on ISIC (ID 0). The predicted lesion area appears slightly overextended yet maintains overall lesion coverage. The uncertainty map reveals strong edge variance around the lesion contour—particularly on the top-right and bottom edges—indicating localized confidence drop typical of smaller-capacity models facing texture complexity.*
+*Figure 33: TransUNet-Lite-Tiny on ISIC (ID 0). The predicted lesion area appears slightly overextended yet maintains overall lesion coverage. The uncertainty map reveals strong edge variance around the lesion contour—particularly on the top-right and bottom edges—indicating localized confidence drop typical of smaller-capacity models facing texture complexity.*
 
 ---
 
@@ -932,11 +932,12 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/isic/lite-tiny/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_TTA_uncertainty_id1.png) |
 
-*Figure 33: TransUNet-Lite-Tiny on ISIC (ID 1). The TTA-averaged overlay aligns closely with the lesion center, showing compact segmentation. The uncertainty map displays a distinct thin halo of moderate uncertainty—most prominent on the left boundary—signifying subtle disagreement across TTA samples but overall confident performance.*
+*Figure 34: TransUNet-Lite-Tiny on ISIC (ID 1). The TTA-averaged overlay aligns closely with the lesion center, showing compact segmentation. The uncertainty map displays a distinct thin halo of moderate uncertainty—most prominent on the left boundary—signifying subtle disagreement across TTA samples but overall confident performance.*
 
 ---
 
-### 13.11 🩺 Uncertainty on BUSI (Ultrasound)
+### 15.10 🩺 Uncertainty on BUSI (Ultrasound)
+
 ---
 
 <h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h4>
@@ -949,7 +950,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_uncertainty_id0.png) |
 
-*Figure 34: UNETR on BUSI (ID 0). The model produces a wide and well-defined lesion mask, capturing irregular tumor morphology effectively. Uncertainty is concentrated around the lesion periphery, especially in low-contrast zones, reflecting the model’s sensitivity to boundary noise and ultrasound artifacts.*
+*Figure 35: UNETR on BUSI (ID 0). The model produces a wide and well-defined lesion mask, capturing irregular tumor morphology effectively. Uncertainty is concentrated around the lesion periphery, especially in low-contrast zones, reflecting the model’s sensitivity to boundary noise and ultrasound artifacts.*
 
 ---
 
@@ -959,7 +960,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/unetr/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_TTA_uncertainty_id1.png) |
 
-*Figure 35: UNETR on BUSI (ID 1). The mean-probability overlay demonstrates strong lesion localization with limited false positives. The uncertainty map shows elevated variance in posterior regions (bottom-right zone), suggesting difficulty in discriminating lesion borders due to speckle noise and shadow effects typical of BUSI scans.*
+*Figure 36: UNETR on BUSI (ID 1). The mean-probability overlay demonstrates strong lesion localization with limited false positives. The uncertainty map shows elevated variance in posterior regions (bottom-right zone), suggesting difficulty in discriminating lesion borders due to speckle noise and shadow effects typical of BUSI scans.*
 
 ---
 
@@ -973,7 +974,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_uncertainty_id0.png) |
 
-*Figure 36: SETR on BUSI (ID 0). The predicted segmentation captures the main lesion mass but slightly merges with nearby structures. The uncertainty heatmap shows diffuse variance around the lesion and background, indicating moderate confidence due to tissue texture variability and speckle interference.*
+*Figure 37: SETR on BUSI (ID 0). The predicted segmentation captures the main lesion mass but slightly merges with nearby structures. The uncertainty heatmap shows diffuse variance around the lesion and background, indicating moderate confidence due to tissue texture variability and speckle interference.*
 
 ---
 
@@ -983,7 +984,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/setr/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_TTA_uncertainty_id1.png) |
 
-*Figure 37: SETR on BUSI (ID 1). The overlay shows clean lesion localization with consistent mask confidence across the tumor core. The uncertainty map highlights elevated variance below the lesion region—likely due to shadowing artifacts—while the lesion boundary remains relatively stable, reflecting the transformer’s contextual robustness.*
+*Figure 38: SETR on BUSI (ID 1). The overlay shows clean lesion localization with consistent mask confidence across the tumor core. The uncertainty map highlights elevated variance below the lesion region—likely due to shadowing artifacts—while the lesion boundary remains relatively stable, reflecting the transformer’s contextual robustness.*
 
 ---
 
@@ -997,7 +998,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_uncertainty_id0.png) |
 
-*Figure 38: TransUNet Baseline on BUSI (ID 0). The model fails to clearly delineate lesion boundaries, indicating an uncertain prediction in low-contrast regions. The uncertainty heatmap exhibits faint localized variance near the lower middle zone, revealing difficulty in differentiating small or indistinct structures in homogeneous tissue.*
+*Figure 39: TransUNet Baseline on BUSI (ID 0). The model fails to clearly delineate lesion boundaries, indicating an uncertain prediction in low-contrast regions. The uncertainty heatmap exhibits faint localized variance near the lower middle zone, revealing difficulty in differentiating small or indistinct structures in homogeneous tissue.*
 
 ---
 
@@ -1007,7 +1008,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/baseline/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_TTA_uncertainty_id1.png) |
 
-*Figure 39: TransUNet Baseline on BUSI (ID 1). The lesion prediction is compact and well-centered, with strong boundary consistency. However, the uncertainty map reveals high variance near the cystic border—likely due to reflection artifacts and the distinct fluid-tissue intensity gap—suggesting some sensitivity to boundary contrast variations.*
+*Figure 40: TransUNet Baseline on BUSI (ID 1). The lesion prediction is compact and well-centered, with strong boundary consistency. However, the uncertainty map reveals high variance near the cystic border—likely due to reflection artifacts and the distinct fluid-tissue intensity gap—suggesting some sensitivity to boundary contrast variations.*
 
 ---
 
@@ -1021,7 +1022,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_uncertainty_id0.png) |
 
-*Figure 40: TransUNet-Lite (Base) on BUSI (ID 0). The model detects small scattered regions, indicating partial recognition of lesion-like textures but with limited spatial coherence. The uncertainty map shows low but distributed variance, implying the model is unsure about weak lesion boundaries under low-contrast ultrasound patterns.*
+*Figure 41: TransUNet-Lite (Base) on BUSI (ID 0). The model detects small scattered regions, indicating partial recognition of lesion-like textures but with limited spatial coherence. The uncertainty map shows low but distributed variance, implying the model is unsure about weak lesion boundaries under low-contrast ultrasound patterns.*
 
 ---
 
@@ -1031,7 +1032,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-base/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_TTA_uncertainty_id1.png) |
 
-*Figure 41: TransUNet-Lite (Base) on BUSI (ID 1). The segmentation covers the main lesion with clear shape boundaries, demonstrating robust center confidence. The uncertainty heatmap displays focused high-variance regions near the posterior edge, which aligns with acoustic shadowing and attenuation artifacts typical in ultrasound imaging.*
+*Figure 42: TransUNet-Lite (Base) on BUSI (ID 1). The segmentation covers the main lesion with clear shape boundaries, demonstrating robust center confidence. The uncertainty heatmap displays focused high-variance regions near the posterior edge, which aligns with acoustic shadowing and attenuation artifacts typical in ultrasound imaging.*
 
 ---
 
@@ -1045,7 +1046,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_pred_id0.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_uncertainty_id0.png) |
 
-*Figure 42: TransUNet-Lite (Tiny) on BUSI (ID 0). The prediction captures small isolated lesion-like regions, though the structure remains fragmented. The uncertainty map reveals high localized variance within the bright lesion area, suggesting instability in boundary recognition due to speckle noise and reduced model capacity.*
+*Figure 43: TransUNet-Lite (Tiny) on BUSI (ID 0). The prediction captures small isolated lesion-like regions, though the structure remains fragmented. The uncertainty map reveals high localized variance within the bright lesion area, suggesting instability in boundary recognition due to speckle noise and reduced model capacity.*
 
 ---
 
@@ -1055,11 +1056,11 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 |:-------------------------:|:---------------:|
 | ![Mean Prob](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_pred_id1.png) | ![Uncertainty](https://github.com/HussamUmer/transunet-lite/blob/main/uncertainty/busi/lite-tiny/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_TTA_uncertainty_id1.png) |
 
-*Figure 43: TransUNet-Lite (Tiny) on BUSI (ID 1). The lesion segmentation is compact and structurally consistent, showing strong detection of the cystic mass. The uncertainty map highlights a thin uncertainty band around the cyst edge, indicating the model’s cautious estimation near strong intensity gradients while remaining confident within the lesion core.*
+*Figure 44: TransUNet-Lite (Tiny) on BUSI (ID 1). The lesion segmentation is compact and structurally consistent, showing strong detection of the cystic mass. The uncertainty map highlights a thin uncertainty band around the cyst edge, indicating the model’s cautious estimation near strong intensity gradients while remaining confident within the lesion core.*
 
 ---
 
-### 13.12 🩺 ISIC-2016 (Dermoscopic Lesions)
+### 15.11 🩺 ISIC-2016 (Dermoscopic Lesions)
 
 | Model | Observed Pattern | Confidence Behavior |
 |:--|:--|:--|
@@ -1074,7 +1075,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.13 🩻 BUSI (Breast Ultrasound)
+### 15.12 🩻 BUSI (Breast Ultrasound)
 
 | Model | Observed Pattern | Confidence Behavior |
 |:--|:--|:--|
@@ -1088,7 +1089,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.14 📊 Cross-Domain Insights
+### 15.13 📊 Cross-Domain Insights
 
 | Aspect | ISIC-2016 | BUSI |
 |:--|:--|:--|
@@ -1099,7 +1100,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.15 🧭 Key Takeaways
+### 15.14 🧭 Key Takeaways
 
 - **TransUNet-Lite-Base** shows the **most stable TTA consistency** and **anatomically meaningful uncertainty localization**.  
 - **TransUNet-Lite-Tiny** achieves compact, conservative uncertainty — balancing reliability with efficiency.  
@@ -1108,13 +1109,13 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-### 13.16 ✅ In Summary
+### 15.15 ✅ In Summary
 > The proposed **TransUNet-Lite** models not only preserve segmentation accuracy but also deliver **clinically interpretable uncertainty** under Test-Time Augmentation.  
 > Their predictions remain consistent across augmentations, proving reliability for **real-world, uncertainty-aware medical AI deployment**.
 
 ---
 
-## 14 🔗 Full Training & Testing Notebooks (Open in Colab)
+## 16 🔗 Full Training & Testing Notebooks (Open in Colab)
 
 | Dataset     | Model                             | Open in Colab |
 |------------|-----------------------------------|---------------|
@@ -1129,7 +1130,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-## 15 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
+## 17 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
 
 | Dataset     | Model                               | Open in Colab |
 |------------|-------------------------------------|---------------|
@@ -1144,7 +1145,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-## 16. Run Artifacts & Reproducibility 📂
+## 18. 🗂️ Run Artifacts & Reproducibility 
 
 All core experiments (GPU-based training + test-time evaluation) are logged and stored in **per-model, per-dataset** artifact folders.
 
@@ -1160,19 +1161,7 @@ These artifacts provide a clear evidence trail for all reported numbers.
 
 ---
 
-### 16.1 BUSI (Breast Ultrasound, Binary Segmentation)
-
-| Model                    | Artifacts Folder |
-|--------------------------|------------------|
-| UNETR (BUSI)             | [Open artifacts](https://drive.google.com/drive/folders/1zVgPPjfq-ZhXH7XrskTKiywBXqEW7bZz?usp=sharing) |
-| SETR (BUSI)              | [Open artifacts](https://drive.google.com/drive/folders/1Ak5-k7w0XMeng5U-065GrRAYAeKd3QwT?usp=sharing) |
-| TransUNet-Baseline (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/1DsnrcaqdPIiooCk98q1SL_f5Ds9Dr_wQ?usp=sharing) |
-| TransUNet-Lite-Base (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/17m-Dq0OpYTOBGFnnVjEM2Cgvow8xQf78?usp=sharing) |
-| TransUNet-Lite-Tiny (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/15zNYx33tJPbXE2d_07vDHxFin18TKKGq?usp=sharing) |
-
----
-
-### 16.2 ISIC 2016 (Dermoscopic Lesions, Binary Segmentation)
+### 18.1 🗒️ ISIC 2016 (Dermoscopic Lesions, Binary Segmentation)
 
 | Model                         | Artifacts Folder |
 |-------------------------------|------------------|
@@ -1182,15 +1171,25 @@ These artifacts provide a clear evidence trail for all reported numbers.
 | TransUNet-Lite-Base (ISIC 2016) | [Open artifacts](https://drive.google.com/drive/folders/1pQtKO20PlK00iRrxdMKPAIfTZHLWVpiW?usp=sharing) |
 | TransUNet-Lite-Tiny (ISIC 2016) | [Open artifacts](https://drive.google.com/drive/folders/1d2I6q7hnKjoMvjdijvQlgc6e42aqI7dq?usp=sharing) |
 
+### 18.2 🗒️ BUSI (Breast Ultrasound, Binary Segmentation)
+
+| Model                    | Artifacts Folder |
+|--------------------------|------------------|
+| UNETR (BUSI)             | [Open artifacts](https://drive.google.com/drive/folders/1zVgPPjfq-ZhXH7XrskTKiywBXqEW7bZz?usp=sharing) |
+| SETR (BUSI)              | [Open artifacts](https://drive.google.com/drive/folders/1Ak5-k7w0XMeng5U-065GrRAYAeKd3QwT?usp=sharing) |
+| TransUNet-Baseline (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/1DsnrcaqdPIiooCk98q1SL_f5Ds9Dr_wQ?usp=sharing) |
+| TransUNet-Lite-Base (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/17m-Dq0OpYTOBGFnnVjEM2Cgvow8xQf78?usp=sharing) |
+| TransUNet-Lite-Tiny (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/15zNYx33tJPbXE2d_07vDHxFin18TKKGq?usp=sharing) |
+
 > *These shared directories expose only the experiment artifacts (logs, configs, metrics, qualitative grids) required for verification, without exposing unrelated private Drive content.*
 
 ---
 
-## 17. Future Work 🔭
+## 19. 🔭 Future Work
 
 This repository is **Phase 1** of the TransUNet-Lite story: we built a clean, reproducible benchmark and showed that lightweight hybrid designs can approach or rival heavy baselines under consistent conditions. The next steps will deepen the analysis, broaden the evidence, and harden the models for real-world deployment.
 
-### 16.1. Component-wise Ablation & Design Justification
+### 19.1. 📚 Component-wise Ablation & Design Justification
 
 We introduced several coordinated changes at once (gated skips, depthwise decoder, boundary head, lightweight backbones). The next stage will **quantify exactly what each part buys us**:
 
@@ -1221,7 +1220,7 @@ This ablation suite will turn the current design from “intuitively good” to 
 
 ---
 
-### 17.2. Broader Dataset & Modality Coverage
+### 19.2. 🧐 Broader Dataset & Modality Coverage
 
 So far, we evaluated on:
 
@@ -1244,7 +1243,7 @@ Goal: show whether the same architectural recipe (light backbone + gated skips +
 
 ---
 
-### 17.3. Efficiency & Deployment-Focused Extensions
+### 19.3. 🧮 Efficiency & Deployment-Focused Extensions
 
 We will push beyond single-GPU evaluation and explore **deployment-ready configurations**:
 
@@ -1265,7 +1264,7 @@ The aim is to provide **ready-to-use configurations** for real-time or resource-
 
 ---
 
-### 17.4. Uncertainty, Calibration & Reliability
+### 19.4. 🤖 Uncertainty, Calibration & Reliability
 
 We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
@@ -1281,7 +1280,7 @@ We already log **AUPRC, AUROC, and Expected Calibration Error**. Next steps:
 
 ---
 
-### 17.5. Stronger Baselines & Fairer Comparisons
+### 19.5. 🧾 Stronger Baselines & Fairer Comparisons
 
 We will integrate more **state-of-the-art baselines** into the same pipeline:
 
@@ -1300,7 +1299,7 @@ This will position TransUNet-Lite variants as part of a **rigorous, unified benc
 
 ---
 
-### 17.6. Public Release & Reproducibility Enhancements
+### 19.6. 🖊️ Public Release & Reproducibility Enhancements
 
 Planned improvements to make this ecosystem maximally useful:
 
@@ -1317,7 +1316,7 @@ Planned improvements to make this ecosystem maximally useful:
 
 ---
 
-### 17.7. Follow-up Paper: Dedicated Ablation & Robustness Study
+### 19.7. 🀄 Follow-up Paper: Dedicated Ablation & Robustness Study
 
 Finally, the current work naturally leads to a **second, focused paper**:
 
@@ -1330,10 +1329,9 @@ Finally, the current work naturally leads to a **second, focused paper**:
 
 This staged approach keeps the current study **clean, credible, and publishable**, while leaving room for a deeper theoretical and empirical exploration in a dedicated follow-up.
 
-
 ---
 
-## Citation
+## 20. 📑 Citation
 
 A formal BibTeX entry will be added once the corresponding manuscript is submitted.
 In the meantime, feel free to reference this repository as:
@@ -1343,7 +1341,7 @@ In the meantime, feel free to reference this repository as:
 
 ---
 
-## 18. Objectives of This Repository
+## 21. ✳️ Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
   - TransUNet baseline
@@ -1358,36 +1356,7 @@ In the meantime, feel free to reference this repository as:
 
 ---
 
-## 19. Reproducibility & Assets
-
-This repo includes:
-
-- 📂 **Configs:** YAML/JSON with all hyperparameters and seeds.
-- 📝 **Logs:** Per-epoch CSV logs for every run.
-- 🧠 **Checkpoints:** Best and last weights for each model/dataset.
-- 📊 **Figures:** 
-  - Loss / Dice / IoU curves,
-  - PR & ROC curves,
-  - Threshold sweeps,
-  - CPU/GPU latency & memory plots.
-- 🖼️ **Qualitative 12-grid panels:** Input, GT overlay, prediction overlay, prediction boundary for each model.
-
----
-
-## 20. How to Use (High-Level)
-
-1. **Pick dataset**: BUSI or ISIC 2016 NPZ (MedSegBench format).
-2. **Pick model**: `TransUNet`, `TransUNet-Lite-Base`, `TransUNet-Lite-Tiny`, `UNETR`, `SETR`.
-3. **Run training notebook**:
-   - Only change **Step 6 (Model Definition)**.
-4. **Run evaluation notebook**:
-   - Loads best checkpoint; produces tables & figures identical to those above.
-5. **Run CPU-only notebook**:
-   - Evaluates 50 fixed test images for median/p90/p95 latency, throughput, RAM.
-
----
-
-## 21. Closing Note
+## 22. 🌄 Closing Note
 
 This project is built to be:
 
