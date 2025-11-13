@@ -1,3 +1,48 @@
+<p align="center">
+  <!-- License -->
+  <a href="./LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square">
+  </a>
+  <!-- Data & Licenses (points to the dedicated markdown file) -->
+  <a href="./DATA_LICENSES.md">
+    <img alt="Data Licenses" src="https://img.shields.io/badge/Data-%F0%9F%93%9C%20Licenses-informational?style=flat-square">
+  </a>
+  <!-- Model Cards (points to Section 9) -->
+  <a href="#9-%EF%B8%8F-architectures-compared">
+    <img alt="Model Cards" src="https://img.shields.io/badge/Model%20Cards-Section%209-brightgreen?style=flat-square">
+  </a>
+  <!-- Python -->
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white&style=flat-square">
+  <!-- PyTorch -->
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.x-EE4C2C?logo=pytorch&logoColor=white&style=flat-square">
+  <!-- CUDA -->
+  <img alt="CUDA" src="https://img.shields.io/badge/CUDA-12.6-76B900?logo=nvidia&logoColor=white&style=flat-square">
+  <!-- timm -->
+  <img alt="timm" src="https://img.shields.io/badge/timm-1.x-4B8BBE?style=flat-square">
+  <!-- MONAI -->
+  <img alt="MONAI" src="https://img.shields.io/badge/MONAI-1.x-1E90FF?style=flat-square">
+  <!-- TorchMetrics -->
+  <img alt="TorchMetrics" src="https://img.shields.io/badge/TorchMetrics-1.x-2C3E50?style=flat-square">
+  <!-- NumPy -->
+  <img alt="NumPy" src="https://img.shields.io/badge/NumPy-2.x-013243?logo=numpy&logoColor=white&style=flat-square">
+  <!-- Pandas -->
+  <img alt="Pandas" src="https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas&logoColor=white&style=flat-square">
+  <!-- Albumentations -->
+  <img alt="Albumentations" src="https://img.shields.io/badge/Albumentations-2.x-FF6F00?style=flat-square">
+  <!-- OpenCV -->
+  <img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white&style=flat-square">
+  <!-- Matplotlib -->
+  <img alt="Matplotlib" src="https://img.shields.io/badge/Matplotlib-3.x-11557C?style=flat-square">
+  <!-- Colab -->
+  <a href="https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/TransUNET_BaseLine.ipynb">
+    <img alt="Open In Colab" src="https://img.shields.io/badge/Colab-Open%20Notebook-F9AB00?logo=googlecolab&logoColor=white&style=flat-square">
+  </a>
+  <!-- OS / Tested GPU -->
+  <img alt="OS" src="https://img.shields.io/badge/OS-Linux-informational?style=flat-square">
+  <img alt="GPU Tested" src="https://img.shields.io/badge/Tested%20GPU-Tesla%20T4-informational?style=flat-square">
+</p>
+
+
 # 🚀 TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use
 
 > **Status:** 📝 *Manuscript in preparation.*  
