@@ -117,6 +117,37 @@ single-dataset evaluations and sets up a solid foundation for future
 extensions to more MedSegBench modalities.
 
 ---
+
+## 4. 🧩 Training Pipeline Overview
+
+This section illustrates the complete flow of our segmentation pipeline —  
+from input images → preprocessing → augmentations → model training → evaluation → visualization → calibration.  
+Both BUSI (ultrasound) and ISIC 2016 (dermoscopy) follow the same unified structure.
+
+---
+
+### 📌 Figure 1 — BUSI Pipeline (Ultrasound)
+
+<p align="center">
+  <img src="Diagrams/busi.png" width="90%">
+</p>
+
+*Figure 1: End-to-end BUSI (ultrasound) segmentation pipeline.  
+Includes preprocessing (resize + ImageNet normalization), augmentation (geometric + photometric), model training, visualization, and postprocessing/calibration.*
+
+---
+
+### 📌 Figure 2 — ISIC 2016 Pipeline (Dermoscopy)
+
+<p align="center">
+  <img src="Diagrams/isic.png" width="90%">
+</p>
+
+*Figure 2: Full ISIC 2016 (dermoscopy) segmentation workflow.  
+The same unified MedSegBench-style pipeline is used for all compared models, ensuring strict reproducibility and apples-to-apples benchmarking.*
+
+---
+
 ## 4. 🧪 Environment & Reproducibility
 
 All experiments in this repository are designed to be strictly reproducible.  
