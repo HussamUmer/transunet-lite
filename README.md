@@ -307,42 +307,28 @@ Instead of building the downsampling path with convolutions, UNETR taps features
   - 1/16 → 1/8 → 1/4 → full **H×W**.  
 - A final **1×1 convolutional head** produces the segmentation logits at full resolution.
 
-**Key Characteristics**  
-
-- **Pure Transformer encoder** (no CNN in the encoder path).  
-- Skip information comes from **ViT token embeddings**, not CNN stages.  
-- **Strengths:** long-range context, good handling of structured textures, sharp global boundaries.  
-- **Weakness:** deeper ViT layers are **computationally heavy**, especially for high-resolution inputs.
-
 ---
 
 ### SETR — “Segmentation Transformer”
 
 **Authors & Reference**  
-- **Sixiao Zheng**, Jiachen Lu, Hengshuang Zhao, Xiatian Zhu, *et al.*  
-- *“Rethinking Semantic Segmentation from a Sequence-to-Sequence Perspective with Transformers,”* CVPR 2021.  
-- ➡ [https://arxiv.org/abs/2012.15840](https://arxiv.org/abs/2012.15840)
+> - **Sixiao Zheng**, Jiachen Lu, Hengshuang Zhao, Xiatian Zhu, *et al.*  
+> - *“Rethinking Semantic Segmentation from a Sequence-to-Sequence Perspective with Transformers,”* CVPR 2021.  
+> - ➡ [https://arxiv.org/abs/2012.15840](https://arxiv.org/abs/2012.15840)
 
 **Theoretical Summary (How SETR Works)**  
-SETR is one of the first large-scale **pure-Transformer** segmentation models.  
-It removes CNNs entirely from the encoder and uses a plain **ViT** to encode the image as a sequence of patch tokens.  
-Because ViT outputs a **1/16-resolution** representation, SETR reconstructs full-resolution predictions using a **Progressive UPsampling (PUP)** decoder built from simple Conv+Upsample blocks.
+> SETR is one of the first large-scale **pure-Transformer** segmentation models.  
+> It removes CNNs entirely from the encoder and uses a plain **ViT** to encode the image as a sequence of patch tokens.  
+> Because ViT outputs a **1/16-resolution** representation, SETR reconstructs full-resolution predictions using a **Progressive > UPsampling (PUP)** decoder built from simple Conv+Upsample blocks.
 
 **How We Implemented SETR-PUP**  
 
-- **Encoder:** pretrained **ViT-B/16** from `timm` (ImageNet pretraining).  
-- The ViT outputs token embeddings that we reshape into a spatial feature map of shape **(C, H/16, W/16)**.  
-- **Decoder:** we implement the **PUP variant**, following the original paper:  
-  - A stack of **ConvBNReLU** blocks with bilinear upsampling stages:  
-    - H/16 → H/8 → H/4 → H/2 → H.  
-- There are **no skip connections** from earlier layers, matching the original SETR design.
-
-**Key Characteristics**  
-
-- **Pure Transformer model**; no CNN encoder or skip pathways.  
-- Decoder is **simple but stable**, making it easy to integrate into our framework.  
-- **Strengths:** excellent **global context modeling**, strong performance on large, smooth, or structured regions.  
-- **Weakness:** boundary precision and fine-grained details can lag behind **hybrid architectures** such as TransUNet or UNETR.
+> - **Encoder:** pretrained **ViT-B/16** from `timm` (ImageNet pretraining).  
+> - The ViT outputs token embeddings that we reshape into a spatial feature map of shape **(C, H/16, W/16)**.  
+> - **Decoder:** we implement the **PUP variant**, following the original paper:  
+>   - A stack of **ConvBNReLU** blocks with bilinear upsampling stages:  
+>     - H/16 → H/8 → H/4 → H/2 → H.  
+> - There are **no skip connections** from earlier layers, matching the original SETR design.
 
 ---
 
@@ -379,13 +365,6 @@ This design became a template for many later Transformer-based segmentation mode
   - **UpBlock 2:** (512 ⊕ s2) → 256 channels @ H/8  
   - **UpBlock 3:** (256 ⊕ s1) → 128 channels @ H/4  
   - Final **bilinear upsample ×4** + Conv head → full-resolution logits.
-
-**Key Characteristics**  
-
-- **Hybrid design:** CNN for local detail + Transformer for global context.  
-- Often strong across both **clean dermoscopic** data (ISIC) and **noisy ultrasound** (BUSI).  
-- **Strengths:** good trade-off between localization and context; serves as a solid baseline.  
-- **Weakness:** heavier than lightweight variants (e.g., TransUNet-Lite), with higher memory and compute cost.
 
 **TransUNet-Lite-Base**  
 ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
