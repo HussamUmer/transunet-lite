@@ -7,7 +7,7 @@
   <a href="./DATA_LICENSES.md">
     <img alt="Data Licenses" src="https://img.shields.io/badge/Data-%F0%9F%93%9C%20Licenses-informational?style=flat-square">
   </a>
-  [![Cite](https://img.shields.io/badge/Citation-CFF-9cf?style=flat-square)](./CITATION.cff)
+
   <!-- Model Cards (points to Section 9) -->
   <a href="#lite-versions">
     <img alt="Model Cards" src="https://img.shields.io/badge/Model%20Cards-Section%209-brightgreen?style=flat-square">
@@ -50,7 +50,8 @@
 > **Code Availability:** Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally **withheld until paper submission**.  
 > **What’s Included Now:** This repo currently exposes the **baseline setups**, **evaluation pipeline**, and **comparison models**.  
 > **Post-Submission Plan:** Lite variants (**code + detailed diagrams**) will be released **after submission** for full reproducibility.  
-> **Model Cards:** Stub model cards for the Lite variants are included in **Section - 9** **[📐 Architectures Compared](#lite-versions)**.
+> **Model Cards:** Stub model cards for the Lite variants are included in **Section 9 📐** **[Architectures Compared](#lite-versions)**.
+
 
 ---
 
