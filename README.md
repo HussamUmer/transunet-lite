@@ -7,6 +7,7 @@
   <a href="./DATA_LICENSES.md">
     <img alt="Data Licenses" src="https://img.shields.io/badge/Data-%F0%9F%93%9C%20Licenses-informational?style=flat-square">
   </a>
+  [![Cite](https://img.shields.io/badge/Citation-CFF-9cf?style=flat-square)](./CITATION.cff)
   <!-- Model Cards (points to Section 9) -->
   <a href="#lite-versions">
     <img alt="Model Cards" src="https://img.shields.io/badge/Model%20Cards-Section%209-brightgreen?style=flat-square">
@@ -1472,7 +1473,7 @@ Use is intended for **academic/non-commercial** research unless you obtain expli
 @misc{ISIC2016Challenge,
   title        = {ISIC 2016: Skin Lesion Analysis Toward Melanoma Detection (Challenge at ISBI 2016)},
   howpublished = {\url{https://challenge.isic-archive.com/landing/2016/}},
-  note         = {Accessed: YYYY-MM-DD}
+  note         = {Accessed: 2025-11-14}
 }
 
 @article{AlDhabyani2020,
