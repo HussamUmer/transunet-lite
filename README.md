@@ -1490,7 +1490,7 @@ Use is intended for **academic/non-commercial** research unless you obtain expli
 
 ---
 
-## 21. 📚 References (Short)
+## 21. 📚 References 
 
 - Chen, J., et al. **TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation.** 2021. https://arxiv.org/abs/2102.04306
 - Hatamizadeh, A., et al. **UNETR: Transformers for 3D Medical Image Segmentation.** WACV 2022. https://arxiv.org/abs/2103.10504
