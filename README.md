@@ -353,6 +353,23 @@ All models are strong; **TransUNet-Baseline** and both **Lite** variants show **
 ![Figure 3: PR & ROC (AUPRC / AUROC)](https://github.com/HussamUmer/transunet-lite/raw/main/plots/Full_Test/newplot%20(3).png)  
 *Figure 3. Precision–Recall and ROC performance across models on both datasets. TransUNet variants maintain strong discrimination, with Lite-Base and Lite-Tiny staying competitive with heavier transformer baselines.*
 
+## 📈 ROC & PR Curves (TransUNet-Lite-Tiny Examples)
+
+### BUSI (Ultrasound)
+
+| ROC Curve | PR Curve |
+|:---------:|:--------:|
+| ![BUSI ROC](https://github.com/HussamUmer/transunet-lite/blob/main/plots/ROC_PR_Curves/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_ROC_curve.png) | ![BUSI PR](https://github.com/HussamUmer/transunet-lite/blob/main/plots/ROC_PR_Curves/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_PR_curve.png) |
+
+### ISIC 2016 (Dermoscopy)
+
+| ROC Curve | PR Curve |
+|:---------:|:--------:|
+| ![ISIC ROC](https://github.com/HussamUmer/transunet-lite/blob/main/plots/ROC_PR_Curves/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_ROC_curve.png) | ![ISIC PR](https://github.com/HussamUmer/transunet-lite/blob/main/plots/ROC_PR_Curves/TransUNet_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_PR_curve.png) |
+
+> Full per-model ROC & PR curves are available in **Section 16 — Run Artifacts & Reproducibility**, inside each model’s `figures/` folder.
+
+
 ---
 
 ### 9.3 Inference Latency on GPU (Lower is Better)
