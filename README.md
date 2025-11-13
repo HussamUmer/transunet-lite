@@ -96,7 +96,7 @@ full reproducibility.
 
 **Split statistics (MedSegBench configuration used in this repo):**
 
-| Dataset  | Modality    | Task                    | Train* | Val* | Test* | Resolution | Source            |
+| Dataset  | Modality    | Task                    | Train | Val | Test | Resolution | Source            |
 |---------|-------------|-------------------------|-------:|-----:|------:|-----------:|-------------------|
 | BUSI    | Ultrasound  | Lesion vs. background   |  452  |  64 | 131 | 256×256    | MedSegBench (NPZ) |
 
