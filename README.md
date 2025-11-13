@@ -8,8 +8,10 @@
 
 ## Abstract
 
-This repository presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound.  
-Lite-Base achieves near-baseline TransUNet performance while reducing parameters and peak GPU memory by ~3–4×, and Lite-Tiny delivers extreme efficiency with ~16× fewer parameters and ~9× lower VRAM, yet remains competitive across Dice/IoU, AUPRC, and AUROC. Beyond accuracy, we conduct a thorough evaluation of CPU-only latency, throughput, memory usage, and model behavior under Test-Time Augmentation (TTA). The resulting mean-probability  and uncertainty maps reveal that the Lite variants maintain stable, anatomically meaningful confidence profiles across both modalities.   
+This repository presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound. 
+
+Lite-Base achieves near-baseline TransUNet performance while reducing parameters and peak GPU memory by ~3–4×, and Lite-Tiny delivers extreme efficiency with ~16× fewer parameters and ~9× lower VRAM, yet remains competitive across Dice/IoU, AUPRC, and AUROC. Beyond accuracy, we conduct a thorough evaluation of CPU-only latency, throughput, memory usage, and model behavior under Test-Time Augmentation (TTA). The resulting mean-probability  and uncertainty maps reveal that the Lite variants maintain stable, anatomically meaningful confidence profiles across both modalities. 
+
 Overall, these results demonstrate that TransUNet-Lite offers a strong accuracy–efficiency–uncertainty trade-off, providing transformer-level segmentation performance while remaining lightweight enough for real-time, edge-based, or resource-constrained clinical deployments.
 
 ---
@@ -289,23 +291,23 @@ Below we describe each backbone used in this repository, how each model was impl
 ### UNETR — “U-Net with Transformer Encoder”
 
 **Authors & Reference**  
-- **Ali Hatamizadeh**, Dong Yang, Holger R. Roth, Daguang Xu  
-- *“UNETR: Transformers for 3D Medical Image Segmentation,”* WACV 2022.  
-- ➡ [https://arxiv.org/abs/2103.10504](https://arxiv.org/abs/2103.10504)
+> - **Ali Hatamizadeh**, Dong Yang, Holger R. Roth, Daguang Xu  
+> - *“UNETR: Transformers for 3D Medical Image Segmentation,”* WACV 2022.  
+> - ➡ [https://arxiv.org/abs/2103.10504](https://arxiv.org/abs/2103.10504)
 
 **Theoretical Summary (How UNETR Works)**  
-UNETR replaces the standard CNN encoder in U-Net with a pretrained **Vision Transformer (ViT-B/16)**.  
-Instead of building the downsampling path with convolutions, UNETR taps features from **multiple transformer layers**, using these token embeddings to construct a hierarchical representation. This creates a U-Net–style feature pyramid **without any convolutional encoder**.
+> UNETR replaces the standard CNN encoder in U-Net with a pretrained **Vision Transformer (ViT-B/16)**.  
+> Instead of building the downsampling path with convolutions, UNETR taps features from **multiple transformer layers**, using these token embeddings to construct a hierarchical representation. This creates a U-Net–style feature pyramid **without any convolutional encoder**.
 
 **How We Implemented It**  
 
-- We use **timm’s ViT-B/16** as the encoder/feature extractor.  
-- We register hooks on four transformer depths (≈ layers **3, 6, 9, 12**) and collect their token outputs.  
-- Each token sequence is reshaped into a spatial map at **1/16 resolution** and then passed through **1×1 convolutions** to form a multi-scale hierarchy:  
-  - 96 → 192 → 384 → 768 channels.  
-- A U-Net–style decoder merges these streams via **top-down UpBlocks**, gradually lifting resolution:  
-  - 1/16 → 1/8 → 1/4 → full **H×W**.  
-- A final **1×1 convolutional head** produces the segmentation logits at full resolution.
+> - We use **timm’s ViT-B/16** as the encoder/feature extractor.  
+> - We register hooks on four transformer depths (≈ layers **3, 6, 9, 12**) and collect their token outputs.  
+> - Each token sequence is reshaped into a spatial map at **1/16 resolution** and then passed through **1×1 convolutions** to form a multi-scale hierarchy:  
+>   - 96 → 192 → 384 → 768 channels.  
+> - A U-Net–style decoder merges these streams via **top-down UpBlocks**, gradually lifting resolution:  
+>  - 1/16 → 1/8 → 1/4 → full **H×W**.  
+> - A final **1×1 convolutional head** produces the segmentation logits at full resolution.
 
 ---
 
