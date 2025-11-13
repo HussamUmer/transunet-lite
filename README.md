@@ -6,6 +6,33 @@
 
 ---
 
+> ## **Abstract**
+> This repository presents **TransUNet-Lite**, a pair of lightweight transformer–CNN
+> hybrid models designed for efficient and reliable medical image segmentation.
+> We benchmark five architectures—UNETR, SETR, TransUNet (baseline), and our
+> proposed Lite-Base and Lite-Tiny variants—under a single, strictly controlled
+> MedSegBench-style pipeline across two heterogeneous datasets: **ISIC 2016
+> dermoscopy** and **BUSI breast ultrasound**.  
+>
+> Despite being significantly smaller (up to **16× fewer parameters** and **9× lower
+> peak VRAM**), the Lite models deliver competitive Dice/IoU performance while
+> providing **faster CPU/GPU inference**, **lower memory usage**, and **stronger
+> uncertainty calibration**.  
+>
+> Using Test-Time Augmentation (TTA), we visualize mean-probability predictions and
+> per-pixel variance to assess model confidence, showing that the Lite variants
+> produce **stable, anatomically meaningful uncertainty maps** across modalities.
+> All experiments are fully reproducible through standardized configs, unified
+> preprocessing/augmentation, consistent loss functions, and shared evaluation
+> metrics (Dice, IoU, AUPRC, AUROC, and ECE).  
+>
+> Overall, TransUNet-Lite offers a practical balance between **accuracy,
+> efficiency, and interpretability**, making it suitable for real-time or
+> resource-constrained clinical environments while maintaining research-grade
+> rigor and transparency.
+
+
+---
 ## 1. Overview
 
 This project introduces **TransUNet-Lite** variants that keep the global context of TransUNet-style hybrids while **aggressively reducing parameters, FLOPs, VRAM, and CPU/GPU latency**.
@@ -91,7 +118,7 @@ full reproducibility.
 
 | Dataset  | Modality    | Task                    | Train* | Val* | Test* | Resolution | Source            |
 |---------|-------------|-------------------------|-------:|-----:|------:|-----------:|-------------------|
-| BUSI    | Ultrasound  | Lesion vs. background   |  **as per MedSegBench NPZ**  |  **predefined** | **predefined** | 256×256    | MedSegBench (NPZ) |
+| BUSI    | Ultrasound  | Lesion vs. background   |  452  |  64 | 131 | 256×256    | MedSegBench (NPZ) |
 
 \*Exact BUSI split counts are taken **directly from the MedSegBench NPZ** used in
 our runs and recorded in the corresponding `*_ids.txt` files under `summary/`.
