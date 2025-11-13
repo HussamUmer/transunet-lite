@@ -108,7 +108,7 @@ We keep those splits fixed across all models to guarantee strict fairness.
 
 ---
 
-### 3.3 Why These Two?
+### 4.3 🗂️ Why These Two?
 
 Together, **ISIC 2016** and **BUSI** give us:
 
