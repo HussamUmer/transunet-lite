@@ -1387,6 +1387,9 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
+<!-- Put an explicit anchor above the section -->
+<a id="data-licenses"></a>
+
 ## 20. 📜 Data & Licenses
 
 A formal BibTeX entry will be added once the corresponding manuscript is submitted.
