@@ -126,7 +126,9 @@ Both BUSI (ultrasound) and ISIC 2016 (dermoscopy) follow the same unified struct
 
 ---
 
-### 📌 BUSI Pipeline (Ultrasound)
+<h4 align="center">📌 BUSI Pipeline (Ultrasound)</h4>
+
+---
 
 ![BUSI Pipeline](Diagrams/POWERPNT_yu5BmMHbsY.png)
 
@@ -135,7 +137,9 @@ Includes preprocessing (resize + ImageNet normalization), augmentation (geometri
 
 ---
 
-### 📌 ISIC 2016 Pipeline (Dermoscopy)
+<h4 align="center">📌 ISIC 2016 Pipeline (Dermoscopy)</h4>
+
+---
 
 ![ISIC Pipeline](Diagrams/POWERPNT_PUZ2tKdhG8.png)
 
@@ -710,7 +714,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 ### 13.10 🧪 Uncertainty on ISIC 2016
 ---
 
-<h4 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: UNETR — Dataset: ISIC 2016</h4>
 
 ---
 
@@ -734,7 +738,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: SETR — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: SETR — Dataset: ISIC 2016</h4>
 
 ---
 
@@ -758,7 +762,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: TransUNet-Baseline — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: TransUNet-Baseline — Dataset: ISIC 2016</h4>
 
 ---
 
@@ -782,7 +786,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite-Base — Dataset: ISIC 2016</h4>
 
 ---
 
@@ -806,7 +810,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: TransUNet-Lite-Tiny — Dataset: ISIC 2016</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite-Tiny — Dataset: ISIC 2016</h4>
 
 ---
 
@@ -833,7 +837,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 ### 13.11 🩺 Uncertainty on BUSI (Ultrasound)
 ---
 
-<h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: UNETR — Dataset: BUSI (Ultrasound)</h4>
 
 ---
 
@@ -857,7 +861,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: SETR — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: SETR — Dataset: BUSI (Ultrasound)</h4>
 
 ---
 
@@ -881,7 +885,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: TransUNet Baseline — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: TransUNet Baseline — Dataset: BUSI (Ultrasound)</h4>
 
 ---
 
@@ -905,7 +909,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: TransUNet-Lite (Base) — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite (Base) — Dataset: BUSI (Ultrasound)</h4>
 
 ---
 
@@ -929,7 +933,7 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ---
 
-<h4 align="center">🧠 Model: TransUNet-Lite (Tiny) — Dataset: BUSI (Ultrasound)</h3>
+<h4 align="center">🧠 Model: TransUNet-Lite (Tiny) — Dataset: BUSI (Ultrasound)</h4>
 
 ---
 
