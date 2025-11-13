@@ -374,6 +374,7 @@ Below we describe each backbone that we compared, how each model was implemented
 > DeiT-Tiny/16 backbone + same lite decoder design as Lite-Base, further reduced channels.
 
 All implemented in a way that **matches the spirit of the original papers** while fitting a **single plug-and-play evaluation pipeline**.
+Full architectural details for *TransUNet-Lite-Base* and *TransUNet-Lite-Tiny* will be released after the manuscript submission.
 
 ---
 
