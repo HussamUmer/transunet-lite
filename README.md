@@ -8,7 +8,7 @@
 
 ## Abstract
 
-This repository presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound. 
+This research presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound. 
 
 Lite-Base achieves near-baseline TransUNet performance while reducing parameters and peak GPU memory by ~3–4×, and Lite-Tiny delivers extreme efficiency with ~16× fewer parameters and ~9× lower VRAM, yet remains competitive across Dice/IoU, AUPRC, and AUROC. Beyond accuracy, we conduct a thorough evaluation of CPU-only latency, throughput, memory usage, and model behavior under Test-Time Augmentation (TTA). The resulting mean-probability  and uncertainty maps reveal that the Lite variants maintain stable, anatomically meaningful confidence profiles across both modalities. 
 
@@ -282,9 +282,8 @@ metrics:
 ---
 
 ## 7. Architectures Compared  
-*(with implementation notes and citations)*  
 
-Below we describe each backbone used in this repository, how each model was implemented in our unified framework, and the original papers/authors that introduced the architecture. The explanations focus on the theory and design, not the code.
+Below we describe each backbone that we compared, how each model was implemented in our unified framework, and the original papers/authors that introduced the architecture.
 
 ---
 
@@ -306,7 +305,7 @@ Below we describe each backbone used in this repository, how each model was impl
 > - Each token sequence is reshaped into a spatial map at **1/16 resolution** and then passed through **1×1 convolutions** to form a multi-scale hierarchy:  
 >   - 96 → 192 → 384 → 768 channels.  
 > - A U-Net–style decoder merges these streams via **top-down UpBlocks**, gradually lifting resolution:  
->  - 1/16 → 1/8 → 1/4 → full **H×W**.  
+>   - 1/16 → 1/8 → 1/4 → full **H×W**.  
 > - A final **1×1 convolutional head** produces the segmentation logits at full resolution.
 
 ---
@@ -337,42 +336,42 @@ Below we describe each backbone used in this repository, how each model was impl
 ### TransUNet (Baseline) — “Hybrid CNN + Transformer U-Net”
 
 **Authors & Reference**  
-- **Jieneng Chen**, Yongyi Lu, Qihang Yu, Xiangde Luo, *et al.*  
-- *“TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation,”* 2021 (MICCAI/MedIA).  
-- ➡ [https://arxiv.org/abs/2102.04306](https://arxiv.org/abs/2102.04306)
+> - **Jieneng Chen**, Yongyi Lu, Qihang Yu, Xiangde Luo, *et al.*  
+> - *“TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation,”* 2021 (MICCAI/MedIA).  
+> - ➡ [https://arxiv.org/abs/2102.04306](https://arxiv.org/abs/2102.04306)
 
 **Theoretical Summary (How TransUNet Works)**  
-TransUNet is a **hybrid CNN–Transformer** architecture that combines:  
+> TransUNet is a **hybrid CNN–Transformer** architecture that combines:  
 
-- A **ResNet-50** backbone to extract low- and mid-level spatial features at 1/4, 1/8, and 1/16 resolutions.  
-- A **ViT-B/16** that processes image tokens to model **global self-attention** and long-range dependencies.  
+> - A **ResNet-50** backbone to extract low- and mid-level spatial features at 1/4, 1/8, and 1/16 resolutions.  
+> - A **ViT-B/16** that processes image tokens to model **global self-attention** and long-range dependencies.  
 
-The ViT bottleneck output at 1/16 resolution is fused with the deepest ResNet skip.  
-A standard U-Net decoder then upsamples back to full resolution, **merging**:  
-- **Global features** from the ViT, and  
-- **Local spatial details** from the CNN skips.  
+> The ViT bottleneck output at 1/16 resolution is fused with the deepest ResNet skip.  
+> A standard U-Net decoder then upsamples back to full resolution, **merging**:  
+> - **Global features** from the ViT, and  
+> - **Local spatial details** from the CNN skips.  
 
-This design became a template for many later Transformer-based segmentation models.
+> This design became a template for many later Transformer-based segmentation models.
 
 **How We Implemented It**  
 
-- **CNN encoder:** ImageNet-pretrained **ResNet-50**, providing skip maps:  
-  - s1 @ **H/4**, 256 channels  
-  - s2 @ **H/8**, 512 channels  
-  - s3 @ **H/16**, 1024 channels  
-- **Transformer bottleneck:** `timm` **ViT-B/16**, producing a **768-channel** token map at H/16.  
-- We reshape the ViT tokens into a spatial map and fuse it with the deepest ResNet feature (s3).  
-- **Decoder (U-Net style):**  
-  - **UpBlock 1:** (ViT ⊕ s3) → 512 channels @ H/16  
-  - **UpBlock 2:** (512 ⊕ s2) → 256 channels @ H/8  
-  - **UpBlock 3:** (256 ⊕ s1) → 128 channels @ H/4  
-  - Final **bilinear upsample ×4** + Conv head → full-resolution logits.
+> - **CNN encoder:** ImageNet-pretrained **ResNet-50**, providing skip maps:  
+>   - s1 @ **H/4**, 256 channels  
+>   - s2 @ **H/8**, 512 channels  
+>   - s3 @ **H/16**, 1024 channels  
+> - **Transformer bottleneck:** `timm` **ViT-B/16**, producing a **768-channel** token map at H/16.  
+> - We reshape the ViT tokens into a spatial map and fuse it with the deepest ResNet feature (s3).  
+> - **Decoder (U-Net style):**  
+>   - **UpBlock 1:** (ViT ⊕ s3) → 512 channels @ H/16  
+>   - **UpBlock 2:** (512 ⊕ s2) → 256 channels @ H/8  
+>   - **UpBlock 3:** (256 ⊕ s1) → 128 channels @ H/4  
+>   - Final **bilinear upsample ×4** + Conv head → full-resolution logits.
 
 **TransUNet-Lite-Base**  
-ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
+> ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
 
 **TransUNet-Lite-Tiny**  
-DeiT-Tiny/16 backbone + same lite decoder design as Lite-Base, further reduced channels.
+> DeiT-Tiny/16 backbone + same lite decoder design as Lite-Base, further reduced channels.
 
 All implemented in a way that **matches the spirit of the original papers** while fitting a **single plug-and-play evaluation pipeline**.
 
