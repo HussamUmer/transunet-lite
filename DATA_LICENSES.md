@@ -1,5 +1,3 @@
-<a id="data-licenses"></a>
-
 # 📜 Data & Licenses
 
 This repo evaluates models using standardized NPZs from **MedSegBench**.  
