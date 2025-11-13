@@ -1445,7 +1445,17 @@ Use is intended for **academic/non-commercial** research unless you obtain expli
 
 ---
 
-## 21. ✳️ Objectives of This Repository
+## 21. 📚 References (Short)
+
+- Chen, J., et al. **TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation.** 2021. https://arxiv.org/abs/2102.04306
+- Hatamizadeh, A., et al. **UNETR: Transformers for 3D Medical Image Segmentation.** WACV 2022. https://arxiv.org/abs/2103.10504
+- Zheng, S., et al. **SETR: Rethinking Semantic Segmentation from a Sequence-to-Sequence Perspective with Transformers.** CVPR 2021. https://arxiv.org/abs/2012.15840
+- Kuş, Z., Aydin, M. **MedSegBench: A comprehensive benchmark for medical image segmentation in diverse data modalities.** *Scientific Data*, 2024. https://doi.org/10.1038/s41597-024-04159-2
+
+
+---
+
+## 22. ✳️ Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
   - TransUNet baseline
@@ -1460,7 +1470,7 @@ Use is intended for **academic/non-commercial** research unless you obtain expli
 
 ---
 
-## 22. 🌄 Closing Note
+## 23. 🌄 Closing Note
 
 This project is built to be:
 
