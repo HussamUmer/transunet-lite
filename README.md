@@ -152,7 +152,7 @@ Each **sub-dataset retains its original license** and usage terms:
 
 **Note:** Many datasets are **non-commercial** (e.g., CC BY-NC/CC BY-NC-SA). Please follow each dataset’s license.
 
-➡ **Full details, links, and citations:** see **[📜 Data & Licenses](#-data--licenses)** at the end.
+➡ **Full details, links, and citations:** see **[📜 Data & Licenses](#data--licenses)** at the end.
 
 ---
 
