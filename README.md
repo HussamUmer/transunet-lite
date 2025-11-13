@@ -1246,6 +1246,16 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
+## Citation
+
+A formal BibTeX entry will be added once the corresponding manuscript is submitted.
+In the meantime, feel free to reference this repository as:
+
+> H. Umer, "TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use," GitHub repository, 2025.  
+> https://github.com/HussamUmer/transunet-lite
+
+---
+
 ## 18. Objectives of This Repository
 
 - ✅ Provide a **transparent, research-grade** implementation of:
