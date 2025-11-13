@@ -126,22 +126,18 @@ Both BUSI (ultrasound) and ISIC 2016 (dermoscopy) follow the same unified struct
 
 ---
 
-### 📌 Figure 1 — BUSI Pipeline (Ultrasound)
+### 📌 BUSI Pipeline (Ultrasound)
 
-<p align="center">
-  <img src="Diagrams/busi.png" width="90%">
-</p>
+![BUSI Pipeline](Diagrams/busi.png)
 
 *Figure 1: End-to-end BUSI (ultrasound) segmentation pipeline.  
 Includes preprocessing (resize + ImageNet normalization), augmentation (geometric + photometric), model training, visualization, and postprocessing/calibration.*
 
 ---
 
-### 📌 Figure 2 — ISIC 2016 Pipeline (Dermoscopy)
+### 📌 ISIC 2016 Pipeline (Dermoscopy)
 
-<p align="center">
-  <img src="Diagrams/isic.png" width="90%">
-</p>
+![ISIC Pipeline](Diagrams/isic.png)
 
 *Figure 2: Full ISIC 2016 (dermoscopy) segmentation workflow.  
 The same unified MedSegBench-style pipeline is used for all compared models, ensuring strict reproducibility and apples-to-apples benchmarking.*
