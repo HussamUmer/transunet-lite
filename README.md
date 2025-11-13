@@ -7,22 +7,13 @@
 ---
 
 > **Abstract**  
-> This repository introduces **TransUNet-Lite**, a family of lightweight hybrid  
-> Transformer–CNN models for medical image segmentation. We evaluate UNETR, SETR,  
-> TransUNet (baseline), and our two proposed variants—**TransUNet-Lite-Base** and  
-> **TransUNet-Lite-Tiny**—within a unified, strictly controlled MedSegBench-style  
-> pipeline on two modalities: **ISIC 2016 dermoscopy** and **BUSI breast ultrasound**.  
->  
-> Lite-Base delivers near-baseline TransUNet performance while reducing parameters  
-> and peak GPU memory by **~3–4×**, whereas Lite-Tiny achieves extreme efficiency  
-> with **~16× fewer parameters** and **~9× lower VRAM**, yet maintains competitive  
-> Dice/IoU and strong AUPRC/AUROC.  
->  
-> We additionally report CPU-only latency, throughput, and memory usage, along with  
-> Test-Time Augmentation (TTA)–based uncertainty maps. These results show that the  
-> Lite variants provide a balanced **accuracy–efficiency–uncertainty** trade-off,  
-> making them suitable for real-time, edge, or resource-constrained clinical  
-> deployments.
+> This repository introduces TransUNet-Lite, a family of lightweight hybrid transformer–CNN models for medical image segmentation. We benchmark UNETR,
+> SETR, TransUNet (paper-style baseline), and two new variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—under a single, strictly controlled MedSegBench-style
+> pipeline on ISIC 2016 (dermoscopy) and BUSI (breast ultrasound). Lite-Base achieves near-baseline TransUNet performance while reducing parameters and
+> peak GPU memory by up to ~3–4×, and Lite-Tiny pushes efficiency further with ~16× fewer parameters and ~9× lower VRAM than the baseline, yet competitive
+> Dice/IoU and strong AUPRC/AUROC. We additionally report CPU-only latency, throughput, and memory usage, as well as TTA-based uncertainty maps, showing
+> that the Lite variants provide a favorable accuracy–efficiency–uncertainty trade-off suitable for edge and clinical deployments.
+
 
 
 ---
