@@ -6,30 +6,23 @@
 
 ---
 
-> ## **Abstract**
-> This repository presents **TransUNet-Lite**, a pair of lightweight transformer–CNN
-> hybrid models designed for efficient and reliable medical image segmentation.
-> We benchmark five architectures—UNETR, SETR, TransUNet (baseline), and our
-> proposed Lite-Base and Lite-Tiny variants—under a single, strictly controlled
-> MedSegBench-style pipeline across two heterogeneous datasets: **ISIC 2016
-> dermoscopy** and **BUSI breast ultrasound**.  
->
-> Despite being significantly smaller (up to **16× fewer parameters** and **9× lower
-> peak VRAM**), the Lite models deliver competitive Dice/IoU performance while
-> providing **faster CPU/GPU inference**, **lower memory usage**, and **stronger
-> uncertainty calibration**.  
->
-> Using Test-Time Augmentation (TTA), we visualize mean-probability predictions and
-> per-pixel variance to assess model confidence, showing that the Lite variants
-> produce **stable, anatomically meaningful uncertainty maps** across modalities.
-> All experiments are fully reproducible through standardized configs, unified
-> preprocessing/augmentation, consistent loss functions, and shared evaluation
-> metrics (Dice, IoU, AUPRC, AUROC, and ECE).  
->
-> Overall, TransUNet-Lite offers a practical balance between **accuracy,
-> efficiency, and interpretability**, making it suitable for real-time or
-> resource-constrained clinical environments while maintaining research-grade
-> rigor and transparency.
+> **Abstract**  
+> This repository introduces **TransUNet-Lite**, a family of lightweight hybrid  
+> Transformer–CNN models for medical image segmentation. We evaluate UNETR, SETR,  
+> TransUNet (baseline), and our two proposed variants—**TransUNet-Lite-Base** and  
+> **TransUNet-Lite-Tiny**—within a unified, strictly controlled MedSegBench-style  
+> pipeline on two modalities: **ISIC 2016 dermoscopy** and **BUSI breast ultrasound**.  
+>  
+> Lite-Base delivers near-baseline TransUNet performance while reducing parameters  
+> and peak GPU memory by **~3–4×**, whereas Lite-Tiny achieves extreme efficiency  
+> with **~16× fewer parameters** and **~9× lower VRAM**, yet maintains competitive  
+> Dice/IoU and strong AUPRC/AUROC.  
+>  
+> We additionally report CPU-only latency, throughput, and memory usage, along with  
+> Test-Time Augmentation (TTA)–based uncertainty maps. These results show that the  
+> Lite variants provide a balanced **accuracy–efficiency–uncertainty** trade-off,  
+> making them suitable for real-time, edge, or resource-constrained clinical  
+> deployments.
 
 
 ---
