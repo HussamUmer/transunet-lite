@@ -7,14 +7,18 @@
 ---
 
 > **Abstract**  
-> This repository introduces TransUNet-Lite, a family of lightweight hybrid transformer–CNN models for medical image segmentation. We benchmark UNETR,
-> SETR, TransUNet (paper-style baseline), and two new variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—under a single, strictly controlled MedSegBench-style
-> pipeline on ISIC 2016 (dermoscopy) and BUSI (breast ultrasound). Lite-Base achieves near-baseline TransUNet performance while reducing parameters and
-> peak GPU memory by up to ~3–4×, and Lite-Tiny pushes efficiency further with ~16× fewer parameters and ~9× lower VRAM than the baseline, yet competitive
-> Dice/IoU and strong AUPRC/AUROC. We additionally report CPU-only latency, throughput, and memory usage, as well as TTA-based uncertainty maps, showing
-> that the Lite variants provide a favorable accuracy–efficiency–uncertainty trade-off suitable for edge and clinical deployments.
-
-
+> This repository presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient
+> medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed
+> variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging
+> modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound.  
+> 
+> Lite-Base achieves near-baseline TransUNet performance while reducing parameters and peak GPU memory by ~3–4×, and Lite-Tiny delivers extreme
+> efficiency with ~16× fewer parameters and ~9× lower VRAM, yet remains competitive across Dice/IoU, AUPRC, and AUROC. Beyond accuracy, we conduct a
+> thorough evaluation of CPU-only latency, throughput, memory usage, and model behavior under Test-Time Augmentation (TTA). The resulting mean-probability
+> and uncertainty maps reveal that the Lite variants maintain stable, anatomically meaningful confidence profiles across both modalities.  
+> 
+> Overall, these results demonstrate that TransUNet-Lite offers a strong accuracy–efficiency–uncertainty trade-off, providing transformer-level
+> segmentation performance while remaining lightweight enough for real-time, edge-based, or resource-constrained clinical deployments.
 
 ---
 ## 1. Overview
