@@ -14,25 +14,25 @@
   <!-- Python -->
   <img alt="Python" src="https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white&style=flat-square">
   <!-- PyTorch -->
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.x-EE4C2C?logo=pytorch&logoColor=white&style=flat-square">
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.8-EE4C2C?logo=pytorch&logoColor=white&style=flat-square">
   <!-- CUDA -->
   <img alt="CUDA" src="https://img.shields.io/badge/CUDA-12.6-76B900?logo=nvidia&logoColor=white&style=flat-square">
   <!-- timm -->
-  <img alt="timm" src="https://img.shields.io/badge/timm-1.x-4B8BBE?style=flat-square">
+  <img alt="timm" src="https://img.shields.io/badge/timm-1.0.21-4B8BBE?style=flat-square">
   <!-- MONAI -->
-  <img alt="MONAI" src="https://img.shields.io/badge/MONAI-1.x-1E90FF?style=flat-square">
+  <img alt="MONAI" src="https://img.shields.io/badge/MONAI-1.5.1-1E90FF?style=flat-square">
   <!-- TorchMetrics -->
-  <img alt="TorchMetrics" src="https://img.shields.io/badge/TorchMetrics-1.x-2C3E50?style=flat-square">
+  <img alt="TorchMetrics" src="https://img.shields.io/badge/TorchMetrics-1.8.2-2C3E50?style=flat-square">
   <!-- NumPy -->
-  <img alt="NumPy" src="https://img.shields.io/badge/NumPy-2.x-013243?logo=numpy&logoColor=white&style=flat-square">
+  <img alt="NumPy" src="https://img.shields.io/badge/NumPy-2.0.2-013243?logo=numpy&logoColor=white&style=flat-square">
   <!-- Pandas -->
-  <img alt="Pandas" src="https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas&logoColor=white&style=flat-square">
+  <img alt="Pandas" src="https://img.shields.io/badge/Pandas-2.2.2-150458?logo=pandas&logoColor=white&style=flat-square">
   <!-- Albumentations -->
-  <img alt="Albumentations" src="https://img.shields.io/badge/Albumentations-2.x-FF6F00?style=flat-square">
+  <img alt="Albumentations" src="https://img.shields.io/badge/Albumentations-2.0.8-FF6F00?style=flat-square">
   <!-- OpenCV -->
-  <img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white&style=flat-square">
+  <img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-4.12.0-5C3EE8?logo=opencv&logoColor=white&style=flat-square">
   <!-- Matplotlib -->
-  <img alt="Matplotlib" src="https://img.shields.io/badge/Matplotlib-3.x-11557C?style=flat-square">
+  <img alt="Matplotlib" src="https://img.shields.io/badge/Matplotlib-3.10.0-11557C?style=flat-square">
   <!-- Colab -->
   <a href="https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/TransUNET_BaseLine.ipynb">
     <img alt="Open In Colab" src="https://img.shields.io/badge/Colab-Open%20Notebook-F9AB00?logo=googlecolab&logoColor=white&style=flat-square">
