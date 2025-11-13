@@ -4,7 +4,7 @@
 > **Code Availability:** Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally **withheld until paper submission**.  
 > **What’s Included Now:** This repo currently exposes the **baseline setups**, **evaluation pipeline**, and **comparison models**.  
 > **Post-Submission Plan:** Lite variants (**code + detailed diagrams**) will be released **after submission** for full reproducibility.  
-> **Model Cards:** Stub model cards for the Lite variants are included in **Section - 9** **[Architectures Compared](#lite-versions)**.
+> **Model Cards:** Stub model cards for the Lite variants are included in **Section - 9** **[📐 Architectures Compared](#lite-versions)**.
 
 ---
 
