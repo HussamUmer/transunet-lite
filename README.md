@@ -6,7 +6,7 @@
 
 ---
 
-## 1. 📝 Abstract
+## 0. 📝 Abstract
 
 This research presents TransUNet-Lite, a family of lightweight hybrid transformer–CNN models designed to deliver accurate, reliable, and efficient medical image segmentation under real-world computational constraints. We benchmark UNETR, SETR, TransUNet (paper-style baseline), and our two proposed variants—TransUNet-Lite-Base and TransUNet-Lite-Tiny—within a unified, strictly controlled MedSegBench-style pipeline applied to two heterogeneous imaging modalities: ISIC 2016 dermoscopy and BUSI breast ultrasound. 
 
@@ -15,7 +15,7 @@ Lite-Base achieves near-baseline TransUNet performance while reducing parameters
 Overall, these results demonstrate that TransUNet-Lite offers a strong accuracy–efficiency–uncertainty trade-off, providing transformer-level segmentation performance while remaining lightweight enough for real-time, edge-based, or resource-constrained clinical deployments.
 
 ---
-## 2. 🗺️ Overview
+## 1. 🗺️ Overview
 
 This project introduces **TransUNet-Lite** variants that keep the global context of TransUNet-style hybrids while **aggressively reducing parameters, FLOPs, VRAM, and CPU/GPU latency**.
 
@@ -33,6 +33,17 @@ under a **single, controlled pipeline** on:
 - 🟤 **BUSI** — Breast ultrasound tumor segmentation (binary).
 
 All models are trained & evaluated with **identical data splits, losses, thresholds, augmentations, logging, and evaluation scripts**, so differences come from the **architectures**, not from training shortcuts.
+
+---
+
+## 2. 🎁 Key Contributions
+
+- **TransUNet-Lite family:** Two lightweight hybrids (Lite-Base, Lite-Tiny) that retain TransUNet-level quality with **3–16× fewer params** and **4–9× lower VRAM**, practical for CPU/edge.
+- **Unified, controlled benchmark:** Fair apples-to-apples training on **ISIC 2016** and **BUSI** with identical splits, losses, and augmentation—plus code, logs, and artifact links.
+- **Deployment metrics, not just Dice:** GPU **latency/VRAM** and CPU **latency/FPS/RAM** reported alongside Dice/IoU/AUPRC/AUROC for real-world relevance.
+- **Uncertainty & calibration:** TTA-based uncertainty maps and ECE reporting for interpretable, clinician-friendly results.
+- **Clear Pareto trade-offs:** Plots show Lite models provide better **accuracy-vs-efficiency** balance than UNETR/SETR under the same pipeline.
+
 
 ---
 
