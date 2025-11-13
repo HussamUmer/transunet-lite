@@ -662,12 +662,16 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h4 align="center">ISIC 2016 — UNETR</h4>
 
+---
+
 ![ISIC 2016 — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_ISIC2016_IMG256_SEED42_2025-11-05_13-27-20_test_grid_4panels_12.png)  
 *Figure 15. ISIC 2016: UNETR (UNet with Transformer encoder) preserves coarse lesion extent but shows less precise boundaries on the hardest cases.*
 
 ---
 
 <h4 align="center">ISIC 2016 — SETR</h4>
+
+---
 
 ![ISIC 2016 — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_ISIC2016_IMG256_SEED42_2025-11-01_10-32-35_test_grid_4panels_12.png)  
 *Figure 16. ISIC 2016: SETR (SEgmentation TRansformer) provides smooth, globally consistent masks, sometimes over-smoothing fine lesion details.*
@@ -676,6 +680,8 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h4 align="center">ISIC 2016 — TransUNet (Baseline)</h4>
 
+---
+
 ![ISIC 2016 — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_ISIC2016_IMG256_SEED42_2025-10-19_10-01-43_test_grid_4panels_12.png)  
 *Figure 17. ISIC 2016: TransUNet baseline delivers sharp lesion boundaries and strong coverage; used as our heavy reference model.*
 
@@ -683,12 +689,16 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h4 align="center">ISIC 2016 — TransUNet-Lite-Base</h4>
 
+---
+
 ![ISIC 2016 — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_base_ISIC2016_IMG256_SEED42_2025-10-18_07-29-51_test_grid_4panels_12.png)  
 *Figure 18. ISIC 2016: TransUNet-Lite-Base visually matches baseline TransUNet on most cases while using far fewer parameters and memory.*
 
 ---
 
 <h4 align="center">ISIC 2016 — TransUNet-Lite-Tiny</h4>
+
+---
 
 ![ISIC 2016 — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNet_Lite_tiny_ISIC2016_IMG256_SEED42_2025-10-14_21-28-31_test_grid_4panels_12.png)  
 *Figure 19. ISIC 2016: TransUNet-Lite-Tiny maintains reasonable segmentation quality with slightly softer contours, reflecting its aggressive efficiency focus.*
@@ -700,12 +710,16 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h4 align="center">BUSI — UNETR</h4>
 
+---
+
 ![BUSI — UNETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/unetr_model_busi_IMG256_SEED42_2025-11-04_13-32-50_test_grid_4panels_12.png)  
 *Figure 20. BUSI: UNETR captures major lesions but often underestimates fuzzy, low-contrast margins, illustrating the difficulty of this ultrasound dataset.*
 
 ---
 
 <h4 align="center">BUSI — SETR</h4>
+
+---
 
 ![BUSI — SETR](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/setr_model_busi_IMG256_SEED42_2025-11-04_15-02-28_test_grid_4panels_12.png)  
 *Figure 21. BUSI: SETR yields smooth and stable masks but can over-simplify irregular tumor shapes in highly textured tissue.*
@@ -714,6 +728,8 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h4 align="center">BUSI — TransUNet-Baseline</h4>
 
+---
+
 ![BUSI — TransUNet-Baseline](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetBaseline_busi_IMG256_SEED42_2025-11-03_03-42-24_test_grid_4panels_12.png)  
 *Figure 22. BUSI: TransUNet baseline provides the sharpest and most reliable boundaries on complex lesions, at the cost of much higher computation.*
 
@@ -721,12 +737,16 @@ These views highlight lesion shape, contour sharpness, and failure modes under t
 
 <h4 align="center">BUSI — TransUNet-Lite-Base</h4>
 
+---
+
 ![BUSI — TransUNet-Lite-Base](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/Lite_Base_model_busi_IMG256_SEED42_2025-11-03_04-34-56_test_grid_4panels_12.png)  
 *Figure 23. BUSI: TransUNet-Lite-Base maintains strong lesion coverage and boundary quality close to the baseline while being substantially lighter—robust despite BUSI’s challenging variability.*
 
 ---
 
 <h4 align="center">BUSI — TransUNet-Lite-Tiny</h4>
+
+---
 
 ![BUSI — TransUNet-Lite-Tiny](https://github.com/HussamUmer/transunet-lite/raw/main/qualitative_prediction/TransUNetLiteTiny_model_busi_IMG256_SEED42_2025-11-03_05-02-40_test_grid_4panels_12.png
 )  
@@ -743,6 +763,7 @@ We estimate how confident each model is by running the same test image multiple 
 ---
 
 ### 15.1 🧠 Objective
+
 We applied **Test-Time Augmentation (TTA)** to quantify the **model uncertainty** across multiple segmentation models on **ISIC-2016** and **BUSI** datasets.  
 TTA helps visualize how consistent a model’s predictions are under small perturbations (flips, rotations, etc.) — producing:
 - **Mean Probability Maps** → averaged predictions across augmentations (model consensus)  
