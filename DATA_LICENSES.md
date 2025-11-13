@@ -32,7 +32,7 @@ Use is intended for **academic/non-commercial** research unless you obtain expli
 @misc{ISIC2016Challenge,
   title        = {ISIC 2016: Skin Lesion Analysis Toward Melanoma Detection (Challenge at ISBI 2016)},
   howpublished = {\url{https://challenge.isic-archive.com/landing/2016/}},
-  note         = {Accessed: YYYY-MM-DD}
+  note         = {Accessed: 2025-11-14}
 }
 
 @article{AlDhabyani2020,
