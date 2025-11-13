@@ -8,7 +8,7 @@
     <img alt="Data Licenses" src="https://img.shields.io/badge/Data-%F0%9F%93%9C%20Licenses-informational?style=flat-square">
   </a>
   <!-- Model Cards (points to Section 9) -->
-  <a href="#9-%EF%B8%8F-architectures-compared">
+  <a href="#lite-versions">
     <img alt="Model Cards" src="https://img.shields.io/badge/Model%20Cards-Section%209-brightgreen?style=flat-square">
   </a>
   <!-- Python -->
