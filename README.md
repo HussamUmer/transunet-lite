@@ -138,7 +138,7 @@ This pairing makes the reported results **more meaningful** than
 single-dataset evaluations and sets up a solid foundation for future
 extensions to more MedSegBench modalities.
 
---
+---
 
 ### 4.4 📜 Data & Licenses 
 
@@ -1387,7 +1387,7 @@ This staged approach keeps the current study **clean, credible, and publishable*
 
 ---
 
-## 20. 📑 Citation
+## 20. 📜 Data & Licenses
 
 A formal BibTeX entry will be added once the corresponding manuscript is submitted.
 In the meantime, feel free to reference this repository as:
