@@ -1,1 +1,29 @@
+# CITATION.cff
+cff-version: 1.2.0
+message: "If you use this software or results, please cite it as below."
+title: "TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use"
+type: software
+version: "0.1.0"
+date-released: "2025-11-14"
+license: Apache-2.0
+authors:
+  - family-names: Umer
+    given-names: Hussam
+repository-code: "https://github.com/HussamUmer/transunet-lite"
+url: "https://github.com/HussamUmer/transunet-lite"
+keywords:
+  - medical image segmentation
+  - transformers
+  - transunet
+  - ultrasound
+  - dermoscopy
+  - efficiency
+preferred-citation:
+  type: manuscript
+  title: "TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use"
+  authors:
+    - family-names: Umer
+      given-names: Hussam
+  year: 2025
+  notes: "GitHub repository; manuscript in preparation."
 
