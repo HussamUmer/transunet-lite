@@ -279,16 +279,113 @@ metrics:
 
 ---
 
-## 7. Architectures Compared
+## 7. Architectures Compared  
+*(with implementation notes and citations)*  
 
-**UNETR**  
-ViT-style encoder with patch tokens + convolutional decoder.
+Below we describe each backbone used in this repository, how each model was implemented in our unified framework, and the original papers/authors that introduced the architecture. The explanations focus on the theory and design, not the code.
 
-**SETR**  
-Pure Transformer encoder with segmentation head; adapted to our unified pipeline.
+---
 
-**TransUNet (Baseline)**  
-ResNet-50 encoder + ViT-B/16 bottleneck + U-Net style decoder.
+### UNETR — “U-Net with Transformer Encoder”
+
+**Authors & Reference**  
+- **Ali Hatamizadeh**, Dong Yang, Holger R. Roth, Daguang Xu  
+- *“UNETR: Transformers for 3D Medical Image Segmentation,”* WACV 2022.  
+- ➡ [https://arxiv.org/abs/2103.10504](https://arxiv.org/abs/2103.10504)
+
+**Theoretical Summary (How UNETR Works)**  
+UNETR replaces the standard CNN encoder in U-Net with a pretrained **Vision Transformer (ViT-B/16)**.  
+Instead of building the downsampling path with convolutions, UNETR taps features from **multiple transformer layers**, using these token embeddings to construct a hierarchical representation. This creates a U-Net–style feature pyramid **without any convolutional encoder**.
+
+**How We Implemented It**  
+
+- We use **timm’s ViT-B/16** as the encoder/feature extractor.  
+- We register hooks on four transformer depths (≈ layers **3, 6, 9, 12**) and collect their token outputs.  
+- Each token sequence is reshaped into a spatial map at **1/16 resolution** and then passed through **1×1 convolutions** to form a multi-scale hierarchy:  
+  - 96 → 192 → 384 → 768 channels.  
+- A U-Net–style decoder merges these streams via **top-down UpBlocks**, gradually lifting resolution:  
+  - 1/16 → 1/8 → 1/4 → full **H×W**.  
+- A final **1×1 convolutional head** produces the segmentation logits at full resolution.
+
+**Key Characteristics**  
+
+- **Pure Transformer encoder** (no CNN in the encoder path).  
+- Skip information comes from **ViT token embeddings**, not CNN stages.  
+- **Strengths:** long-range context, good handling of structured textures, sharp global boundaries.  
+- **Weakness:** deeper ViT layers are **computationally heavy**, especially for high-resolution inputs.
+
+---
+
+### SETR — “Segmentation Transformer”
+
+**Authors & Reference**  
+- **Sixiao Zheng**, Jiachen Lu, Hengshuang Zhao, Xiatian Zhu, *et al.*  
+- *“Rethinking Semantic Segmentation from a Sequence-to-Sequence Perspective with Transformers,”* CVPR 2021.  
+- ➡ [https://arxiv.org/abs/2012.15840](https://arxiv.org/abs/2012.15840)
+
+**Theoretical Summary (How SETR Works)**  
+SETR is one of the first large-scale **pure-Transformer** segmentation models.  
+It removes CNNs entirely from the encoder and uses a plain **ViT** to encode the image as a sequence of patch tokens.  
+Because ViT outputs a **1/16-resolution** representation, SETR reconstructs full-resolution predictions using a **Progressive UPsampling (PUP)** decoder built from simple Conv+Upsample blocks.
+
+**How We Implemented SETR-PUP**  
+
+- **Encoder:** pretrained **ViT-B/16** from `timm` (ImageNet pretraining).  
+- The ViT outputs token embeddings that we reshape into a spatial feature map of shape **(C, H/16, W/16)**.  
+- **Decoder:** we implement the **PUP variant**, following the original paper:  
+  - A stack of **ConvBNReLU** blocks with bilinear upsampling stages:  
+    - H/16 → H/8 → H/4 → H/2 → H.  
+- There are **no skip connections** from earlier layers, matching the original SETR design.
+
+**Key Characteristics**  
+
+- **Pure Transformer model**; no CNN encoder or skip pathways.  
+- Decoder is **simple but stable**, making it easy to integrate into our framework.  
+- **Strengths:** excellent **global context modeling**, strong performance on large, smooth, or structured regions.  
+- **Weakness:** boundary precision and fine-grained details can lag behind **hybrid architectures** such as TransUNet or UNETR.
+
+---
+
+### TransUNet (Baseline) — “Hybrid CNN + Transformer U-Net”
+
+**Authors & Reference**  
+- **Jieneng Chen**, Yongyi Lu, Qihang Yu, Xiangde Luo, *et al.*  
+- *“TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation,”* 2021 (MICCAI/MedIA).  
+- ➡ [https://arxiv.org/abs/2102.04306](https://arxiv.org/abs/2102.04306)
+
+**Theoretical Summary (How TransUNet Works)**  
+TransUNet is a **hybrid CNN–Transformer** architecture that combines:  
+
+- A **ResNet-50** backbone to extract low- and mid-level spatial features at 1/4, 1/8, and 1/16 resolutions.  
+- A **ViT-B/16** that processes image tokens to model **global self-attention** and long-range dependencies.  
+
+The ViT bottleneck output at 1/16 resolution is fused with the deepest ResNet skip.  
+A standard U-Net decoder then upsamples back to full resolution, **merging**:  
+- **Global features** from the ViT, and  
+- **Local spatial details** from the CNN skips.  
+
+This design became a template for many later Transformer-based segmentation models.
+
+**How We Implemented It**  
+
+- **CNN encoder:** ImageNet-pretrained **ResNet-50**, providing skip maps:  
+  - s1 @ **H/4**, 256 channels  
+  - s2 @ **H/8**, 512 channels  
+  - s3 @ **H/16**, 1024 channels  
+- **Transformer bottleneck:** `timm` **ViT-B/16**, producing a **768-channel** token map at H/16.  
+- We reshape the ViT tokens into a spatial map and fuse it with the deepest ResNet feature (s3).  
+- **Decoder (U-Net style):**  
+  - **UpBlock 1:** (ViT ⊕ s3) → 512 channels @ H/16  
+  - **UpBlock 2:** (512 ⊕ s2) → 256 channels @ H/8  
+  - **UpBlock 3:** (256 ⊕ s1) → 128 channels @ H/4  
+  - Final **bilinear upsample ×4** + Conv head → full-resolution logits.
+
+**Key Characteristics**  
+
+- **Hybrid design:** CNN for local detail + Transformer for global context.  
+- Often strong across both **clean dermoscopic** data (ISIC) and **noisy ultrasound** (BUSI).  
+- **Strengths:** good trade-off between localization and context; serves as a solid baseline.  
+- **Weakness:** heavier than lightweight variants (e.g., TransUNet-Lite), with higher memory and compute cost.
 
 **TransUNet-Lite-Base**  
 ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
