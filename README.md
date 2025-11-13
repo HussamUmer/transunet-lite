@@ -1,8 +1,10 @@
 # 🚀 TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use
 
 > **Status:** 📝 *Manuscript in preparation.*  
-> Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally withheld until paper submission.  
-> This repo currently exposes the **baseline setups, evaluation pipeline, and comparison models**; Lite variants (code + detailed diagrams) will be released after submission for full reproducibility.
+> **Code Availability:** Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally **withheld until paper submission**.  
+> **What’s Included Now:** This repo currently exposes the **baseline setups**, **evaluation pipeline**, and **comparison models**.  
+> **Post-Submission Plan:** Lite variants (**code + detailed diagrams**) will be released **after submission** for full reproducibility.  
+> **Model Cards:** Stub model cards for the Lite variants are included in **Section 9 — Architectures Compared**.
 
 ---
 
@@ -135,6 +137,22 @@ Together, **ISIC 2016** and **BUSI** give us:
 This pairing makes the reported results **more meaningful** than
 single-dataset evaluations and sets up a solid foundation for future
 extensions to more MedSegBench modalities.
+
+--
+
+### 4.4 📜 Data & Licenses 
+
+We evaluate using standardized NPZs from **MedSegBench** to ensure fair, reproducible comparisons.
+Each **sub-dataset retains its original license** and usage terms:
+
+- **ISIC 2016 (dermoscopy)** — see the ISIC archive/challenge pages for terms:  
+  <https://www.isic-archive.com/> • <https://challenge.isic-archive.com/landing/2016/>
+- **BUSI (breast ultrasound)** — dataset and terms via the Data in Brief article (DOI):  
+  <https://doi.org/10.1016/j.dib.2019.104863>
+
+**Note:** Many datasets are **non-commercial** (e.g., CC BY-NC/CC BY-NC-SA). Please follow each dataset’s license.
+
+➡ **Full details, links, and citations:** see **[📜 Data & Licenses](#-data--licenses)** at the end.
 
 ---
 
