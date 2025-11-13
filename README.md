@@ -4,7 +4,7 @@
 > **Code Availability:** Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally **withheld until paper submission**.  
 > **What’s Included Now:** This repo currently exposes the **baseline setups**, **evaluation pipeline**, and **comparison models**.  
 > **Post-Submission Plan:** Lite variants (**code + detailed diagrams**) will be released **after submission** for full reproducibility.  
-> **Model Cards:** Stub model cards for the Lite variants are included in **Section 9 — Architectures Compared**.
+> **Model Cards:** Stub model cards for the Lite variants are included in **Section - 9** **[Architectures Compared](#lite-versions)**.
 
 ---
 
@@ -394,6 +394,9 @@ Below we describe each backbone that we compared, how each model was implemented
 >   - **UpBlock 2:** (512 ⊕ s2) → 256 channels @ H/8  
 >   - **UpBlock 3:** (256 ⊕ s1) → 128 channels @ H/4  
 >   - Final **bilinear upsample ×4** + Conv head → full-resolution logits.
+
+<!-- Put an explicit anchor above the section -->
+<a id="lite-versions"></a>
 
 ### 9.4 📐 TransUNet-Lite-Base  
 > ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
@@ -1390,13 +1393,55 @@ This staged approach keeps the current study **clean, credible, and publishable*
 <!-- Put an explicit anchor above the section -->
 <a id="data-licenses"></a>
 
-## 20. 📜 Data & Licenses
+## 20 📜 Data & Licenses
 
-A formal BibTeX entry will be added once the corresponding manuscript is submitted.
-In the meantime, feel free to reference this repository as:
+This repo evaluates models using standardized NPZs from **MedSegBench**.  
+Each **sub-dataset preserves its own license** and citation requirements.  
+Use is intended for **academic/non-commercial** research unless you obtain explicit permissions from the original rights holders.
 
-> H. Umer, "TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use," GitHub repository, 2025.  
-> https://github.com/HussamUmer/transunet-lite
+---
+
+## MedSegBench (meta-benchmark)
+
+- **Homepage:** https://github.com/zekikus/medsegbench  
+- **Licensing summary (from MedSegBench):**
+  - Most datasets: **CC BY-NC 4.0**
+  - CystoFluidMSBench, CovidQUExMSBench, MonusacMSBench: **CC BY-NC-SA 4.0**
+  - USforKidneyMSBench: **GPL-2.0**
+  - DynamicNuclearMSBench: **modified Apache license**
+- **Code license:** Apache-2.0 (their code)
+- **Please cite:**
+```bibtex
+@article{Ku2024,
+  title   = {MedSegBench: A comprehensive benchmark for medical image segmentation in diverse data modalities},
+  author  = {Kuş, Zeki and Aydin, Musa},
+  journal = {Scientific Data},
+  volume  = {11},
+  number  = {1},
+  year    = {2024},
+  month   = nov,
+  doi     = {10.1038/s41597-024-04159-2},
+  url     = {http://dx.doi.org/10.1038/s41597-024-04159-2}
+}
+
+@misc{ISIC2016Challenge,
+  title        = {ISIC 2016: Skin Lesion Analysis Toward Melanoma Detection (Challenge at ISBI 2016)},
+  howpublished = {\url{https://challenge.isic-archive.com/landing/2016/}},
+  note         = {Accessed: YYYY-MM-DD}
+}
+
+@article{AlDhabyani2020,
+  title   = {Dataset of breast ultrasound images},
+  author  = {Al-Dhabyani, W. and Gomaa, M. and Khaled, H. and Fahmy, A.},
+  journal = {Data in Brief},
+  volume  = {28},
+  pages   = {104863},
+  year    = {2020},
+  doi     = {10.1016/j.dib.2019.104863},
+  url     = {https://doi.org/10.1016/j.dib.2019.104863}
+}
+
+```
 
 ---
 
