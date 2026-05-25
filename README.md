@@ -1226,16 +1226,19 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ## 16 🔗 Full Training & Testing Notebooks (Open in Colab)
 
-| Dataset     | Model                             | Open in Colab |
-|------------|-----------------------------------|---------------|
-| ISIC 2016  | UNETR                             | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/unetr_model_BaseLine.ipynb) |
-| ISIC 2016  | SETR                              | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/setr_model_BaseLine%20(1).ipynb) |
-| ISIC 2016  | TransUNet Baseline (R50 + ViT-B/16) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/TransUNET_BaseLine.ipynb) |
-| BUSI       | UNETR                             | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_unetr_model256.ipynb) |
-| BUSI       | SETR                              | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_setr_model256%20(1).ipynb) |
-| BUSI       | TransUNet Baseline (R50 + ViT-B/16) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_TransUNet256.ipynb) |
+| Dataset     | Model                                      | Open in Colab |
+|------------|--------------------------------------------|---------------|
+| ISIC 2016  | UNETR                                      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/unetr_model_BaseLine.ipynb) |
+| ISIC 2016  | SETR                                       | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/setr_model_BaseLine%20(1).ipynb) |
+| ISIC 2016  | TransUNet Baseline (R50 + ViT-B/16)        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/TransUNET_BaseLine.ipynb) |
+| ISIC 2016  | TransUNet-Lite Base                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/TransUNET_Lite_Base.ipynb) |
+| ISIC 2016  | TransUNet-Lite Tiny                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/TransUNET_Lite_Tiny.ipynb) |
+| BUSI       | UNETR                                      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_unetr_model256.ipynb) |
+| BUSI       | SETR                                       | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_setr_model256%20(1).ipynb) |
+| BUSI       | TransUNet Baseline (R50 + ViT-B/16)        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_TransUNet256.ipynb) |
+| BUSI       | TransUNet-Lite Base                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_Lite_Base_model256.ipynb) |
+| BUSI       | TransUNet-Lite Tiny                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/Full_Training_Testing/BUSI_Binary_TransUNetLiteTiny_model256.ipynb) |
 
-> ⚠️ **Note:** Colab notebooks for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** will be released after the corresponding research manuscript is submitted.
 
 ---
 
