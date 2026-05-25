@@ -27,6 +27,3 @@
 - Slight under-segmentation on noisy BUSI edges
 - Accuracy < Lite-Base / baseline on hardest cases
 
-## Release status
-- **Code/weights** to be released **upon manuscript submission**.
-
