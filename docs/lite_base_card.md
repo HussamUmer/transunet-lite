@@ -30,6 +30,5 @@
 - Slight contour softness on BUSI versus heavy baseline
 - Results reported at 256×256; larger inputs increase cost
 
-## Release status
-- **Code/weights** to be released **upon manuscript submission**.
+
 
