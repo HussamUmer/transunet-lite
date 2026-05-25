@@ -1244,16 +1244,19 @@ TTA helps visualize how consistent a model’s predictions are under small pertu
 
 ## 17 🧠 CPU-Only Evaluation Notebooks (Open in Colab)
 
-| Dataset     | Model                               | Open in Colab |
-|------------|-------------------------------------|---------------|
-| ISIC 2016  | UNETR                               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/UNETR_CPU_Eval_50_ISIC.ipynb) |
-| ISIC 2016  | SETR                                | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/SETR_CPU_Eval_50_ISIC%20(1).ipynb) |
-| ISIC 2016  | TransUNet Baseline (R50 + ViT-B/16) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Baseline_CPU_Eval_50_ISIC.ipynb) |
-| BUSI       | UNETR                               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/UNETR_CPU_Eval_50_Busi.ipynb) |
-| BUSI       | SETR                                | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/SETR_CPU_Eval_50_Busi.ipynb) |
-| BUSI       | TransUNet Baseline (R50 + ViT-B/16) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Baseline_CPU_Eval_50_Busi.ipynb) |
+| Dataset     | Model                                      | Open in Colab |
+|------------|--------------------------------------------|---------------|
+| ISIC 2016  | UNETR                                      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/UNETR_CPU_Eval_50_ISIC.ipynb) |
+| ISIC 2016  | SETR                                       | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/SETR_CPU_Eval_50_ISIC%20(1).ipynb) |
+| ISIC 2016  | TransUNet Baseline (R50 + ViT-B/16)        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Baseline_CPU_Eval_50_ISIC.ipynb) |
+| ISIC 2016  | TransUNet-Lite Base                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Lite_Base_CPU_Eval_50_ISIC.ipynb) |
+| ISIC 2016  | TransUNet-Lite Tiny                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Lite_Tiny_CPU_Eval_50_ISIC.ipynb) |
+| BUSI       | UNETR                                      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/UNETR_CPU_Eval_50_Busi.ipynb) |
+| BUSI       | SETR                                       | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/SETR_CPU_Eval_50_Busi.ipynb) |
+| BUSI       | TransUNet Baseline (R50 + ViT-B/16)        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Baseline_CPU_Eval_50_Busi.ipynb) |
+| BUSI       | TransUNet-Lite Base                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Lite_Base_CPU_Eval_50_Busi.ipynb) |
+| BUSI       | TransUNet-Lite Tiny                        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HussamUmer/transunet-lite/blob/main/Coding_Notebooks/CPU_Only_Eval/TransUNet_Lite_Tiny_CPU_Eval_50_Busi.ipynb) |
 
-> ⚠️ **Note:** CPU-only evaluation notebooks for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** will be made public after the associated manuscript is submitted.
 
 ---
 
