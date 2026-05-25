@@ -49,12 +49,8 @@
 
 # 🚀 TransUNet-Lite: Fast & Memory-Efficient Transformer Segmentation for Clinical-Scale Use
 
-> **Status:** 📝 *Manuscript in preparation.*  
-> **Code Availability:** Full code and architectural details for **TransUNet-Lite-Base** and **TransUNet-Lite-Tiny** are intentionally **withheld until paper submission**.  
-> **What’s Included Now:** This repo currently exposes the **baseline setups**, **evaluation pipeline**, and **comparison models**.  
-> **Post-Submission Plan:** Lite variants (**code + detailed diagrams**) will be released **after submission** for full reproducibility.  
+> **Status:** 📝 *Manuscript in preparation.*    
 > **Model Cards:** Stub model cards for the Lite variants are included in **Section 9 📐** **[Architectures Compared](#lite-versions)**.
-
 
 ---
 
@@ -461,7 +457,6 @@ Below we describe each backbone that we compared, how each model was implemented
 > • [TransUNet-Lite-Tiny — Model Card (Stub)](docs/lite_tiny_card.md)
 
 All implemented in a way that **matches the spirit of the original papers** while fitting a **single plug-and-play evaluation pipeline**.
-Full architectural details for *TransUNet-Lite-Base* and *TransUNet-Lite-Tiny* will be released after the manuscript submission.
 
 ---
 
@@ -723,7 +718,7 @@ Lite models **utilize CPU resources much more effectively**, especially Lite-Tin
    - This drop is expected: BUSI ultrasound images are **noisy, low-contrast, and anatomically complex**, making tumor boundaries       intrinsically hard.
    - The experiment is intentional: it demonstrates how each architecture behaves under **realistic, challenging conditions**, rather than only on a “clean” benchmark.
 
-5. **Research angle (publishable story):**
+5. **Research angle :**
    - A **clean, controlled benchmark** of heavy vs. light Transformer-based segmenters.
    - A practical design that **outclasses prior transformer baselines (UNETR/SETR)** in both quality and efficiency.
    - Lite models that **offer strong Pareto-optimal points** in the accuracy–efficiency trade-off space.
@@ -1296,7 +1291,6 @@ These artifacts provide a clear evidence trail for all reported numbers.
 | TransUNet-Lite-Base (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/17m-Dq0OpYTOBGFnnVjEM2Cgvow8xQf78?usp=sharing) |
 | TransUNet-Lite-Tiny (BUSI) | [Open artifacts](https://drive.google.com/drive/folders/15zNYx33tJPbXE2d_07vDHxFin18TKKGq?usp=sharing) |
 
-> *These shared directories expose only the experiment artifacts (logs, configs, metrics, qualitative grids) required for verification, without exposing unrelated private Drive content.*
 
 ---
 
