@@ -448,7 +448,13 @@ Below we describe each backbone that we compared, how each model was implemented
 > ViT-S/16 backbone + lightweight CNN skip encoder + depthwise decoder + SE-gated skips + boundary head.
 
 > 📄 Model card:  
-> • [TransUNet-Lite-Base — Model Card (Stub)](docs/lite_base_card.md)  
+> • [TransUNet-Lite-Base — Model Card (Stub)](docs/lite_base_card.md)
+
+<p align="center">
+  <img src="https://githubusercontent.com" alt="TransUNet-Lite Base Architecture Diagram" width="100%">
+  <br>
+  <em>Figure 1: Detailed architectural framework of the proposed TransUNet-Lite Base pipeline.</em>
+</p>
 
 ### 9.5 📐 TransUNet-Lite-Tiny 
 > DeiT-Tiny/16 backbone + same lite decoder design as Lite-Base, further reduced channels.
