@@ -449,6 +449,7 @@ Below we describe each backbone that we compared, how each model was implemented
 
 > 📄 Model card:  
 > • [TransUNet-Lite-Base — Model Card (Stub)](docs/lite_base_card.md)
+
 > An overview of the proposed TransUNet-Lite Base structural configuration, demonstrating the optimized tokenization, self-attention, and localized upsampling pathways:
 <p align="center">
   <img src="https://raw.githubusercontent.com/HussamUmer/transunet-lite/main/Diagrams/Lite-Base%20Architecture.png" alt="TransUNet-Lite Base Architecture" width="100%">
@@ -462,6 +463,7 @@ Below we describe each backbone that we compared, how each model was implemented
 
 > 📄 Model card:  
 > • [TransUNet-Lite-Tiny — Model Card (Stub)](docs/lite_tiny_card.md)
+
 > The compact structural configuration designed specifically for extreme resource-constrained deployments, maintaining semantic segmentation integrity with minimized channel counts:
 
 <p align="center">
