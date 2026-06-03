@@ -451,10 +451,9 @@ Below we describe each backbone that we compared, how each model was implemented
 > • [TransUNet-Lite-Base — Model Card (Stub)](docs/lite_base_card.md)
 
 <p align="center">
-  <img src="[https://github.com/HussamUmer/transunet-lite/blob/main/Diagrams/Lite-Base%20Architecture.png]" alt="TransUNet-Lite Base Architecture Diagram" width="100%">
-  <br>
-  <em>Figure 1: Detailed architectural framework of the proposed TransUNet-Lite Base pipeline.</em>
+  <img src="https://raw.githubusercontent.com/HussamUmer/transunet-lite/main/Diagrams/Lite-Base%20Architecture.png" alt="TransUNet-Lite Base Architecture" width="100%">
 </p>
+
 
 ### 9.5 📐 TransUNet-Lite-Tiny 
 > DeiT-Tiny/16 backbone + same lite decoder design as Lite-Base, further reduced channels.
